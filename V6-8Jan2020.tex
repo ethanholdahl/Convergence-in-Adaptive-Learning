@@ -258,13 +258,13 @@ First, $j<k$.
 
 \vskip6pt
 
-For period $t+1+j$ both players have a positive probability of sampling the most recent $s$ records: $(x^{t-s+1+j},...,x^{t+j})$. Player B has a best response of action 1 in period $t+1+j$ if:
-$$(12) \sum\limits_{r=t-s+1+j}^{t}\frac{x^r_A}{s}+\sum\limits_{r=t+1}^{t+j} \frac{x^r_A}{s} \geq \beta$$
-Using (6) I know $\cfrac{j}{s}+\sum\limits_{r=t-s+1+j}^{t}\cfrac{x^r_A}{s} \geq \beta$. And since $j<k$ I have already shown that player A has a unique best response of playing action 1 for all periods between $t+1$ and $t+1+j$ inclusive. So $\sum\limits_{r=t+1}^{t+j} \cfrac{x^r_A}{s}=\cfrac{j}{s}$.
+For period $t+2+j$ both players have a positive probability of sampling the most recent $s$ records: $(x^{t-s+2+j},...,x^{t+1+j})$. Player B has a best response of action 1 in period $t+2+j$ if:
+$$(12) \sum\limits_{r=t-s+2+j}^{t+1}\frac{x^r_A}{s}+\sum\limits_{r=t+2}^{t+1+j} \frac{x^r_A}{s} \geq \beta$$
+Using (6) I know $\cfrac{j}{s}+\sum\limits_{r=t-s+2+j}^{t+1}\cfrac{x^r_A}{s} \geq \beta$. And since $j<k$ I have already shown that player A has a unique best response of playing action 1 for all periods between $t+2$ and $t+2+j$ inclusive. So $\sum\limits_{r=t+2}^{t+1+j} \cfrac{x^r_A}{s}=\cfrac{j}{s}$.
 
-Which means $(13) \sum\limits_{r=t-s+1+j}^{t}\cfrac{x^r_A}{s}+\sum\limits_{r=t+1}^{t+j} \cfrac{x^r_A}{s}=\cfrac{j}{s}+\sum\limits_{r=t-s+1+j}^{t}\cfrac{x^r_A}{s}$.
+Which means $(13) \sum\limits_{r=t-s+2+j}^{t+1}\cfrac{x^r_A}{s}+\sum\limits_{r=t+2}^{t+1+j} \cfrac{x^r_A}{s}=\cfrac{j}{s}+\sum\limits_{r=t-s+2+j}^{t+1}\cfrac{x^r_A}{s}$.
 
-Combining (12) and (13) I get (6) which means that action 1 is a best response for Player B in period $t+1+j$.
+Combining (12) and (13) I get (6) which means that action 1 is a best response for Player B in period $t+2+j$.
 
 \vskip6pt
 
@@ -276,15 +276,15 @@ Second, I consider $k<j$.
 
 \vskip6pt
 
-For period $t+1+k$ both players have a positive probability of sampling the most recent $s$ records: $(x^{t-s+1+k},...,x^{t+k})$. Player A has a best response of action 0 in period $t+1+k$ if:
+For period $t+2+k$ both players have a positive probability of sampling the most recent $s$ records: $(x^{t-s+2+k},...,x^{t+1+k})$. Player A has a best response of action 0 in period $t+2+k$ if:
 
-$$(14) \sum\limits_{r=t-s+1+k}^{t}\frac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+k} \frac{x^r_B}{s} \leq \alpha$$
+$$(14) \sum\limits_{r=t-s+2+k}^{t+1}\frac{x^r_B}{s}+\sum\limits_{r=t+2}^{t+1+k} \frac{x^r_B}{s} \leq \alpha$$
 
-Using (5) I know $\sum\limits_{r=t-s+1+k}^{t}\cfrac{x^r_B}{s} \leq \alpha$. And since $k<j$ I have already shown that player B has a unique best response of playing action 0 for all periods between $t+1$ and $t+1+k$ inclusive. So $\sum\limits_{r=t+1}^{t+k} \cfrac{x^r_B}{s}=0$.
+Using (5) I know $\sum\limits_{r=t-s+2+k}^{t+1}\cfrac{x^r_B}{s} \leq \alpha$. And since $k<j$ I have already shown that player B has a unique best response of playing action 0 for all periods between $t+2$ and $t+2+k$ inclusive. So $\sum\limits_{r=t+2}^{t+1+k} \cfrac{x^r_B}{s}=0$.
 
-Which means $(15) \sum\limits_{r=t-s+1+k}^{t}\frac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+k} \frac{x^r_B}{s}=\sum\limits_{r=t-s+1+k}^{t}\frac{x^r_B}{s}$.
+Which means $(15) \sum\limits_{r=t-s+2+k}^{t+1}\frac{x^r_B}{s}+\sum\limits_{r=t+2}^{t+1+k} \frac{x^r_B}{s}=\sum\limits_{r=t-s+2+k}^{t+1}\frac{x^r_B}{s}$.
 
-Combining (14) and (15) I get (5) which means that action 0 is a best response for Player A in period $t+1+k$.
+Combining (14) and (15) I get (5) which means that action 0 is a best response for Player A in period $t+2+k$.
 
 \vskip6pt
 
@@ -296,15 +296,15 @@ Third, I consider $k=j$.
 
 \vskip6pt
 
-In period $t+1+k$ player B can, with positive probability, sample the most recent set of $s$ records. Since $j=k$ I have already shown that playing action 1 is a best response for player B in this scenario.
+In period $t+2+k$ player B can, with positive probability, sample the most recent set of $s$ records. Since $j=k$ I have already shown that playing action 1 is a best response for player B in this scenario.
 
 \vskip6pt
 
-Since $m>s$ I know that $m \geq s+1$. So in period $t+1+k$ the records player A can sample from includes the most recent $s+1$ records: $(x^{t+k-s+2},...,x^{t+k})$. So in period $t+1+k$ player A can, with positive probability, sample the set of $s$ records: $(x^{t+k-s+2},...,x^{t+k-1})$. Note that these are the same records sampled in the previous period by player A which gave the unique best response of playing action 1.
+Since $m>s$ and both $m$ and $s$ are integers, I know that $m \geq s+1$. So in period $t+2+k$ the records player A can sample from includes the most recent $s+1$ records: $(x^{t+1+k-s},...,x^{t+1+k})$. So in period $t+1+k$ player A can, with positive probability, sample the set of $s$ records: $(x^{t+1+k-s},...,x^{t+k})$. Note that these are the same records sampled in the previous period, $t+2+(k-1)$, by player A which gave the unique best response of playing action 1.
 
 \vskip6pt
 
-So there exists a positive probability that both players share a best response in period $t+1+k$. So I can apply Lemma 1 here which shows that there exists a positive probability that both players play action 1 as a best reply for each period $e \geq t+1+k$. If this happens then after period $e=t+k+m$ the entire memory is filled with both players playing action 1. Since $\epsilon=0$ and since both players could then only sample records of the other player playing action 1 both would continue to play 1 as a best response for every period thereafter. So I have shown that there exists a positive probability that a convention can be reached and locked into when $j=k$. 
+So there exists a positive probability that both players share a best response in period $t+2+k$. So I can apply Lemma 1 here which shows that there exists a positive probability that both players play action 1 as a best reply for each period $e \geq t+2+k$. If this happens then after period $t+1+k+m$ the entire memory is filled with both players playing action 1. Since $\epsilon=0$ and since both players could then only sample records of the other player playing action 1 both would continue to play 1 as a best response for every period thereafter. So I have shown that there exists a positive probability that a convention can be reached and locked into when $j=k$. 
 
 \vskip12pt
 
@@ -318,7 +318,7 @@ Since I have shown that a convention can be reached with positive probability in
 
 Forthcoming:
 
-\textbf{Theorem 2.} Define G to be a 2x2 coordination game and let $P^{m,s,\epsilon}$ be adaptive learning with memory $m$, sample size $s$, and error rate $\epsilon$. For all $s/m$ the stochastically stable states of the perturbed process corresponds 1 to 1 with the risk dominant conventions.
+\textbf{Theorem 2.} Define G to be a 2x2 coordination game and let $P^{m,s,\epsilon}$ be adaptive learning with memory $m$, sample size $s$, and error rate $\epsilon$. For all sufficiently large $m$ (2?) the stochastically stable states of the perturbed process corresponds 1 to 1 with the risk dominant conventions.
 
 \vskip12pt
 
@@ -328,9 +328,9 @@ Forthcoming:
 
 $$r(i,j)=\min(\lceil \alpha s \rceil,\lceil \beta s \rceil)+\max(\lceil \alpha s \rceil+\lceil \beta s \rceil-m,0)$$
 
-\textit{2.} The risk dominance relation between state $i$ and $j$ remains unchanged for all $s/m \in (0,1]$ when $s,m$ are sufficiently large. As such in 2x2 games the stochastically stable states of the perturbed process correspond one to one with the risk dominant conventions.
+\textit{2.} The risk dominance relation between state $i$ and $j$ remains unchanged for all $s/m \in (0,1]$ when $m$ is sufficiently large.
 
-\textit{3.} In some but not all larger games (at least 3x3) which states are stochastically stable may depend on $s/m \in (0,1]$. If so, the value of $s/m \in (0,1)$ at which stochastic stability changes can be easily calculated.
+\textit{3.} In some, but not all, larger games (at least 3x3) which states are stochastically stable may depend on $s/m \in (0,1]$. If so, the value of $s/m \in (0,1]$ at which stochastic stability changes can be easily calculated.
 
 
 

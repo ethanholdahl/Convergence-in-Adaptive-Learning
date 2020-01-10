@@ -1,0 +1,303 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{dsfont}
+\usepackage{amsmath}
+\usepackage{nccmath}
+\usepackage{scrextend}
+\usepackage{amssymb}
+\usepackage{multirow,array}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{color,soul}
+\begin{document}
+\centering
+\Large
+\textbf{Convergence to a Convention in a 2x2 Coordination Game with Adaptive Learning}
+\vskip0pt
+Ethan Holdahl
+
+\large
+University of Oregon
+
+November 2019
+
+\vskip24pt
+
+\centering
+Coordination Game G
+\vskip6pt
+    \begin{tabular}{cc|c|c|}
+      & \multicolumn{1}{c}{} & \multicolumn{2}{c}{Player B}\\
+      & \multicolumn{1}{c}{} & \multicolumn{1}{c}{1}  & \multicolumn{1}{c}{0} \\\cline{3-4}
+      \multirow{2}*{Player A}  & 1 & ${a_{11},b_{11}}^*$ & $a_{10},b_{10}$ \\\cline{3-4}
+      & 0 & $a_{01},b_{01}$ & ${a_{00},b_{00}}^*$ \\\cline{3-4}
+    \end{tabular}
+
+\vskip24pt
+
+\raggedright
+
+Lemma 1 will be used in the proof of Theorem 1.
+
+\vskip12pt
+Let G be a 2x2 coordination game, and let $P^{m,s,\epsilon}$ be adaptive learning with memory $m$, sample size $s$, and error rate $\epsilon$.
+Denote the players A and B with actions $\{1,0\}$ as depicted above. Define $h_{-i}^{t}=(x_{-i}^{t-m},..,x_{-i}^{t-1})$ as the most recent $m$ records of all players except player $i$ at time $t$. Define $R_i^{t}$ as the set of $s$ records sampled by player $i$ in period $t$ from $h_{-i}^{t}$. Define $BR_i^{t}$ as player $i$'s best response to $R_i^{t}$.
+
+\vskip12pt
+
+\textbf{Lemma 1.} Let G be a 2x2 coordination game, and let $P^{m,s,\epsilon}$ be adaptive learning with memory $m$, sample size $s$, and error rate $\epsilon$. If at any period $n$ $\exists$ an action $ x^* \in \{BR_i^{n} \cap BR_j^{n}\}$ for players $i$ and $j$ where $i \neq j$ then there exists a positive probability that each player plays $x^*$ as a best reply for every period $e \geq n$.
+
+\vskip12pt
+
+\textbf{Proof of Lemma 1.} Assume at period $n$ $\exists$ an action $ x^* \in BR_A^{n} \cap BR_B^{n}$. I must show that there exists a positive probability that each player plays $x^*$ as a best reply for every period $e \geq n$.
+
+\vskip12pt
+
+I use proof by induction.
+
+\vskip12pt
+
+\textit{Base Step} I show that if there exists an action $x^*$ that is a best response for both players in period $n$ then there exists a positive probability that both players play action $x^*$ in period $n$.
+
+\vskip6pt
+
+Clearly, if $x^*$ is a best response for both players then there exists a positive probability that both players play action $x^*$ in period $n$.
+
+\vskip12pt
+
+\textit{Inductive Step:} I show that $\forall e \geq n$ if action $x^*$ was played as a best response for both players in period $e$ then there exists a positive probability that action $x^*$ is played as a best response in period $e+1$.
+
+\vskip6pt
+
+Assume action $x^*$ was played as a best response for both players in period $e$. I must show that there exists a positive probability that action $x^*$ is played as a best response in period $e+1$.
+
+\vskip6pt
+
+Note that since $x_i^t \in \{1,0\}$ \hspace{4pt} $\forall t$ the proportion of times that player $j \neq i$ played 1 in $R_i^t$, the set of $s$ records in period $t$, is simply $\sum\limits_{r \in R_i^t} \cfrac{r}{s}$.
+
+\vskip6pt
+
+Let $\alpha_i \in (0,1)$ be the smallest probability that Player $j \neq i$ plays action $1$ such that Player $i$'s best response is playing action $1$.
+
+\vskip6pt
+
+Without loss of generality assume that $x^{*}=1$. That means action 1 is a best response for each player $i \in \{A,B\}$ to $R_i^{e}$, the set of $s$ records sampled by player $i$ in period $e$. That means that:
+
+$$ (1) \sum\limits_{r \in R_i^{e}} \cfrac{r}{s} \geq \alpha_i$$
+
+Now consider the set of $s$ records sampled by player $i$ in $e+1$: $R_i^{e+1}$.
+
+In period $e+1$ each player $i$ samples $s$ records from $h_{-i}^{e+1}$. Note that $|h_{-i}^{e} \cap (h_{-i}^{e+1})'|=1$, there is only 1 record in $h_{-i}^{e}$ that is not in $h_{-i}^{e+1}$. Since $R_i^{e} \subseteq h_{-i}^{e}$ I know that $|R_i^{e} \cap (h_{-i}^{e+1})'| \leq 1$ That means there is at most 1 record in player $i$'s sample in period $e$ that is not able to be sampled in period $e+1$. This means that there is a positive probability that in period $e+1$ each player $i$ samples $s-1$ records from the set $h_{-i}^{e+1} \cap R_i^{e}$ and the most recent record, $x_{-i}^{e}$. Assume both players samples in period $e+1$ fit this criteria and define $c_i^{e}=R_i^e \backslash R_i^{e+1}$, the record that was in the sample in period $e$ but not in period $e+1$ for player $i$.
+
+So I know that for each player $i$:
+
+$$\frac{c_i^{e}}{s} + \sum\limits_{r \in R_i^{e+1}} \cfrac{r}{s} = \frac{x_{-i}^{e}}{s} + \sum\limits_{r \in R_i^{e}} \cfrac{r}{s}$$
+
+However I know that $x_{-i}^{e}=1$ and $c_i^{e} \in \{0,1\}$. So $x_{-i}^{e}=1 \geq c_i^{e}$.
+
+Adding to both sides I get:
+
+$$\frac{c_i^{e}}{s} + \frac{x_{-i}^{e}}{s} + \sum\limits_{r \in R_i^{e+1}} \cfrac{r}{s} \geq \frac{x_{-i}^{e}}{s} + \frac{c_i^{e}}{s} + \sum\limits_{r \in R_i^{e}} \cfrac{r}{s}$$
+
+So
+
+$$(2) \sum\limits_{r \in R_i^{e+1}} \cfrac{r}{s} \geq \sum\limits_{r \in R_i^{e}} \cfrac{r}{s}$$
+
+Using (1) and (2) by transitivity I get:
+
+$$\sum\limits_{r \in R_i^{e+1}} \cfrac{r}{s} \geq \sum\limits_{r \in R_i^{e}} \cfrac{r}{s} \geq \alpha_i$$
+
+So for each player $i \in \{A,B\}$ action 1 is a best response to the sample $R_i^{e+1}$. Since action 1 is a best response for both players in period $e+1$ there exists a positive probability that each plays action 1 in period $e+1$.
+
+\vskip6pt
+
+Since both the base case and the inductive step has been shown, by mathematical induction I have shown that there exists a positive probability that each player plays $x^*$ as a best reply for every period $e \geq n$. $\square$
+
+\pagebreak
+
+\textbf{Theorem 1.} Let G be a 2x2 coordination game, and let $P^{m,s,\epsilon}$ be adaptive learning with memory $m$, sample size $s$, and error rate $\epsilon$.
+
+\vskip12pt
+
+If $s < m$ then from any initial state, the unperturbed process $P^{m,s,0}$ converges with probability one to a convention and locks in.
+
+\vskip24pt
+
+\textbf{Proof of Theorem 1.} Define G as a 2x2 coordination game with adaptive learning where the possible actions for both players A and B are $\{1 ,0 \}$. Let memory $m \in \mathds{N}$, sample size $s \in \mathds{N}$ such that $s<m$, error rate $\epsilon = 0$ and let $h^t$ $= (x^{t-m+1},...,x^{t})$, be an arbitrary state at the end of period $t$. Let $\alpha \in (0,1)$ be the smallest probability that Player B plays action $1$ such that Player A's best response is playing action $1$. Likewise, Let $\beta \in (0,1)$ be the smallest probability that Player A plays action $1$ such that Player B's best response is playing action $1$. 
+
+\vskip12pt
+
+There exists a positive probability that both players sample the most recent set of $s$ records: $\{x^{t-s+1},...,x^{t}\}$ in period $t+1$. Assume this is the case.
+
+\vskip12pt
+
+In period $t+1$ the two players either
+
+1) Share a best reply
+
+or 
+
+2) Do not share a best reply
+
+I will show a convention can be reached with positive probability in both cases.
+
+\textit{Case 1}: Both players share a best reply, $x^*$, in period $t+1$. In this case I can apply Lemma 1 which shows that there exists a positive probability that both players play action $x^*$ as a best reply for each period $e \geq t+1$. If this happens then after period $e=t+m$ the entire memory is filled with both players playing action $x^*$. Since $\epsilon=0$ and since both players could then only sample records of the other player playing $x^*$ both would continue to play $x^*$ as a best response for every period thereafter. So I have shown that there exists a positive probability that a convention can be reached and locked into with positive probability in Case 1. 
+
+\vskip24pt
+
+\textit{Case 2}: Assume the players do not share a best reply to the most recent set of $s$ records. Since $\epsilon=0$ they play different actions as best replies in period $t+1$. Without loss of generality assume that in period $t+1$ player A played action 1 and player B played action 0. This means that:
+
+$$(3) \sum\limits_{r=t-s+1}^{t} \frac{x^r_B}{s} > \alpha$$
+and
+$$(4) \sum\limits_{r=t-s+1}^{t} \frac{x^r_A}{s} < \beta$$
+
+Note: this is a strict inequality since the players do not share a best reply in period $t+1$ after sampling the set of records: $(x^{t-s+1},...,x^{t})$.
+
+\vskip12pt
+
+Define $k$ to be the smallest integer such that
+
+$$(5) \sum\limits_{r=t-s+1+k}^{t} \frac{x^r_B}{s} \leq \alpha$$
+
+Define $j$ to be the smallest integer such that
+
+$$(6) \frac{j}{s}+\sum\limits_{r=t-s+1+j}^{t} \frac{x^r_A}{s} \geq \beta$$
+
+\vskip12pt
+
+Define $e$ as the amount of periods since $t+1$. When sampling the most recent set of $s$ records in period $e$ player A has action 1 as a unique best response if: 
+$$(7) \hspace{12pt} \sum\limits_{r=t-s+1+e}^{t+e} \frac{x^r_B}{s} > \alpha$$
+and player B has action 0 as a unique best response if:
+$$(8) \hspace{12pt} \sum\limits_{r=t-s+1+e}^{t+e} \frac{x^r_A}{s} < \beta$$
+
+Note that
+$$(9) \hspace{12pt} \sum\limits_{r=t-s+1+e}^{t+e} \frac{x^r_i}{s} = \sum\limits_{r=t-s+1+e}^{t}\frac{x^r_i}{s}+\sum\limits_{r=t+1}^{t+e} \frac{x^r_i}{s}$$
+
+So combining equations (7) and (9) where $i=B$, player A has action 1 as a unique best response if: 
+$$(10) \sum\limits_{r=t-s+1+e}^{t}\frac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+e} \frac{x^r_B}{s} > \alpha$$
+
+and combining equations (8) and (9) where $i=A$, player B has action 0 as a unique best response if:
+$$(11) \sum\limits_{r=t-s+1+e}^{t}\frac{x^r_A}{s}+\sum\limits_{r=t+1}^{t+e} \frac{x^r_A}{s} < \beta$$
+
+\vskip18pt
+
+Consider $0 \leq e<k$. Since $(3) \sum\limits_{r=t-s+1}^{t} \cfrac{x^r_B}{s} > \alpha$ and $k$ is the smallest integer such that $(5) \sum\limits_{r=t-s+1+k}^{t} \cfrac{x^r_B}{s} \leq \alpha$ it follows that $\forall e<k$, $\sum\limits_{r=t-s+1+e}^{t} \cfrac{x^r_B}{s} > \alpha$.
+
+Since $x_i^r \in [0,1] \hspace{8pt} \forall r$, $\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_i}{s} \in [0,\mfrac{e}{s}]$.
+
+So since $\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_i}{s} \geq 0$ and $\sum\limits_{r=t-s+1+e}^{t} \cfrac{x^r_B}{s} > \alpha$ I get the condition (10):
+
+$$\sum\limits_{r=t-s+1+e}^{t}\cfrac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_B}{s} > \alpha$$
+
+This condition means that when sampling the most recent $s$ records in each period, action 1 is a unique best response for player A in all periods $t+1+e$ such that $0 \leq e<k$.
+
+\vskip18pt
+
+Now consider $0 \leq e<j$. Since $(4) \sum\limits_{r=t-s+1}^{t} \cfrac{x^r_A}{s} < \beta$ and $j$ is the smallest integer such that $(6) \cfrac{j}{s}+\sum\limits_{r=t-s+1+j}^{t} \cfrac{x^r_A}{s} \geq \beta$ it follows that $\forall e<j$, $\cfrac{e}{s}+\sum\limits_{r=t-s+1+e}^{t} \cfrac{x^r_A}{s} < \beta$.
+
+Since $x_i^r \in [0,1] \hspace{8pt} \forall r$, $\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_i}{s} \in [0,\mfrac{e}{s}]$.
+
+So since $\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_i}{s} \leq \cfrac{e}{s}$ and $\cfrac{e}{s}+\sum\limits_{r=t-s+1+e}^{t} \cfrac{x^r_A}{s} < \beta$ I get the condition (11):
+
+$$\sum\limits_{r=t-s+1+e}^{t}\cfrac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_B}{s} > \alpha$$
+
+This condition means that when sampling the most recent $s$ records in each period, action 0 is a unique best response for player B in all periods $t+1+e$ such that $0 \leq e<j$.
+
+\vskip12pt
+
+There exists a positive probability that in each period $t+e$ where $0 \leq e<\min (k,j)$ both players can sample the most recent $s$ records. I have just shown that when sampling the most recent $s$ records in period $t+e$ where $0 \leq e<\min (k,j)$ player A best responds with action 1 and player B best responds with action 0. Assume both players do sample the most recent $s$ records in periods $t+e$ where $0 \leq e<\min (k,j)$.
+
+\vskip12pt
+
+I will now consider the three scenarios: $j<k$, $k<j$, and $j=k$.
+
+\vskip12pt
+
+First, $j<k$. 
+
+\vskip6pt
+
+For period $t+1+j$ both players have a positive probability of sampling the most recent $s$ records: $(x^{t-s+1+j},...,x^{t+j})$. Player B has a best response of action 1 in period $t+1+j$ if:
+$$(12) \sum\limits_{r=t-s+1+j}^{t}\frac{x^r_A}{s}+\sum\limits_{r=t+1}^{t+j} \frac{x^r_A}{s} \geq \beta$$
+Using (6) I know $\cfrac{j}{s}+\sum\limits_{r=t-s+1+j}^{t}\cfrac{x^r_A}{s} \geq \beta$. And since $j<k$ I have already shown that player A has a unique best response of playing action 1 for all periods between $t+1$ and $t+1+j$ inclusive. So $\sum\limits_{r=t+1}^{t+j} \cfrac{x^r_A}{s}=\cfrac{j}{s}$.
+
+Which means $(13) \sum\limits_{r=t-s+1+j}^{t}\cfrac{x^r_A}{s}+\sum\limits_{r=t+1}^{t+j} \cfrac{x^r_A}{s}=\cfrac{j}{s}+\sum\limits_{r=t-s+1+j}^{t}\cfrac{x^r_A}{s}$.
+
+Combining (12) and (13) I get (6) which means that action 1 is a best response for Player B in period $t+1+j$.
+
+\vskip6pt
+
+Since both players can, with positive probability, sample the most recent $s$ records and have the same action as a best response, I know by Case 1 a convention can be reached and locked into with positive probability when $j<k$.
+
+\vskip18pt
+
+Second, I consider $k<j$.
+
+\vskip6pt
+
+For period $t+1+k$ both players have a positive probability of sampling the most recent $s$ records: $(x^{t-s+1+k},...,x^{t+k})$. Player A has a best response of action 0 in period $t+1+k$ if:
+
+$$(14) \sum\limits_{r=t-s+1+k}^{t}\frac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+k} \frac{x^r_B}{s} \leq \alpha$$
+
+Using (5) I know $\sum\limits_{r=t-s+1+k}^{t}\cfrac{x^r_B}{s} \leq \alpha$. And since $k<j$ I have already shown that player B has a unique best response of playing action 0 for all periods between $t+1$ and $t+1+k$ inclusive. So $\sum\limits_{r=t+1}^{t+k} \cfrac{x^r_B}{s}=0$.
+
+Which means $(15) \sum\limits_{r=t-s+1+k}^{t}\frac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+k} \frac{x^r_B}{s}=\sum\limits_{r=t-s+1+k}^{t}\frac{x^r_B}{s}$.
+
+Combining (14) and (15) I get (5) which means that action 0 is a best response for Player A in period $t+1+k$.
+
+\vskip6pt
+
+Since both players can, with positive probability, sample the most recent $s$ records and have the same action as a best response, I know by Case 1 a convention can be reached and locked into with positive probability when $k<j$.
+
+\vskip18pt
+
+Third, I consider $k=j$.
+
+\vskip6pt
+
+In period $t+1+k$ player B can, with positive probability, sample the most recent set of $s$ records. Since $j=k$ I have already shown that playing action 1 is a best response for player B in this scenario.
+
+\vskip6pt
+
+Since $m>s$ I know that $m \geq s+1$. So in period $t+1+k$ the records player A can sample from includes the most recent $s+1$ records: $(x^{t+k-s+2},...,x^{t+k})$. So in period $t+1+k$ player A can, with positive probability, sample the set of $s$ records: $(x^{t+k-s+2},...,x^{t+k-1})$. Note that these are the same records sampled in the previous period by player A which gave the unique best response of playing action 1.
+
+\vskip6pt
+
+So there exists a positive probability that both players share a best response in period $t+1+k$. So I can apply Lemma 1 here which shows that there exists a positive probability that both players play action 1 as a best reply for each period $e \geq t+1+k$. If this happens then after period $e=t+k+m$ the entire memory is filled with both players playing action 1. Since $\epsilon=0$ and since both players could then only sample records of the other player playing action 1 both would continue to play 1 as a best response for every period thereafter. So I have shown that there exists a positive probability that a convention can be reached and locked into when $j=k$. 
+
+\vskip12pt
+
+Thus, I have exhausted all three scenarios: $j<k$, $k<j$, and $j=k$ and shown that a convention can be reached with a positive probability in Case 2.
+
+\vskip18pt
+
+Since I have shown that a convention can be reached with positive probability in both Case 1 and Case 2 I have proven that from any initial state when $s<m$ and $\epsilon=0$ a convention can be reached with positive probability and lock in. Since a convention can be reached from any arbitrary state and since conventions are absorbing states we know that as $T \rightarrow \infty$ that $h^T$, the state at time $T$ converges with probability one to a convention in and locks in. $\blacksquare$
+
+\pagebreak
+
+Forthcoming:
+
+\textbf{Theorem 2.} Define G to be a 2x2 coordination game and let $P^{m,s,\epsilon}$ be adaptive learning with memory $m$, sample size $s$, and error rate $\epsilon$. For all $s/m$ the stochastically stable states of the perturbed process corresponds 1 to 1 with the risk dominant conventions.
+
+\vskip12pt
+
+\textbf{Theorem 3.} Define G to be a $K$x$K$ coordination game and let $P^{m,s,\epsilon}$ be adaptive learning with memory $m$, sample size $s$, and error rate $\epsilon$. Let $(k,k)$ be Nash Equilibria for all $k \in \{1,...,K\}$. Define $i \in \{1,...,K\}$ and $j \neq i \in \{1,...,K\}$ to be conventions of both players playing action $i$ in convention $i$ and both players playing action $j$ in convention $j$.
+
+\textit{1.} For all $s, m$ the resistance from state $i$ to state $j$ is:
+
+$$r(i,j)=\min(\lceil \alpha s \rceil,\lceil \beta s \rceil)+\max(\lceil \alpha s \rceil+\lceil \beta s \rceil-m,0)$$
+
+\textit{2.} The risk dominance relation between state $i$ and $j$ remains unchanged for all $s/m \in (0,1]$ when $s,m$ are sufficiently large. As such in 2x2 games the stochastically stable states of the perturbed process correspond one to one with the risk dominant conventions.
+
+\textit{3.} In some but not all larger games (at least 3x3) which states are stochastically stable may depend on $s/m \in (0,1]$. If so, the value of $s/m \in (0,1)$ at which stochastic stability changes can be easily calculated.
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

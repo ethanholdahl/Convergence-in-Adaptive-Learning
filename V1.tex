@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{dsfont}
+\usepackage{scrextend}
+\usepackage{multirow,array}
+\begin{document}
+\centering
+\Large
+\textbf{Convergence to a Convention in a 2x2 Coordination Game with Adaptive Learning}
+\vskip0pt
+Ethan Holdahl
+
+October 2019
+
+\vskip24pt
+
+\centering
+Coordination Game G
+\vskip6pt
+    \begin{tabular}{cc|c|c|}
+      & \multicolumn{1}{c}{} & \multicolumn{2}{c}{Player B}\\
+      & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$0$}  & \multicolumn{1}{c}{$1$} \\\cline{3-4}
+      \multirow{2}*{Player A}  & $0$ & ${a_{11},b_{11}}^*$ & $a_{12},b_{12}$ \\\cline{3-4}
+      & $1$ & $a_{21},b_{21}$ & ${a_{22},b_{22}}^*$ \\\cline{3-4}
+    \end{tabular}
+
+\vskip24pt
+
+\raggedright
+
+\textbf{Theorem.} Let G be a 2x2 coordination game, and let $P^{m,s,\epsilon}$ be adaptive learning with memory $m$, sample size $s$, and error rate $\epsilon$. Let $\alpha$ be the smallest probability that Player B plays column $1$ such that Player A's best response is playing row $1$. Likewise, Let $\beta$ be the smallest probability that Player A plays row $1$ such that Player B's best response is playing column $1$.
+
+\vskip12pt
+If $s \neq m$ or $\lceil \alpha*s \rceil \neq \lceil (1-\beta)*s \rceil$ then from any initial state, the unperturbed process $P^{m,s,\epsilon}$ converges with probability one to a convention and locks in.
+
+\vskip16pt
+
+\textit{Case 1}: First I will prove that all games where $\lceil \alpha*s \rceil \neq \lceil (1-\beta)*s \rceil$ converge to a convention with probability one. 
+
+\textbf{Proof.} Let $h = (x^{t-m+1},...,x^{t})$ be an arbitrary state. There exists a positive probability that both players sample the set of records $(x^{t-s+1},...,x^{t})$ in period $t+1$ and since $\epsilon=0$ each plays a best reply with both choosing to play 1 if there is not a unique best reply.
+
+\vskip16pt
+
+\textit{Case 1.1}: Both players best replies coordinate in period $t+1$. Without loss of generality I will say they both played 1 $(x^{t+1}_1=x^{t+1}_2=1)$. Note that since $x_i \in \{0,1\}$ the proportion of times that player $i$ played $1$ in s records, say from $t-s+1$ to $t$ is simply $\sum\limits_{r=t-s+1}^{t} \frac{x_i^r}{s}$. Also note since they both played 1 as best reply that means that $\sum\limits_{i=t-s+1}^t \frac{x^i_1}{s} \geq \beta$ and $\sum\limits_{i=t-s+1}^t \frac{x^i_2}{s} \geq \alpha$. In the next period, $t+2$, there exists a positive probability that both players sample the set of records $(x^{t-s+2},...,x^{t+1})$ in period $t+2$ and since $\epsilon=0$ each plays a best reply. Looking at player B's decision, they will play 1 if $\sum\limits_{i=t-s+2}^{t+1} x^i_1 \geq \beta*s$.
+
+Since $\sum\limits_{i=t-s+2}^t x^i_1 \geq \beta*s-x^{t-s+1}$ and $x^{t+1}_1=1$, 
+\vskip6pt
+it follows that $x_1^{t+1}+\sum\limits_{i=t-s+2}^t x^i_1 \geq \beta*s-x^{t-s+1}_1+1$.
+\vskip6pt
+However, $x^{t-s+1}_1 \leq 1$ so $x_1^{t+1}+\sum\limits_{i=t-s+2}^t x^i_1 \geq \beta*s$ and so we get $\sum\limits_{i=t-s+2}^{t+1} x^i_1 \geq \beta*s$. So a best response for player B is to play column 1. Likewise a best response for player A is to play row 1.
+
+This process of sampling the most recent s records for both players can be repeated until period t+m with positive probability at which point the entire memory is comprised of records of each player coordinating at a Nash Equilibria. At such a point, barring errors, both players will continue to coordinate forever and by definition we have reached a convention.
+
+This case proves that if after sampling the most recent s records for both players they both best reply with the same action a convention can be reached with positive probability.
+
+\vskip16pt
+\textit{Case 1.2}: Assume the players did not coordinate in period $t+1$. Repeat the process of each player sampling the most recent $s$ observations and responding with a best reply while playing $1$ if there is not a unique best reply up to and including period $t+s$. Note that by Case 1.1 if the players coordinate in any period between $t+1,t+s$, inclusive there exists a positive probability of reaching a convention. So we only have left to examine the case where the players miscoordinated in every period from $t+1$ to $t+s$. This means that $\sum\limits_{i=t+1}^{t+s} \frac{x_1^i}{s}=1-\sum\limits_{i=t+1}^{t+s} \frac{x_2^i}{s}$.
+
+Now let both players sample the set of records $(x^{t+1},...,x^{t+s})$ in period $t+s+1$ and since $\epsilon=0$ each plays a best reply with both choosing to play 1 if there is not a unique best reply.
+
+If they coordinate then by Case 1.1 there exists a positive probability to reach a convention and we are done. If they do not coordinate that means either player A played 0 while player B played 1 or player A played 1 while player B played 0.
+
+In order for player A to play 0 while player B plays one the following condition must hold:
+
+$\sum\limits_{i=t+1}^{t+s} \frac{x^i_2}{s} < \alpha$
+and
+$\sum\limits_{i=t+1}^{t+s} \frac{x^i_1}{s} \geq \beta$
+
+however, 
+$\sum\limits_{i=t+1}^{t+s} \frac{x_1^i}{s}=1-\sum\limits_{i=t+1}^{t+s} \frac{x_2^i}{s}$ 
+so
+$1-\sum\limits_{i=t+1}^{t+s} \frac{x_2^i}{s} \geq \beta$
+
+So our condition now is:
+
+$\sum\limits_{i=t+1}^{t+s} \frac{x^i_2}{s} < \alpha$
+and
+$\sum\limits_{i=t+1}^{t+s} \frac{x^i_2}{s} \leq 1-\beta$
+
+so
+
+... proportion will oscillate around the alpha and beta values if not coordinating... can only continue to miss match if the ceiling of alpha*s, 1-beta *s are the same (finish later)
+
+\vskip20pt
+
+\textit{Case 2}: We have proven that if $\lceil \alpha*s \rceil \neq \lceil (1-\beta)*s \rceil$ then the unperturbed process will converge to a convention with probability one. We will now prove that if $\lceil \alpha*s \rceil = \lceil (1-\beta)*s \rceil$ and $s<m$ the process will also converge to a convention with probability one.
+
+\textbf{Proof.} Define $E=m-s+1$ There exists a positive probability that both players sample the set of records $(x^{t-s+1},...,x^{t})$ in every period from $t+1$ to $t+E$, inclusive. Since $\epsilon=0$, each player play the same best reply for every period from $t+1$ to $t+E$. If either player does not have a unique best response let them choose a response that coordinates with the other player. I will call this, a sequential sampling of the same s records to create a group of identical best replies, a block. Note that $E$ is the maximum length of a block and since $s<m$, $E>1$. If at any time both players coordinate in the same block then by Case 1.1 there exists a positive probability of reaching a convention and we are done. So we only have to prove that we can reach a convention with positive probability when the players do not coordinate in every block. At period $t+E+1$ create a new block by sampling the set of records $(x^{t-s+E+1},...,x^{t+E})$ in every period from $t+E+1$ to $t+2E$. Continue this pattern $d$ times where $d=\lceil s/E \rceil$. Define $C$=the amount of sequential blocks in a run:=a collection of records where each player plays the same respective action. Continue to create blocks until the $C$th block of a run is about to be created. Let $T$=the period that the last record was created. So our memory now comprises of $(x^{T-m+1},...,x^{T})$ records, where the records $(x^{T-s+1},...,x^{T})$ are comprised of block(s). Assume without loss of generality that player A's best reply is 1 and player B's best reply is 0 to the sample of records $(x^{T-s+1},...,x^{T})$. Let player A sample records $(x^{T-s+1},...,x^{T})$ for periods $T+1$ to $T+E$, inclusive. Since we know if the pattern continues there will be a different best reply in the next block that means that $\exists$ a $k$th record of player A $\in \{T+1,T+E\}$ such that player B's best response to the records $(x^{k-s}_1,...,x^{k-1}_1)$ is 0 and $(x^{k-s+1}_1,...,x^{k}_1)$ is 1. Since $x^{k}_1=1$ we know for the change to happen it must be the case that $x^{k-s}_1=0$. Let player B sample the most recent s records for each period from period $T+1$ to $T+E$. Let player B sample $(x^{T+E-s+1},...,x^{T+E})$ for periods $T+E+1$ through $T+2E$. Let player A sample $(x^{T+E-s},...,x^{k-1},x^{k+1},...,x^{T+E})$ for period $T+E+1$. Note that $x^{k}$ was the record that changed the best reply for player B and since up to that point the records were exactly opposite each other it would also then be the record that changes the best reply for player A. We know this from Case 1.2 because here we have $\lceil \alpha*s \rceil = \lceil (1-\beta)*s \rceil$. Thus by excluding that record and noting that the records after it are different than $x^{k}$ we know player A's best reply is still 1.
+
+
+
+\vskip20pt
+
+
+\end{document}

@@ -1,0 +1,290 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{dsfont}
+\usepackage{amsmath}
+\usepackage{nccmath}
+\usepackage{scrextend}
+\usepackage{amssymb}
+\usepackage{multirow,array}
+\usepackage[margin=1.5in]{geometry}
+\begin{document}
+\centering
+\Large
+\textbf{Convergence to a Convention in a 2x2 Coordination Game with Adaptive Learning}
+\vskip0pt
+Ethan Holdahl
+
+\large
+University of Oregon
+
+October 2019
+
+\vskip24pt
+
+\centering
+Coordination Game G
+\vskip6pt
+    \begin{tabular}{cc|c|c|}
+      & \multicolumn{1}{c}{} & \multicolumn{2}{c}{Player B}\\
+      & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$0$}  & \multicolumn{1}{c}{$1$} \\\cline{3-4}
+      \multirow{2}*{Player A}  & $0$ & ${a_{11},b_{11}}^*$ & $a_{12},b_{12}$ \\\cline{3-4}
+      & $1$ & $a_{21},b_{21}$ & ${a_{22},b_{22}}^*$ \\\cline{3-4}
+    \end{tabular}
+
+\vskip24pt
+
+\raggedright
+
+Lemma 1 and Lemma 2 will be used in the proof of Theorem 1.
+
+\vskip12pt
+
+Let G be a 2x2 coordination game, and let $P^{m,s,\epsilon}$ be adaptive learning with memory $m$, sample size $s$, and error rate $\epsilon$. Denote the players A and B with actions $\{0,1\}$ as depicted above. Let $t1<t2$ be two periods of time in this game. Let the set of $s$ records sampled by player i in periods $t1$ and $t2$ be $R1_i$ and $R2_i$ respectively. Define $BR1_i$ as player i's best response to $R1$ and $BR2_i$ as player i's best response to $R2$.
+
+\vskip12pt
+
+\textbf{Lemma 1.} If $|R1_A \cap R2_A|=s-1$, $x_B^{t1} \in BR1_A$ and $x_B^{t1} \in R2_A$ then $x_B^{t1} \in BR2_A$. That is to say that if the set of $s$ records sampled by player A in $t1$ and $t2$ differ by one record and if player B's action in $t1$ is a best reply for player A to $R1_A$ and player B's action in $t1$ is a record sampled by player A in $t2$, then player B's action in $t1$ is a best reply for player A in $t2$.
+
+\vskip12pt
+
+\textbf{Proof of Lemma 1.} Assume $|R1_A \cap R2_A|=s-1$, $x_B^{t1} \in BR1_A$ and $x_B^{t1} \in R2_A$. I must show that $x_B^{t1} \in BR2_A$.
+Let $\alpha \in (0,1)$ be the smallest probability that Player B plays $1$ such that Player A's best response is playing $1$.
+Note that since $x_i^r \in \{0,1\} \hspace{8pt} \forall r$ the proportion of times that player $i$ played $1$ in $R$, the set of $s$ records, is simply $\sum\limits_{r \in R} \cfrac{x_i^r}{s}$.
+
+\vskip12pt
+
+Without loss of generality assume that $x_B^{t1}=1$. That means $1 \in BR1_A$, so 1 is one of player A's best responses to $R1_A$, the set of $s$ records sampled by player A in period $t1$. That means that:
+
+$$ (1) \sum\limits_{r \in R1_A} \cfrac{x_B^r}{s} \geq \alpha$$
+
+Since $x_B^{t1} \not \in R1_A$, $|R2_A|-|R1_A \cap R2_A|=1$, and $x_B^{t1} \in R2_A$, we know that $\{R1_A \cap R2_A\} \cup x_B^{t1} = R2_A$. That is to say that since we know $x_B^{t1}$ cannot be in the set $R1_A$ and the only difference between the intersection of the sets $|R1_A \cap R2_A|$ and the set $R2_A$ is one record, we know the difference is $x_B^{t1}$ since it is in set $R2_A$.
+
+Define $x_B^{R1_A}=\{x \in R1_A : x \not \in \{R1_A \cap R2_A\}\}$ as the record that is in $R1_A$ but not in $R2_A$. So $\{x_B^{R1_A},R2_A\} = \{x_B^{t1},R1_A\}$.
+
+Thus we can say that
+
+$$\frac{x_B^{R1_A}}{s} + \sum\limits_{r \in R2_A} \cfrac{x_B^r}{s} = \frac{x_B^{t1}}{s} + \sum\limits_{r \in R1_A} \cfrac{x_B^r}{s}$$
+
+Note that $x_B^{R1_A} \in \{0,1\}$ and $x_B^{t1}=1$. So $x_B^{t1} \geq x_B^{R1_A}$.
+
+Adding to each side we get
+
+$$\frac{x_B^{t1}}{s} + \frac{x_B^{R1_A}}{s} + \sum\limits_{r \in R2_A} \cfrac{x_B^r}{s} \geq \frac{x_B^{R1_A}}{s} + \frac{x_B^{t1}}{s} + \sum\limits_{r \in R1_A} \cfrac{x_B^r}{s}$$
+
+So
+
+$$(2) \sum\limits_{r \in R2_A} \cfrac{x_B^r}{s} \geq \sum\limits_{r \in R1_A} \cfrac{x_B^r}{s}$$
+
+Using (1) and (2), by transitivity we get:
+
+$$\sum\limits_{r \in R2_A} \cfrac{x_B^r}{s} \geq \sum\limits_{r \in R1_A} \cfrac{x_B^r}{s} \geq \alpha$$
+
+Which means $1 \in BR2_A$, that 1 is a best response for player A to the set of records $R2_A$. And since $x_B^{t1}=1$ I have proved that $x_B^{t1} \in BR2_A$. $\square$
+
+\vskip12pt
+
+\textbf{Lemma 2.} If in a period $n$ there exists an action $x$ that is a best response for both players then a convention can be reached with positive probability.
+
+\vskip12pt
+
+\textbf{Proof of Lemma 2.} Assume that in period $n$ there exists an action $x$ that is a best response for both players. I must show that a convention can be reached with positive probability. That means I must show that we can reach a state such that both players have played the same action, which is a strict Nash Equilibrium, for the most recent $m$ records.
+Let $\alpha \in (0,1)$ be the smallest probability that Player B plays column $1$ such that Player A's best response is playing row $1$. Likewise, Let $\beta \in (0,1)$ be the smallest probability that Player A plays row $1$ such that Player B's best response is playing column $1$.
+Note that since $x_i^r \in \{0,1\} \hspace{8pt} \forall r$ the proportion of times that player $i$ played $1$ in $R$, the set of $s$ records, is simply $\sum\limits_{r \in R} \cfrac{x_i^r}{s}$.
+
+I use proof by induction to show that if there exists an action $x$ that is a best response for both players in period $n$ then there is a positive probability that both players play the action $x$ in every period $e$ where $e \geq n$.
+
+\vskip12pt
+
+\textit{Base Case:} I show that if there exists an action $x$ that is a best response for both players in period $n$ then there exists a positive probability that both players play action $x$ in period $n$.
+
+Clearly, if $x$ is a best response for both players then there exists a positive probability that both players play action $x$ in period $n$.
+
+\vskip12pt
+
+\textit{Inductive Step:} I show that $\forall e \geq n$ if action $x$ was a played as a best response for both players in period $e$ then there exists a positive probability that action $x$ is played as a best response in period $e+1$.
+
+I will call $R_i^e$ the set of $s$ records sampled by player i in in period $e$.
+In order for Lemma 1 to apply we need to show $|R_i^e \cap R_i^{e+1}|=s-1$, $x_j^{e} \in BR_i^e$ and $x_j^{e} \in R_i^{e+1}$.  
+
+
+Since the action $x=1$ is a best response for player A to $Re_A$ and a best response for player B to $Re_B$ we know that there exists a positive p
+We now have 
+
+
+\vskip24pt
+
+\textbf{Theorem 1.} Let G be a 2x2 coordination game, and let $P^{m,s,\epsilon}$ be adaptive learning with memory $m$, sample size $s$, and error rate $\epsilon$.
+
+\vskip12pt
+
+If $s < m$ then from any initial state, the unperturbed process $P^{m,s,0}$ converges with probability one to a convention and locks in.
+
+\vskip24pt
+
+\textbf{Proof of Theorem 1.} Define G as a 2x2 coordination game with adaptive learning where the possible actions for both players A and B are $\{0 ,1 \}$. Let memory $m \in \mathds{N}$, sample size $s \in \mathds{N}$ such that $s<m$, error rate $\epsilon = 0$ and let $h = (x^{t-m+1},...,x^{t})$, be an arbitrary state at the end of period $t$. Let $\alpha \in (0,1)$ be the smallest probability that Player B plays column $1$ such that Player A's best response is playing row $1$. Likewise, Let $\beta \in (0,1)$ be the smallest probability that Player A plays row $1$ such that Player B's best response is playing column $1$. 
+
+\vskip12pt
+
+There exists a positive probability that both players sample the most recent set of $s$ records: $\{x^{t-s+1},...,x^{t}\}$ in period $t+1$ and since $\epsilon=0$ each plays a best reply. Since there exists a positive probability that both play the same action when either does not have a unique best reply let's assume they do both play the same action in that instance.
+
+\vskip12pt
+
+In period $t+1$ the two players, both playing a best reply, either
+
+1) Play the same action
+
+or 
+
+2) Play different actions
+
+I will show a convention can be reached with positive probability in both cases.
+
+\newpage
+
+\textit{Case 1}: Both players play the same action as a best reply in period $t+1$. That is, either player A and player B both played action 0 or they both played action 1. Without loss of generality I will assume they both played action 1 $(x^{t+1}_A=x^{t+1}_B=1)$. Note that since $x_i^r \in \{0,1\} \hspace{8pt} \forall r$ the proportion of times that player $i$ played $1$ in $s$ records, say from $t-s+1$ to $t$ inclusively, is simply $\sum\limits_{r=t-s+1}^{t} \cfrac{x_i^r}{s}$. Also note since they both played 1 as best reply that means that:
+
+$$\text{(1)} \hspace{12pt} \sum\limits_{r=t-s+1}^t \cfrac{x^r_A}{s} \geq \beta$$
+and 
+$$\sum\limits_{r=t-s+1}^t \cfrac{x^r_B}{s} \geq \alpha$$
+
+\vskip12pt
+
+In the next period, $t+2$, there exists a positive probability that both players again sample the most recent set of $s$ records $(x^{t-s+2},...,x^{t+1})$ and since $\epsilon=0$ each plays a best reply. Looking at player B's decision, action 1 is a best reply if:
+
+$$\text{(2)} \hspace{12pt} \sum\limits_{r=t-s+2}^{t+1} x^r_A \geq \beta*s$$
+Note that
+$$x^{t-s+1}_A+\sum\limits_{r=t-s+2}^{t+1} x^r_A = x^{t+1}_A+\sum\limits_{r=t-s+1}^t x^r_A$$
+Since 
+$x^{t+1}_A = 1 \geq x^{t-s+1}_A$, we get
+$$x^{t+1}_A+x^{t-s+1}_A+\sum\limits_{r=t-s+2}^{t+1} x^r_A \geq x^{t+1}_A+x^{t-s+1}_A+\sum\limits_{r=t-s+1}^t x^r_A$$
+so
+$$\text{(3)} \hspace{12pt} \sum\limits_{r=t-s+2}^{t+1} x^r_A \geq \sum\limits_{r=t-s+1}^t x^r_A $$
+Using (1) and (3), by transitivity we get our condition (2):
+$$\sum\limits_{r=t-s+2}^{t+1} x^r_A \geq \sum\limits_{r=t-s+1}^t x^r_A \geq \beta*s$$
+
+So a best response for player B is to play column 1. The same logic can be used to show that a best response for player A is to play row 1.
+
+\vskip12pt
+
+This process of sampling the most recent set of $s$ records in each period for both players can be repeated with positive probability through period $t+m$ at which point the entire memory is comprised of records of each player playing the same action. At such a point, barring errors, both players will continue to play the same action forever and they are locked into a convention.
+
+\vskip12pt
+
+This case proves that if both players share the same action as a best reply to the most recent set of $s$ records then a convention can be reached with positive probability.
+
+\vskip24pt
+
+\textit{Case 2}: Assume the players do not share a best reply to the most recent set of $s$ records and play different actions in period $t+1$. Without loss of generality assume that in period $t+1$ player A played row 1 and player B played column 0. This means that:
+
+$$\sum\limits_{r=t-s+1}^{t} \frac{x^r_B}{s} > \alpha$$
+and
+$$\sum\limits_{r=t-s+1}^{t} \frac{x^r_A}{s} < \beta$$
+
+Note: this is a strict inequality since the players do not share a best reply in period $t+1$ after sampling the set of records: $(x^{t-s+1},...,x^{t})$.
+
+\vskip12pt
+
+Define $k$ to be the smallest integer such that
+
+$$\sum\limits_{r=t-s+1+k}^{t} \frac{x^r_B}{s} \leq \alpha$$
+
+Define $j$ to be the smallest integer such that
+
+$$\frac{j}{s}+\sum\limits_{r=t-s+1+j}^{t} \frac{x^r_A}{s} \geq \beta$$
+
+\vskip12pt
+
+Define $e$ as the amount of periods since $t+1$. When sampling the most recent set of $s$ records in period $e$ player A has row 0 as a best response if: 
+$$\hspace{12pt} \sum\limits_{r=t-s+1+e}^{t+e} \frac{x^r_B}{s} \leq \alpha$$
+and player B has column 1 as a best response if:
+$$\hspace{12pt} \sum\limits_{r=t-s+1+e}^{t+e} \frac{x^r_A}{s} \geq \beta$$
+
+Note that
+$$\hspace{12pt} \sum\limits_{r=t-s+1+e}^{t+e} \frac{x^r_i}{s} = \sum\limits_{r=t-s+1+e}^{t}\frac{x^r_i}{s}+\sum\limits_{r=t+1}^{t+e} \frac{x^r_i}{s}$$
+
+So player A has row 1 as a unique best response if: 
+$$\sum\limits_{r=t-s+1+e}^{t}\frac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+e} \frac{x^r_B}{s} > \alpha$$
+
+and player B has column 0 as a unique best response if:
+$$\sum\limits_{r=t-s+1+e}^{t}\frac{x^r_A}{s}+\sum\limits_{r=t+1}^{t+e} \frac{x^r_A}{s} < \beta$$
+
+Consider $0 \leq e<k$. Since $\sum\limits_{r=t-s+1}^{t} \cfrac{x^r_B}{s} > \alpha$ and $k$ is the smallest integer such that $\sum\limits_{r=t-s+1+k}^{t} \cfrac{x^r_B}{s} \leq \alpha$ it follows that $\forall e<k$, $\sum\limits_{r=t-s+1+e}^{t} \cfrac{x^r_B}{s} > \alpha$.
+
+Since $x_i^r \in [0,1] \hspace{8pt} \forall r$, $\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_i}{s} \in [0,\mfrac{e}{s}]$.
+
+So since $\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_i}{s} \geq 0$ and $\sum\limits_{r=t-s+1+e}^{t} \cfrac{x^r_B}{s} > \alpha$ we get our condition that when sampling the most recent $s$ records in each period, row 1 is a unique best response for player A in all periods $t+1+e$ such that $0 \leq e<k$: $\sum\limits_{r=t-s+1+e}^{t}\cfrac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_B}{s} > \alpha$.
+
+\vskip12pt
+
+Now consider $0 \leq e<j$. Since $\sum\limits_{r=t-s+1}^{t} \cfrac{x^r_A}{s} < \beta$ and $j$ is the smallest integer such that $\cfrac{j}{s}+\sum\limits_{r=t-s+1+j}^{t} \cfrac{x^r_A}{s} \geq \beta$ it follows that $\forall e<j$, $\cfrac{e}{s}+\sum\limits_{r=t-s+1+e}^{t} \cfrac{x^r_A}{s} < \beta$.
+
+Since $x_i^r \in [0,1] \hspace{8pt} \forall r$, $\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_i}{s} \in [0,\mfrac{e}{s}]$.
+
+So since $\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_i}{s} \leq \cfrac{e}{s}$ and $\cfrac{e}{s}+\sum\limits_{r=t-s+1+e}^{t} \cfrac{x^r_A}{s} < \beta$ we get our condition that when sampling the most recent $s$ records in each period, column 0 is a unique best response for player B in all periods $t+1+e$ such that $0 \leq e<j$: $\sum\limits_{r=t-s+1+e}^{t}\cfrac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_B}{s} > \alpha$.
+
+\vskip12pt
+
+We have just shown that when sampling the most recent $s$ records for $0 \leq e<\min (k,j)$ player A best responds with row 1 and player B best responds with column 0. 
+
+\vskip12pt
+
+I will consider the three scenarios: $j<k$, $k<j$, and $j=k$.
+
+\vskip12pt
+
+First, $j<k$. For period $t+1+j$ both players have a positive probability of sampling the most recent $s$ records: $(x^{t-s+1+j},...,x^{t+j})$. Player B has a best response of column 1 in period $t+1+j$ if:
+$$\sum\limits_{r=t-s+1+j}^{t}\frac{x^r_A}{s}+\sum\limits_{r=t+1}^{t+j} \frac{x^r_A}{s} \geq \beta$$
+Using () we know $\frac{j}{s}+\sum\limits_{r=t-s+1+j}^{t}\frac{x^r_A}{s} \geq \beta$. And since $j<k$ we have already shown that player A has a unique best response of playing row 1 for all periods between $t+1$ and $t+1+j$ inclusive. So $\sum\limits_{r=t+1}^{t+j} \cfrac{x^r_A}{s}=\cfrac{j}{s}$.
+
+So $\sum\limits_{r=t-s+1+j}^{t}\frac{x^r_A}{s}+\sum\limits_{r=t+1}^{t+j} \frac{x^r_A}{s}=\frac{j}{s}+\sum\limits_{r=t-s+1+j}^{t}\frac{x^r_A}{s}$.
+
+Combining () and () we get () which means that column 1 is a best response for Player B in period $t+1+j$.
+
+Since both players play the same action as a best response when sampling the most recent set of $s$ records we know by Case 1 a convention can be reached with positive probability.
+
+\vskip12pt
+
+Second, I consider $k<j$. For period $t+1+k$ both players have a positive probability of sampling the most recent $s$ records: $(x^{t-s+1+k},...,x^{t+k})$. Player A has a best response of row 0 in period $t+1+k$ if:
+$$\sum\limits_{r=t-s+1+k}^{t}\frac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+k} \frac{x^r_B}{s} \leq \alpha$$
+Using () we know $\sum\limits_{r=t-s+1+k}^{t}\frac{x^r_B}{s} \leq \alpha$. And since $k<j$ we have already shown that player B has a unique best response of playing column 0 for all periods between $t+1$ and $t+1+k$ inclusive. So $\sum\limits_{r=t+1}^{t+k} \cfrac{x^r_B}{s}=0$.
+
+So $\sum\limits_{r=t-s+1+k}^{t}\frac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+k} \frac{x^r_B}{s}=\sum\limits_{r=t-s+1+k}^{t}\frac{x^r_B}{s}$.
+
+Combining () and () we get () which means that row 0 is a best response for Player A in period $t+1+k$.
+
+Since both players play the same action as a best response when sampling the most recent set of $s$ records we know by Case 1 a convention can be reached with positive probability.
+
+\vskip12pt
+
+Third, I consider $k=j$.
+
+In period $t+1+k$ player B can sample the most recent set of $s$ records. Since $j=k$ we have already shown that playing column 1 is a best response for player B in this scenario. This means that:
+$$\sum\limits_{r=t-s+1+k}^{t+k} \frac{x^r_A}{s} \geq \beta$$ 
+So player B can play column 1 with positive probability in period $t+1+k$. 
+
+Since $m>s$ we know that $m \geq s+1$. So in period $t+1+k$ the records player A can sample from includes the most recent $s+1$ records: $(x^{t+k-s+2},...,x^{t+k})$. So in period $t+1+k$ player A can, with positive probability, sample the set of $s$ records: $(x^{t+k-s+2},...,x^{t+k-1})$. Note that these same records were sampled in the previous period by player A which gave the unique best response of playing row 1. So player A plays row 1 in period $t+1+k$.
+
+Advancing to the next period, $t+k+2$, player B again can sample the most recent set of $s$ records: $(x^{t+k+2-s},...,x^{t+k+1})$ with positive probability. Action 1 is a best response for player B if:
+$$\sum\limits_{r=t-s+2+k}^{t+k+1} \frac{x^r_A}{s} \geq \beta$$
+Note that:
+$$\frac{x^{t-s+1+k}}{s} + \sum\limits_{r=t-s+2+k}^{t+k+1}\frac{x^r_A}{s} = \frac{x^{t+k+1}}{s} + \sum\limits_{r=t-s+1+k}^{t+k} \frac{x^r_A}{s}$$
+Since 
+$x^{t+k+1}_A = 1 \geq x^{t-s+1+k}_A$, we get
+$$x^{t+k+1}_A+x^{t-s+k+1}_A+\sum\limits_{r=t-s+2+k}^{t+k+1} x^r_A \geq x^{t+k+1}_A+x^{t-s+k+1}_A+\sum\limits_{r=t-s+k+1}^t x^r_A$$
+so
+$$\text{()} \hspace{12pt} \sum\limits_{r=t-s+k+2}^{t+k+1} x^r_A \geq \sum\limits_{r=t-s+k+1}^t x^r_A $$
+Using () and (), by transitivity we get our condition ():
+$$\sum\limits_{r=t-s+2}^{t+1} x^r_A \geq \sum\limits_{r=t-s+1}^t x^r_A \geq \beta*s$$
+So Action 1 is a best response 
+
+\vskip12pt
+
+This case proves that if both players do not share the same action as a best reply to the most recent set of $s$ records then a convention can still be reached with positive probability.
+
+\vskip18pt
+
+Thus, we have shown that $\forall s<m$ a convention can be reached from any initial state with probability. So as $t \rightarrow \infty$ the unperturbed process $P^{m,s,0}$ converges with probability one to a convention and locks in.
+
+
+
+\end{document}

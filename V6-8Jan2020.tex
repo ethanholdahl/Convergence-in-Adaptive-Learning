@@ -154,7 +154,7 @@ Note: this is a strict inequality since the players do not share a best reply in
 
 \vskip12pt
 
-Assuming that player B continues to play action 0 for every period after period $t+1$. We know, since this is a coordination game, that if player A samples the most recent $s$ actions in every period that there will exist a period, let's call it period $t+1+k$, where player A no longer has action 1 as a unique best response.
+Assuming that player B continues to play action 0 for every period after period $t+1$. We know, since this is a coordination game, that if player A samples the most recent $s$ actions in every period that there will exist a period, let's call it period $t+2+k$, where player A no longer has action 1 as a unique best response.
 
 \vskip12pt
 
@@ -166,7 +166,7 @@ Note here that the record of $x^r_B$ is 0 when $r=t+1$ and we assumed it is 0 fo
 
 \vskip12pt
 
-Likewise, let's assume that player A continues to play action 1 for every period after period $t+1$. We know, since this is a coordination game, that if player B samples the most recent $s$ actions in every period that there will exist a period, let's call it period $t+1+j$, where player B no longer has action 0 as a unique best response.
+Likewise, let's assume that player A continues to play action 1 for every period after period $t+1$. We know, since this is a coordination game, that if player B samples the most recent $s$ actions in every period that there will exist a period, let's call it period $t+2+j$, where player B no longer has action 0 as a unique best response.
 
 \vskip12pt
 
@@ -178,10 +178,10 @@ Note here that the record of $x^r_A$ is 1 when $r=t+1$ and we assumed it is 1 fo
 
 \vskip12pt
 
-Define $e$ as the amount of periods since $t+2$. When sampling the most recent set of $s$ records in period $t+2+e$ player A has action 1 as a unique best response if: 
-$$(7) \hspace{12pt} \sum\limits_{r=t-s+1+e}^{t+e} \frac{x^r_B}{s} > \alpha$$
+Define $e$ as the amount of periods since $t+1$. When sampling the most recent set of $s$ records in period $t+1+e$ player A has action 1 as a unique best response if: 
+$$(7) \hspace{12pt} \sum\limits_{r=t-s+2+e}^{t+1+e} \frac{x^r_B}{s} > \alpha$$
 and player B has action 0 as a unique best response if:
-$$(8) \hspace{12pt} \sum\limits_{r=t-s+1+e}^{t+e} \frac{x^r_A}{s} < \beta$$
+$$(8) \hspace{12pt} \sum\limits_{r=t-s+2+e}^{t+1+e} \frac{x^r_A}{s} < \beta$$
 
 Note that
 $$(9) \hspace{12pt} \sum\limits_{r=t-s+1+e}^{t+e} \frac{x^r_i}{s} = \sum\limits_{r=t-s+1+e}^{t}\frac{x^r_i}{s}+\sum\limits_{r=t+1}^{t+e} \frac{x^r_i}{s}$$

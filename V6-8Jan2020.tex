@@ -154,7 +154,15 @@ Note: this is a strict inequality since the players do not share a best reply in
 
 \vskip12pt
 
-Assuming that player B continues to play action 0 for every period after period $t+1$. We know, since this is a coordination game, that if player A samples the most recent $s$ actions in every period that there will exist a period, let's call it period $t+2+k$, where player A no longer has action 1 as a unique best response.
+\centering
+
+Defining $k$ and $j$
+
+\vskip6pt
+
+\raggedright
+
+Assuming that player B continues to play action 0 for every period after period $t+1$. We know, since this is a coordination game, that if player A samples the most recent $s$ actions in every period that there will exist a period, let's call the first one period $t+2+k$, where player A will have action 0 as a best response.
 
 \vskip12pt
 
@@ -166,7 +174,7 @@ Note here that the record of $x^r_B$ is 0 when $r=t+1$ and we assumed it is 0 fo
 
 \vskip12pt
 
-Likewise, let's assume that player A continues to play action 1 for every period after period $t+1$. We know, since this is a coordination game, that if player B samples the most recent $s$ actions in every period that there will exist a period, let's call it period $t+2+j$, where player B no longer has action 0 as a unique best response.
+Likewise, let's assume that player A continues to play action 1 for every period after period $t+1$. We know, since this is a coordination game, that if player B samples the most recent $s$ actions in every period that there will exist a period, let's call the first one period $t+2+j$, where player B will have action 1 as a best response.
 
 \vskip12pt
 
@@ -178,49 +186,69 @@ Note here that the record of $x^r_A$ is 1 when $r=t+1$ and we assumed it is 1 fo
 
 \vskip12pt
 
-Define $e$ as the amount of periods since $t+1$. When sampling the most recent set of $s$ records in period $t+1+e$ player A has action 1 as a unique best response if: 
+Now I will prove that for all periods after $t+1$ and before $t+2+k$ player A's best response is to play action 1. Likewise, I will prove that for all periods after $t+1$ and before $t+2+j$ player B's best response is to play action 0.
+
+\vskip12pt
+
+\centering
+
+Proving best responses for $e<k,j$
+
+\vskip6pt
+
+\raggedright
+
+Define $e$ as the amount of periods since $t+2$. When sampling the most recent set of $s$ records in period $t+2+e$ player A has action 1 as a unique best response if: 
 $$(7) \hspace{12pt} \sum\limits_{r=t-s+2+e}^{t+1+e} \frac{x^r_B}{s} > \alpha$$
 and player B has action 0 as a unique best response if:
 $$(8) \hspace{12pt} \sum\limits_{r=t-s+2+e}^{t+1+e} \frac{x^r_A}{s} < \beta$$
 
 Note that
-$$(9) \hspace{12pt} \sum\limits_{r=t-s+1+e}^{t+e} \frac{x^r_i}{s} = \sum\limits_{r=t-s+1+e}^{t}\frac{x^r_i}{s}+\sum\limits_{r=t+1}^{t+e} \frac{x^r_i}{s}$$
+$$(9) \hspace{12pt} \sum\limits_{r=t-s+2+e}^{t+1+e} \frac{x^r_i}{s} = \sum\limits_{r=t-s+2+e}^{t+1}\frac{x^r_i}{s}+\sum\limits_{r=t+2}^{t+1+e} \frac{x^r_i}{s}$$
 
 So combining equations (7) and (9) where $i=B$, player A has action 1 as a unique best response if: 
-$$(10) \sum\limits_{r=t-s+1+e}^{t}\frac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+e} \frac{x^r_B}{s} > \alpha$$
+$$(10) \sum\limits_{r=t-s+2+e}^{t+1}\frac{x^r_B}{s}+\sum\limits_{r=t+2}^{t+1+e} \frac{x^r_B}{s} > \alpha$$
 
 and combining equations (8) and (9) where $i=A$, player B has action 0 as a unique best response if:
-$$(11) \sum\limits_{r=t-s+1+e}^{t}\frac{x^r_A}{s}+\sum\limits_{r=t+1}^{t+e} \frac{x^r_A}{s} < \beta$$
+$$(11) \sum\limits_{r=t-s+2+e}^{t+1}\frac{x^r_A}{s}+\sum\limits_{r=t+2}^{t+1+e} \frac{x^r_A}{s} < \beta$$
 
 \vskip18pt
 
-Consider $0 \leq e<k$. Since $(3) \sum\limits_{r=t-s+1}^{t} \cfrac{x^r_B}{s} > \alpha$ and $k$ is the smallest integer such that $(5) \sum\limits_{r=t-s+1+k}^{t} \cfrac{x^r_B}{s} \leq \alpha$ it follows that $\forall e<k$, $\sum\limits_{r=t-s+1+e}^{t} \cfrac{x^r_B}{s} > \alpha$.
+Consider $0 \leq e<k$. Since $k$ is the smallest integer such that $(5) \sum\limits_{r=t-s+2+k}^{t+1} \cfrac{x^r_B}{s} \leq \alpha$ it follows that $\forall e<k$, $\sum\limits_{r=t-s+2+e}^{t+1} \cfrac{x^r_B}{s} > \alpha$.
 
-Since $x_i^r \in [0,1] \hspace{8pt} \forall r$, $\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_i}{s} \in [0,\mfrac{e}{s}]$.
+Since $x_B^r \in [0,1] \hspace{8pt} \forall r$, $\sum\limits_{r=t+2}^{t+1+e} \cfrac{x^r_B}{s} \in [0,\mfrac{e}{s}]$.
 
-So since $\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_i}{s} \geq 0$ and $\sum\limits_{r=t-s+1+e}^{t} \cfrac{x^r_B}{s} > \alpha$ I get the condition (10):
+So since $\sum\limits_{r=t+2}^{t+1+e} \cfrac{x^r_B}{s} \geq 0$ and $\sum\limits_{r=t-s+2+e}^{t+1} \cfrac{x^r_B}{s} > \alpha$ I get the condition (10):
 
-$$\sum\limits_{r=t-s+1+e}^{t}\cfrac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_B}{s} > \alpha$$
+$$\sum\limits_{r=t-s+2+e}^{t+1}\cfrac{x^r_B}{s}+\sum\limits_{r=t+2}^{t+1+e} \cfrac{x^r_B}{s} > \alpha$$
 
-This condition means that when sampling the most recent $s$ records in each period, action 1 is a unique best response for player A in all periods $t+1+e$ such that $0 \leq e<k$.
+This condition means that for all integers $e$ such that $0 \leq e<k$ when sampling the most recent $s$ records in period $t+2+e$ that action 1 is a unique best response for player A.
 
 \vskip18pt
 
-Now consider $0 \leq e<j$. Since $(4) \sum\limits_{r=t-s+1}^{t} \cfrac{x^r_A}{s} < \beta$ and $j$ is the smallest integer such that $(6) \cfrac{j}{s}+\sum\limits_{r=t-s+1+j}^{t} \cfrac{x^r_A}{s} \geq \beta$ it follows that $\forall e<j$, $\cfrac{e}{s}+\sum\limits_{r=t-s+1+e}^{t} \cfrac{x^r_A}{s} < \beta$.
+Now consider $0 \leq e<j$. Since $j$ is the smallest integer such that $(6) \cfrac{j}{s}+\sum\limits_{r=t-s+2+j}^{t+1} \cfrac{x^r_A}{s} \geq \beta$ it follows that $\forall e<j$, $\cfrac{e}{s}+\sum\limits_{r=t-s+2+e}^{t+1} \cfrac{x^r_A}{s} < \beta$.
 
-Since $x_i^r \in [0,1] \hspace{8pt} \forall r$, $\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_i}{s} \in [0,\mfrac{e}{s}]$.
+Since $x_A^r \in [0,1] \hspace{8pt} \forall r$, $\sum\limits_{r=t+2}^{t+1+e} \cfrac{x^r_A}{s} \in [0,\mfrac{e}{s}]$.
 
-So since $\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_i}{s} \leq \cfrac{e}{s}$ and $\cfrac{e}{s}+\sum\limits_{r=t-s+1+e}^{t} \cfrac{x^r_A}{s} < \beta$ I get the condition (11):
+So since $\sum\limits_{r=t+2}^{t+1+e} \cfrac{x^r_A}{s} \leq \cfrac{e}{s}$ and $\cfrac{e}{s}+\sum\limits_{r=t-s+2+e}^{t+1} \cfrac{x^r_A}{s} < \beta$ I get the condition (11):
 
-$$\sum\limits_{r=t-s+1+e}^{t}\cfrac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+e} \cfrac{x^r_B}{s} > \alpha$$
+$$\sum\limits_{r=t-s+2+e}^{t+1}\cfrac{x^r_A}{s}+\sum\limits_{r=t+2}^{t+1+e} \cfrac{x^r_A}{s} < \beta$$
 
-This condition means that when sampling the most recent $s$ records in each period, action 0 is a unique best response for player B in all periods $t+1+e$ such that $0 \leq e<j$.
+This condition means that for all integers $e$ such that $0 \leq e<j$ when sampling the most recent $s$ records in period $t+2+e$ that action 0 is a unique best response for player B.
+
+\vskip12pt
+
+There exists a positive probability that in each period $t+2+e$ where $0 \leq e<\min (k,j)$ both players can sample the most recent $s$ records. I have just shown that when sampling the most recent $s$ records in period $t+e$ where $0 \leq e<\min (k,j)$ player A best responds with action 1 and player B best responds with action 0. Assume both players do sample the most recent $s$ records in periods $t+e$ where $0 \leq e<\min (k,j)$. Since $\epsilon=0$ both players play their best response in those periods.
 
 \vskip12pt
 
-There exists a positive probability that in each period $t+e$ where $0 \leq e<\min (k,j)$ both players can sample the most recent $s$ records. I have just shown that when sampling the most recent $s$ records in period $t+e$ where $0 \leq e<\min (k,j)$ player A best responds with action 1 and player B best responds with action 0. Assume both players do sample the most recent $s$ records in periods $t+e$ where $0 \leq e<\min (k,j)$.
+\centering
 
-\vskip12pt
+Proving coordination is inevitable
+
+\vskip6pt
+
+\raggedright
 
 I will now consider the three scenarios: $j<k$, $k<j$, and $j=k$.
 

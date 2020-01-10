@@ -154,13 +154,27 @@ Note: this is a strict inequality since the players do not share a best reply in
 
 \vskip12pt
 
-Define $k$ to be the smallest integer such that
+Assuming that player B continues to play action 0 for every period after period $t+1$. We know, since this is a coordination game, that if player A samples the most recent $s$ actions in every period that there will exist a period, let's call it period $t+1+k$, where player A no longer has action 1 as a unique best response.
 
-$$(5) \sum\limits_{r=t-s+1+k}^{t} \frac{x^r_B}{s} \leq \alpha$$
+\vskip12pt
 
-Define $j$ to be the smallest integer such that
+Thus, $k$ is defined to be the smallest integer such that
 
-$$(6) \frac{j}{s}+\sum\limits_{r=t-s+1+j}^{t} \frac{x^r_A}{s} \geq \beta$$
+$$(5) \sum\limits_{r=t-s+2+k}^{t+1} \frac{x^r_B}{s} \leq \alpha$$
+
+Note here that $k \in \{0,...,s-1\}$ for all histories and all $\alpha$.
+
+\vskip12pt
+
+Likewise, let's assume that player A continues to play action 1 for every period after period $t+1$. We know, since this is a coordination game, that if player B samples the most recent $s$ actions in every period that there will exist a period, let's call it period $t+1+j$, where player B no longer has action 0 as a unique best response.
+
+\vskip12pt
+
+Thus, $j$ is defined to be the smallest integer such that
+
+$$(6) \frac{j}{s}+\sum\limits_{r=t-s+2+j}^{t+1} \frac{x^r_A}{s} \geq \beta$$
+
+Note here that $j \in \{0,...,s-1\}$ for all histories and all $\beta$.
 
 \vskip12pt
 

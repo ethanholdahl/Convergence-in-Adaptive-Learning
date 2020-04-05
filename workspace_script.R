@@ -41,10 +41,15 @@ while (scenario == "switch different"){
   
   aA = ifelse(sum(sA/s) > a, 1, 0)
   aB = ifelse(sum(sB/s) > b, 1, 0)
+  
+  #if aA == aB then the randomized history does not give us the desired scenario.
   if (aA == aB) next
-  #define rA and rB as the number of records in sample matching aA and aB respectively that need to be removed for the BR to change.
+  
+  #define rA and rB as the number of records in sample matching aA and aB respectively
+  #that need to be removed for the BR to change.
   rA = ifelse(aA == 1, ceiling((1-a)*s-sum(sA==0)), ceiling(a*s-sum(sA)))
   rB = ifelse(aB == 1, ceiling((1-a)*s-sum(sB==0)), ceiling(a*s-sum(sB)))
+  
   #initialize k, j: the number of actions until player A, B's BR changes.
   k = rA
   j = rB
@@ -54,7 +59,8 @@ while (scenario == "switch different"){
   while (sum(sB[1:j]==aB)!=rB){
     j = j+1
   }
-  if (j == k) break
+  #if j != k then the radomized history gives us the desired scenario.
+  if (j != k) break
 }
 
 while (scenario == "switch same"){
@@ -66,10 +72,15 @@ while (scenario == "switch same"){
   
   aA = ifelse(sum(sA/s) > a, 1, 0)
   aB = ifelse(sum(sB/s) > b, 1, 0)
+  
+  #if aA == aB then the randomized history does not give us the desired scenario.
   if (aA == aB) next
-  #define rA and rB as the number of records in sample matching aA and aB respectively that need to be removed for the BR to change.
+  
+  #define rA and rB as the number of records in sample matching aA and aB respectively
+  #that need to be removed for the BR to change.
   rA = ifelse(aA == 1, ceiling((1-a)*s-sum(sA==0)), ceiling(a*s-sum(sA)))
   rB = ifelse(aB == 1, ceiling((1-a)*s-sum(sB==0)), ceiling(a*s-sum(sB)))
+  
   #initialize k, j: the number of actions until player A, B's BR changes.
   k = rA
   j = rB
@@ -79,15 +90,31 @@ while (scenario == "switch same"){
   while (sum(sB[1:j]==aB)!=rB){
     j = j+1
   }
+  #if j == k then the radomized history gives us the desired scenario.
   if (j == k) break
 }
 
 #selecting possible samples until a convention is achieved.
 if (scenario != "switch same"){
   #If scenario does is not "switch same" we can ensure a convention is met by sampling
-  #the most recent s records s+m times (s to ensure coordination, m to fill memory)
+  #the most recent s records s+m times (s to ensure coordination, m to fill memory).
+  #record the evolution of memory in a data frame.
+  memory_slots = character(m)
+  
+  for (i in 1:(m)){
+    memory_slots[m+1-i] = (paste0("m",i))
+  }
+  
+  hA_evo = data.frame(matrix(nrow = s+m, ncol = m))
+  hB_evo = data.frame(matrix(nrow = s+m, ncol = m))
+  
+  colnames(hA_evo) = memory_slots
+  colnames(hB_evo) = memory_slots
+  
   i = 0
   while (i < (s+m)){
+    i = i+1
+    
     sA = tail(hB,s)
     sB = tail(hA,s)
     
@@ -97,11 +124,16 @@ if (scenario != "switch same"){
     hA = c(hA,aA)
     hB = c(hB,aB)
     
-    print(tail(hA,m))
-    print(tail(hB,m))
-    i = i+1
+    hA_evo[i,] = (tail(hA,m))
+    hB_evo[i,] = (tail(hB,m))
   }
 }
+
+
+
+hA_evo
+hB_evo
+
 
 
 sA = tail(hB,s)

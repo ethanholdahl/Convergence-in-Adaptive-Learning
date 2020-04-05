@@ -167,10 +167,33 @@ if (scenario != "switch same"){
   }
 }
 
+library(tidyverse)
+library(ggplot2)
+library(gganimate)
 
 
-hA_evo
-hB_evo
+hA_evo_tib = as_tibble(hA_evo)
+hA_evo_tib = hA_evo_tib %>%
+  mutate(period = 1:(jk+m))
+hA_evo_tib = gather(hA_evo_tib, position, record, memory_slots)
+hA_evo_tib$position = as.numeric(sub(pattern = "m", replacement = "", x = hA_evo_tib$position))
+
+hB_evo_tib = as_tibble(hB_evo)
+hB_evo_tib = hB_evo_tib %>%
+  mutate(period = 1:(jk+m))
+hB_evo_tib = gather(hB_evo_tib, position, record, memory_slots)
+hB_evo_tib$position = as.numeric(sub(pattern = "m", replacement = "", x = hB_evo_tib$position))
+
+
+anim = ggplot() +
+  geom_point(data = hA_evo_tib, aes(color = record, x = position, y = 1)) +
+  geom_point(data = hB_evo_tib, aes(color = record, x = position, y = 0)) +
+  scale_color_viridis_c(begin = .1, end = .9) +
+  transition_time(period) +
+  ylim(-10,11) +
+  theme_void()
+
+animate(anim, nframes = m+jk, fps = 3)
 
 
 

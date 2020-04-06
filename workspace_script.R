@@ -177,33 +177,43 @@ if (scenario != "switch same"){
   }
 }
 
+#load required libraries for the visualization
 library(tidyverse)
 library(ggplot2)
 library(gganimate)
 
-
+#Transform evolution of histories to long form data for plotting
 hA_evo_tib = as_tibble(hA_evo)
 hA_evo_tib = hA_evo_tib %>%
   mutate(period = 1:(jk+m))
 hA_evo_tib = gather(hA_evo_tib, position, record, memory_slots)
 hA_evo_tib$position = as.numeric(sub(pattern = "m", replacement = "", x = hA_evo_tib$position))
+hA_evo_tib = hA_evo_tib %>%
+  mutate(sample = ifelse(position <= s, 1, 0))
+hA_evo_tib$sample = factor(hA_evo_tib$sample)
+hA_evo_tib$record = factor(hA_evo_tib$record)
 
 hB_evo_tib = as_tibble(hB_evo)
 hB_evo_tib = hB_evo_tib %>%
   mutate(period = 1:(jk+m))
 hB_evo_tib = gather(hB_evo_tib, position, record, memory_slots)
 hB_evo_tib$position = as.numeric(sub(pattern = "m", replacement = "", x = hB_evo_tib$position))
+hB_evo_tib = hB_evo_tib %>%
+  mutate(sample = ifelse(position <= s, 1, 0))
+hB_evo_tib$sample = factor(hB_evo_tib$sample)
+hB_evo_tib$record = factor(hB_evo_tib$record)
 
-
+#Plot the evolution of records in memory
 anim = ggplot() +
-  geom_point(data = hA_evo_tib, aes(color = record, x = position, y = 1)) +
-  geom_point(data = hB_evo_tib, aes(color = record, x = position, y = 0)) +
-  scale_color_viridis_c(begin = .1, end = .9) +
+  geom_point(data = hA_evo_tib, shape = 22, size = 5, aes(fill = record, x = -position, y = 1, color = sample)) +
+  geom_point(data = hB_evo_tib, shape = 22, size = 5, aes(fill = record, x = -position, y = 0, color = sample)) +
+  scale_fill_viridis_d(begin = .1, end = .9) +
+  scale_color_viridis_d(option = 3, end = .6)+
   transition_time(period) +
   ylim(-10,11) +
   theme_void()
 
-animate(anim, nframes = m+jk, fps = 3)
+animate(anim, nframes = m+jk, fps = 2)
 
 
 

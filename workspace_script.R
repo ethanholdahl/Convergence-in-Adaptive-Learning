@@ -2,10 +2,10 @@
 #to a convention under no pertubations.
 
 #Paramater selection
-m = 17
-s = 13
-a = 1/2
-b = 1/2
+m = 19
+s = 18
+a = 1/4
+b = 2/3
 #scenario = "match"
 #scenario = "switch different"
 scenario = "switch same"
@@ -17,8 +17,8 @@ hB = sample(c(0,1), size = m, replace = TRUE)
 sA = tail(hB,s)
 sB = tail(hA,s)
 
-aA = ifelse(sum(sA/s) > a, 1, 0)
-aB = ifelse(sum(sB/s) > b, 1, 0)
+aA = ifelse(sum(sA/s) >= a, 1, 0)
+aB = ifelse(sum(sB/s) >= b, 1, 0)
 
 #randomly regenerating histories until one that is consistent with desired scenario is generated.
 while (scenario == "match" & aA != aB){
@@ -28,8 +28,8 @@ while (scenario == "match" & aA != aB){
   sA = tail(hB,s)
   sB = tail(hA,s)
   
-  aA = ifelse(sum(sA/s) > a, 1, 0)
-  aB = ifelse(sum(sB/s) > b, 1, 0)
+  aA = ifelse(sum(sA/s) >= a, 1, 0)
+  aB = ifelse(sum(sB/s) >= b, 1, 0)
   
   #added j,k = 0 for appropriate evolution length
   j = 0
@@ -43,8 +43,8 @@ while (scenario == "switch different"){
   sA = tail(hB,s)
   sB = tail(hA,s)
   
-  aA = ifelse(sum(sA/s) > a, 1, 0)
-  aB = ifelse(sum(sB/s) > b, 1, 0)
+  aA = ifelse(sum(sA/s) >= a, 1, 0)
+  aB = ifelse(sum(sB/s) >= b, 1, 0)
   
   #if aA == aB then the randomized history does not give us the desired scenario.
   if (aA == aB) next
@@ -52,7 +52,12 @@ while (scenario == "switch different"){
   #define rA and rB as the number of records in sample matching aA and aB respectively
   #that need to be removed for the BR to change.
   rA = ifelse(aA == 1, ceiling((1-a)*s-sum(sA==0)), ceiling(a*s-sum(sA)))
-  rB = ifelse(aB == 1, ceiling((1-a)*s-sum(sB==0)), ceiling(a*s-sum(sB)))
+  rB = ifelse(aB == 1, ceiling((1-b)*s-sum(sB==0)), ceiling(b*s-sum(sB)))
+  
+  #incase rA or rB = 0 (they are indifferent between actions) set required to 1
+  #to avoid code complications and remove indifference.
+  rA = max(rA,1)
+  rB = max(rB,1)
   
   #initialize k, j: the number of actions until player A, B's BR changes.
   k = rA
@@ -74,8 +79,8 @@ while (scenario == "switch same"){
   sA = tail(hB,s)
   sB = tail(hA,s)
   
-  aA = ifelse(sum(sA/s) > a, 1, 0)
-  aB = ifelse(sum(sB/s) > b, 1, 0)
+  aA = ifelse(sum(sA/s) >= a, 1, 0)
+  aB = ifelse(sum(sB/s) >= b, 1, 0)
   
   #if aA == aB then the randomized history does not give us the desired scenario.
   if (aA == aB) next
@@ -83,7 +88,12 @@ while (scenario == "switch same"){
   #define rA and rB as the number of records in sample matching aA and aB respectively
   #that need to be removed for the BR to change.
   rA = ifelse(aA == 1, ceiling((1-a)*s-sum(sA==0)), ceiling(a*s-sum(sA)))
-  rB = ifelse(aB == 1, ceiling((1-a)*s-sum(sB==0)), ceiling(a*s-sum(sB)))
+  rB = ifelse(aB == 1, ceiling((1-b)*s-sum(sB==0)), ceiling(b*s-sum(sB)))
+  
+  #incase rA or rB = 0 (they are indifferent between actions) set required to 1
+  #to avoid code complications and remove indifference.
+  rA = max(rA,1)
+  rB = max(rB,1)
   
   #initialize k, j: the number of actions until player A, B's BR changes.
   k = rA
@@ -124,8 +134,8 @@ if (scenario != "switch same"){
     sA = tail(hB,s)
     sB = tail(hA,s)
     
-    aA = ifelse(sum(sA/s) > a, 1, 0)
-    aB = ifelse(sum(sB/s) > b, 1, 0)
+    aA = ifelse(sum(sA/s) >= a, 1, 0)
+    aB = ifelse(sum(sB/s) >= b, 1, 0)
     
     hA = c(hA,aA)
     hB = c(hB,aB)
@@ -156,8 +166,8 @@ if (scenario != "switch same"){
     }
     sB = tail(hA,s)
     
-    aA = ifelse(sum(sA/s) > a, 1, 0)
-    aB = ifelse(sum(sB/s) > b, 1, 0)
+    aA = ifelse(sum(sA/s) >= a, 1, 0)
+    aB = ifelse(sum(sB/s) >= b, 1, 0)
     
     hA = c(hA,aA)
     hB = c(hB,aB)
@@ -200,8 +210,8 @@ animate(anim, nframes = m+jk, fps = 3)
 sA = tail(hB,s)
 sB = tail(hA,s)
 
-aA = ifelse(sum(sA/s) > a, 1, 0)
-aB = ifelse(sum(sB/s) > b, 1, 0)
+aA = ifelse(sum(sA/s) >= a, 1, 0)
+aB = ifelse(sum(sB/s) >= b, 1, 0)
 
 sA
 sB

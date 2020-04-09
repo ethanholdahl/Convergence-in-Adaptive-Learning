@@ -2,21 +2,24 @@
 #to a convention under no pertubations.
 
 #Paramater selection
-m = 13
-s = 9
-a = runif(1, min = 0, max = 1)
-b = runif(1, min = 0, max = 1)
+m = 9
+s = 7
+#alpha and beta
+a = .01
+b = .99
 #scenario = "match"
 #scenario = "switch different"
 scenario = "switch same"
 
-#randomly generating histories and taking most recent samples and calculating next actions
+#randomly generating histories
 hA = sample(c(0, 1), size = m, replace = TRUE)
 hB = sample(c(0, 1), size = m, replace = TRUE)
 
+#sampling most recent s records
 sA = tail(hB, s)
 sB = tail(hA, s)
 
+#calculating best response (chosing action 1 if not unique)
 aA = ifelse(sum(sA / s) >= a, 1, 0)
 aB = ifelse(sum(sB / s) >= b, 1, 0)
 
@@ -258,7 +261,7 @@ anim = ggplot() +
   ylim(-10, 11) +
   theme_void()
 
-animate(anim, nframes = m + jk, fps = .5)
+animate(anim, nframes = m + jk, fps = 1)
 
 
 

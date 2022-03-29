@@ -1,9 +1,10 @@
-#This script allows users to select paramaters for adaptive play and observe a possible path
-#to a convention under no pertubations.
+#This script allows users to select parameters for adaptive play and observe a possible path
+#to a convention under no perturbations.
 
-#Paramater selection
-m = 9
-s = 7
+
+#Parameter selection
+m = 7
+s = 5
 #alpha and beta
 a = .01
 b = .99
@@ -19,7 +20,7 @@ hB = sample(c(0, 1), size = m, replace = TRUE)
 sA = tail(hB, s)
 sB = tail(hA, s)
 
-#calculating best response (chosing action 1 if not unique)
+#calculating best response (choosing action 1 if not unique)
 aA = ifelse(sum(sA / s) >= a, 1, 0)
 aB = ifelse(sum(sB / s) >= b, 1, 0)
 
@@ -60,7 +61,7 @@ while (scenario == "switch different") {
   rB = ifelse(aB == 1, ceiling((1 - b) * s - sum(sB == 0)), ceiling(b *
                                                                       s - sum(sB)))
   
-  #incase rA or rB = 0 (they are indifferent between actions) set required to 1
+  #in case rA or rB = 0 (they are indifferent between actions) set required to 1
   #to avoid code complications and remove indifference.
   rA = max(rA, 1)
   rB = max(rB, 1)
@@ -74,7 +75,7 @@ while (scenario == "switch different") {
   while (sum(sB[1:j] == aB) != rB) {
     j = j + 1
   }
-  #if j != k then the radomized history gives us the desired scenario.
+  #if j != k then the randomized history gives us the desired scenario. Exit generation
   if (j != k)
     break
 }
@@ -114,7 +115,7 @@ while (scenario == "switch same") {
   while (sum(sB[1:j] == aB) != rB) {
     j = j + 1
   }
-  #if j == k then the radomized history gives us the desired scenario.
+  #if j == k then the randomized history gives us the desired scenario. Exit generation
   if (j == k)
     break
 }
@@ -155,7 +156,7 @@ if (scenario != "switch same") {
     hB_evo[i, ] = (tail(hB, m))
   }
 } else {
-  #Scenario is "same switch". Since both best responses change after the same period
+  #Scenario is "switch same". Since both best responses change after the same period
   #we simply need to change the way one player (A) samples to get them to coordinate.
   #We can reach a convention if the one player (B) samples the most recent s records
   #for jk+m periods and the other player (A) samples in following way:
@@ -192,7 +193,8 @@ if (scenario != "switch same") {
 library(tidyverse)
 library(ggplot2)
 library(gganimate)
-
+library(gifski)
+library(png)
 #Transform evolution of histories to long form data for plotting
 hA_evo_tib = as_tibble(hA_evo)
 hA_evo_tib = hA_evo_tib %>%
@@ -236,6 +238,7 @@ anim = ggplot() +
   geom_point(
     data = hA_evo_tib,
     shape = 22,
+    stroke = 2,
     size = 5,
     aes(
       fill = record,
@@ -247,6 +250,7 @@ anim = ggplot() +
   geom_point(
     data = hB_evo_tib,
     shape = 22,
+    stroke = 2,
     size = 5,
     aes(
       fill = record,
@@ -255,14 +259,13 @@ anim = ggplot() +
       color = sample
     )
   ) +
-  scale_fill_viridis_d(begin = .1, end = .9) +
+  scale_fill_viridis_d(begin = 0, end = 1) +
   scale_color_viridis_d(option = 3, end = .6) +
   transition_time(period) +
   ylim(-10, 11) +
   theme_void()
 
-animate(anim, nframes = m + jk, fps = 1)
-
+animate(anim, nframes = m + jk, fps = .75, renderer = gifski_renderer())
 
 
 sA = tail(hB, s)

@@ -11,8 +11,8 @@ library("png")
 m = 13
 s = 11
 #alpha and beta
-a = .2
-b = .8
+a = .5
+b = .5
 #scenario = "Match"
 #scenario = "Switch Different"
 #scenario = "Switch Same"
@@ -33,11 +33,6 @@ makeAnimation = function(m, s, a, b, scenario) {
   
   
   #randomly regenerating histories until one that is consistent with desired scenario is generated.
-  if (scenario == "Match") {
-    #added j,k = 0 for appropriate evolution length
-    j = 0
-    k = 0
-  }
   while (scenario == "Match" & aA != aB) {
     hA = sample(c(0, 1), size = m, replace = TRUE)
     hB = sample(c(0, 1), size = m, replace = TRUE)
@@ -160,13 +155,18 @@ makeAnimation = function(m, s, a, b, scenario) {
     }
     #if j != k then the randomized history is that of a "Switch Different" scenario.
     #Otherwise, j == k and it is that of a "Switch Same" scenario.
-    if (j != k)
+    if (j != k){
       scenario = "Switch Different"
-    else
+    } else {
       scenario = "Switch Same"
+    }
   }
   
-  
+  if (scenario == "Match") {
+    #added j,k = 0 for appropriate evolution length
+    j = 0
+    k = 0
+  }
   
   #record the evolution of memory in data frames.
   jk = min(j, k)
@@ -302,10 +302,14 @@ makeAnimation = function(m, s, a, b, scenario) {
       )
     ) +
     scale_fill_viridis_d(begin = 0, end = 1) +
-    scale_color_viridis_d(option = 3, end = .6) +
+    scale_color_viridis_d(option = 3, end = .6, labels = c("No", "Yes")) +
     transition_time(period) +
     ylim(-10, 11) +
-    theme_void()
+    xlim(-1.35*m-3,1) +
+    theme_void() +
+    annotate("text", x = -1.2*m-2, y = 1, size = 5, label = "Player 1 Memory", color = "black") + 
+    annotate("text", x = -1.2*m-2, y = 0, size = 5, label = "Player 2 Memory", color = "black")
+    
   
   #compile list of ggplots to a gif
   resultgif = animate(anim,
@@ -315,7 +319,7 @@ makeAnimation = function(m, s, a, b, scenario) {
   return(resultgif)
 }
 
-test = makeAnimation(13, 11, .5, .5, "Random")
+test = makeAnimation(4, 1, .5, .5, "Random")
 test
 sA = tail(hB, s)
 sB = tail(hA, s)

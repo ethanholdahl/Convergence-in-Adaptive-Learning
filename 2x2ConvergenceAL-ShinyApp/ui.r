@@ -69,15 +69,7 @@ navbarPage(
         
         # Show a plot of the generated distribution
         br(),
-        plotOutput("resultgame"),
-        br(),
-        plotOutput("P1expectedpayoffs"),
-        br(),
-        plotOutput("P2expectedpayoffs"),
-        br(),
-        textOutput("pureNE"),
-        br(),
-        textOutput("allNE")
+        imageOutput("gifconverge"),
       )
     )
   )

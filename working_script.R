@@ -3,8 +3,8 @@
 
 
 #Parameter selection
-m = 7
-s = 5
+m = 13
+s = 11
 #alpha and beta
 a = .01
 b = .99
@@ -190,11 +190,10 @@ if (scenario != "switch same") {
 }
 
 #load required libraries for the visualization
-library(tidyverse)
-library(ggplot2)
-library(gganimate)
-library(gifski)
-library(png)
+library("tidyverse")
+library("gganimate")
+library("gifski")
+library("png")
 #Transform evolution of histories to long form data for plotting
 hA_evo_tib = as_tibble(hA_evo)
 hA_evo_tib = hA_evo_tib %>%

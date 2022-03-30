@@ -12,6 +12,19 @@ function(input, output, session) {
     updateSliderInput(session, "s", min = 1, max = m -1)
   })
   
+  observeEvent(input$regenerate, {
+    #Trick to generate new game. Not sure if there is a "cleaner" method.
+    alpha = input$alpha
+    if (alpha == .01){
+      alpha1 = .02
+    } else {
+      alpha1 = alpha-.01
+    }
+    updateSliderInput(session, "alpha", value = alpha1)
+    updateSliderInput(session, "alpha", value = alpha)
+  })
+  
+  
   makeAnimation = function(m, s, a, b, scenario) {
     #randomly generating histories
     hA = sample(c(0, 1), size = m, replace = TRUE)
@@ -320,5 +333,5 @@ function(input, output, session) {
          contentType = 'image/gif')
   }, deleteFile = TRUE)
   
-  
+
 }

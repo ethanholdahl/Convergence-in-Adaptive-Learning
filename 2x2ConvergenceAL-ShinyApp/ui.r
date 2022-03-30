@@ -27,16 +27,16 @@ navbarPage(
           sliderInput(
             "alpha",
             label = "\\(\\alpha\\): The smallest probability that Player 2 plays action 1 such that playing action 1 is a best response for Player 1",
-            min = 0,
-            max = 1,
+            min = .01,
+            max = .99,
             step = .01,
             value = .01
           ),
           sliderInput(
             "beta",
             label = "\\(\\beta\\): The smallest probability that Player 1 plays action 1 such that playing action 1 is a best response for Player 2",
-            min = 0,
-            max = 1,
+            min = .01,
+            max = .99,
             step = .01,
             value = .99
           ),

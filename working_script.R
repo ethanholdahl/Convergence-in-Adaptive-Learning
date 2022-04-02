@@ -309,10 +309,11 @@ makeAnimation = function(m, s, a, b, scenario) {
           color = sample
         )
       ) +
-      scale_fill_viridis_d(begin = 0, end = 1) +
-      scale_color_viridis_d(option = 3,
-                            end = .6,
-                            labels = c("No", "Yes")) +
+      scale_fill_manual(values = c("1" = "yellow",
+                                   "0" = "blue")) +
+      scale_color_manual(values = c("1" = "red",
+                                    "0" = "black"),
+                         labels = c("No", "Yes")) +
       ylim(-10, 11) +
       xlim(-1.35 * m - 3, 1) +
       theme_void() +
@@ -384,3 +385,4 @@ makeAnimation = function(m, s, a, b, scenario) {
 
 test = makeAnimation(13,11,a,b,"Switch Same")
 length(test)
+test[[2]]

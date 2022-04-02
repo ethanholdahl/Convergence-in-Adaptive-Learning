@@ -78,7 +78,7 @@ navbarPage(
         
         
         # Show a plot of the generated distribution
-        imageOutput("gifconverge"),
+        plotOutput("gifconverge"),
       )
     )
   )

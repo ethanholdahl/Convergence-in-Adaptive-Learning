@@ -320,7 +320,7 @@ function(input, output, session) {
                                      "0" = "blue")) +
         scale_color_manual(values = c("1" = "red",
                                       "0" = "black"),
-                           labels = c("No", "Yes")) +
+                           labels = c("1" = "Yes", "0" = "No")) +
         ylim(-10, 11) +
         xlim(-1.35 * m - 3, 1) +
         theme_void() +

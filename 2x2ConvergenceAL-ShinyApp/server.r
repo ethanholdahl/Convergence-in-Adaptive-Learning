@@ -282,60 +282,124 @@ function(input, output, session) {
     hB_evo_tib$sample = factor(hB_evo_tib$sample)
     hB_evo_tib$record = factor(hB_evo_tib$record)
     
-    #Plot the evolution of records in memory
-    anim = ggplot() +
-      geom_point(
-        data = hA_evo_tib,
-        shape = 22,
-        stroke = 2,
-        size = 5,
-        aes(
-          fill = record,
-          x = -position,
+    
+    animation = list()
+    for(i in 1:(jk + m)) {
+      hA_evo_tib_i = hA_evo_tib %>%
+        filter(period == i)
+      
+      hB_evo_tib_i = hB_evo_tib %>%
+        filter(period == i)
+      
+      anim = ggplot() +
+        geom_point(
+          data = hA_evo_tib_i,
+          shape = 22,
+          stroke = 2,
+          size = 5,
+          aes(
+            fill = record,
+            x = -position,
+            y = 1,
+            color = sample
+          )
+        ) +
+        geom_point(
+          data = hB_evo_tib_i,
+          shape = 22,
+          stroke = 2,
+          size = 5,
+          aes(
+            fill = record,
+            x = -position,
+            y = 0,
+            color = sample
+          )
+        ) +
+        scale_fill_viridis_d(begin = 0, end = 1) +
+        scale_color_viridis_d(option = 3,
+                              end = .6,
+                              labels = c("No", "Yes")) +
+        ylim(-10, 11) +
+        xlim(-1.35 * m - 3, 1) +
+        theme_void() +
+        annotate(
+          "text",
+          x = -1.2 * m - 2,
           y = 1,
-          color = sample
-        )
-      ) +
-      geom_point(
-        data = hB_evo_tib,
-        shape = 22,
-        stroke = 2,
-        size = 5,
-        aes(
-          fill = record,
-          x = -position,
+          size = 5,
+          label = "Player 1 Memory",
+          color = "black"
+        ) +
+        annotate(
+          "text",
+          x = -1.2 * m - 2,
           y = 0,
-          color = sample
+          size = 5,
+          label = "Player 2 Memory",
+          color = "black"
         )
-      ) +
-      scale_fill_viridis_d(begin = 0, end = 1) +
-      scale_color_viridis_d(option = 3, end = .6, labels = c("No", "Yes")) +
-      transition_time(period) +
-      ylim(-10, 11) +
-      xlim(-1.35*m-3,1) +
-      theme_void() +
-      annotate("text", x = -1.2*m-2, y = 1, size = 5, label = "Player 1 Memory", color = "black") + 
-      annotate("text", x = -1.2*m-2, y = 0, size = 5, label = "Player 2 Memory", color = "black")
+      
+      animation[[i]] = anim 
+    }
     
     
-    #compile list of ggplots to a gif
-    resultgif = animate(anim,
-                        nframes = m + jk,
-                        fps = .75,
-                        renderer = gifski_renderer())
-    return(resultgif)
+    return(animation)
+    
+    #Plot the evolution of records in memory
+    # anim = ggplot() +
+    #   geom_point(
+    #     data = hA_evo_tib,
+    #     shape = 22,
+    #     stroke = 2,
+    #     size = 5,
+    #     aes(
+    #       fill = record,
+    #       x = -position,
+    #       y = 1,
+    #       color = sample
+    #     )
+    #   ) +
+    #   geom_point(
+    #     data = hB_evo_tib,
+    #     shape = 22,
+    #     stroke = 2,
+    #     size = 5,
+    #     aes(
+    #       fill = record,
+    #       x = -position,
+    #       y = 0,
+    #       color = sample
+    #     )
+    #   ) +
+    #   scale_fill_viridis_d(begin = 0, end = 1) +
+    #   scale_color_viridis_d(option = 3, end = .6, labels = c("No", "Yes")) +
+    #   transition_time(period) +
+    #   ylim(-10, 11) +
+    #   xlim(-1.35*m-3,1) +
+    #   theme_void() +
+    #   annotate("text", x = -1.2*m-2, y = 1, size = 5, label = "Player 1 Memory", color = "black") + 
+    #   annotate("text", x = -1.2*m-2, y = 0, size = 5, label = "Player 2 Memory", color = "black")
+    #   
+    # 
+    # #compile list of ggplots to a gif
+    # resultgif = animate(anim,
+    #                     nframes = m + jk,
+    #                     fps = .75,
+    #                     renderer = gifski_renderer())
   }
   
-  gifimage = reactive({
-    makeAnimation(input$m, input$s, input$alpha, input$beta, input$scenario)
+  animPlots = reactive({
+    animPlotsResult = makeAnimation(input$m, input$s, input$alpha, input$beta, input$scenario)
+    updateSliderInput(session, "animation", max = length(animPlotsResult))
+    return(animPlotsResult)
   })
   
-  output$gifconverge = renderImage({
-    outfile <- tempfile(fileext='.gif')
-    anim_save("outfile.gif", gifimage())
-    list(src = "outfile.gif",
-         contentType = 'image/gif')
-  }, deleteFile = TRUE)
+  
+  
+  output$gifconverge = renderPlot({
+    animPlots()[[input$animation]]
+    })
   
 
 }

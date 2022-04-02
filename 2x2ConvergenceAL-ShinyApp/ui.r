@@ -63,12 +63,21 @@ navbarPage(
             selected = "Switch Same"
           ),
           actionButton("regenerate",
-                       "Regenerate")
+                       "Regenerate"),
+          sliderInput(
+            "animation",
+            "Animation:",
+            min = 1,
+            max = 30,
+            step = 1,
+            value = 1,
+            animate = animationOptions(interval = 500, loop = TRUE)
+          )
+          
         ),
         
         
         # Show a plot of the generated distribution
-        br(),
         imageOutput("gifconverge"),
       )
     )

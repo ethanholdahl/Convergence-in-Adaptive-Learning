@@ -355,11 +355,57 @@ makeAnimation = function(m, s, a, b, scenario) {
         size = 5,
         label = "Player 2 Memory",
         color = "black"
+      ) +
+      annotate(
+        "text",
+        x = -1.2 * m - 2,
+        y = 8,
+        size = 5,
+        label = "Amount of",
+        color = "black",
+        hjust = "left"
+      ) +
+      annotate(
+        "point",
+        x = -.9 * m - 1.1,
+        y = 8,
+        shape = 22,
+        stroke = 2,
+        size = 5,
+        color = "red",
+        fill = "yellow"
+      ) +
+      annotate(
+        "text",
+        x = -.85 * m - .9,
+        y = 8,
+        size = 5,
+        label = "needed to make",
+        color = "black",
+        hjust = "left"
+      ) +
+      annotate(
+        "point",
+        x = -.4 * m + .4,
+        y = 8,
+        shape = 22,
+        stroke = 1,
+        size = 5,
+        color = "black",
+        fill = "yellow"
+      ) +
+      annotate(
+        "text",
+        x = -1.2 * m - 2,
+        y = 7,
+        size = 5,
+        label = paste0("A Best Response for Player 1: ", ceiling(a*s)),
+        color = "black",
+        hjust = "left"
       )
     
    animation[[(i+1)]] = anim 
   }
-  
   
   return(animation)
 
@@ -406,8 +452,7 @@ makeAnimation = function(m, s, a, b, scenario) {
   #                     renderer = gifski_renderer())
 }
 
-test = makeAnimation(5,3,a,b,"Switch Same")
-length(test)
+test = makeAnimation(17, 13, a,b,"Match")
 test[[1]]
 test[[2]]
 test[[3]]

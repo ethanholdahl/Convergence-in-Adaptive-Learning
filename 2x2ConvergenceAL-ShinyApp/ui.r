@@ -3,11 +3,14 @@
 
 ## Load and install the packages
 library("tidyverse")
+#library(shinythemes)
 library("shiny")
-theme_set(theme_minimal())
 
 
 # Define UI for the application
+fluidPage(
+  #theme = shinytheme("sandstone"),
+  tags$head(HTML("<title> Convergence to a Convention in Adaptive Play by Ethan Holdahl </title>")),
 navbarPage(
   title = HTML("Convergence to a Convention in Adaptive Play by <a href='https://ethanholdahl.com'>Ethan Holdahl</a>"),
   tabPanel(
@@ -79,4 +82,5 @@ navbarPage(
       )
     )
   )
+)
 )

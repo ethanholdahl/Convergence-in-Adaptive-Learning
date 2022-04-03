@@ -68,7 +68,7 @@ navbarPage(
             max = 30,
             step = 1,
             value = 1,
-            animate = animationOptions(interval = 500, loop = TRUE)
+            animate =  animationOptions(interval = 1000, loop = TRUE),
           )
           
         ),

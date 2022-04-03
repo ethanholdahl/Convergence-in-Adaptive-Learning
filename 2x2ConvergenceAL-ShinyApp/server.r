@@ -311,18 +311,18 @@ function(input, output, session) {
       #filter data by current period, extract number of each action in each player sample.
       hA_evo_tib_i = hA_evo_tib %>%
         filter(period == i)
-      P1counts = hA_evo_tib_i %>%
+      P2counts = hA_evo_tib_i %>%
         filter(sample == 1)
-      P1count1 = as.numeric(sum(P1counts$record ==1))
-      P1count0 = as.numeric(sum(P1counts$record ==0))
+      P2count1 = as.numeric(sum(P2counts$record ==1))
+      P2count0 = as.numeric(sum(P2counts$record ==0))
       
       
       hB_evo_tib_i = hB_evo_tib %>%
         filter(period == i)
-      P2counts = hB_evo_tib_i %>%
+      P1counts = hB_evo_tib_i %>%
         filter(sample == 1)
-      P2count1 = as.numeric(sum(P2counts$record ==1))
-      P2count0 = as.numeric(sum(P2counts$record ==0))
+      P1count1 = as.numeric(sum(P1counts$record ==1))
+      P1count0 = as.numeric(sum(P1counts$record ==0))
       
       anim = ggplot() +
         geom_point(
@@ -333,7 +333,7 @@ function(input, output, session) {
           aes(
             fill = record,
             x = -position,
-            y = 1,
+            y = 0,
             color = sample
           )
         ) +
@@ -345,7 +345,7 @@ function(input, output, session) {
           aes(
             fill = record,
             x = -position,
-            y = 0,
+            y = 1,
             color = sample
           )
         ) +
@@ -362,7 +362,7 @@ function(input, output, session) {
           x = -1.2 * m - 2,
           y = 1,
           size = 5,
-          label = "Player 1 Memory",
+          label = "Player 1 Memory (Player 2 History)",
           color = "black"
         ) +
         annotate(
@@ -370,21 +370,12 @@ function(input, output, session) {
           x = -1.2 * m - 2,
           y = 0,
           size = 5,
-          label = "Player 2 Memory",
+          label = "Player 2 Memory (Player 1 History)",
           color = "black"
         ) +
         annotate(
-          "text",
-          x = -1.2 * m - 2,
-          y = 8,
-          size = 5,
-          label = "Amount of",
-          color = "black",
-          hjust = "left"
-        ) +
-        annotate(
           "point",
-          x = -.9 * m - 1.1,
+          x = -1.18 * m - 1.92,
           y = 8,
           shape = 22,
           stroke = 2,
@@ -394,29 +385,29 @@ function(input, output, session) {
         ) +
         annotate(
           "text",
-          x = -.85 * m - .9,
+          x = -1.13 * m - 1.82,
           y = 8,
           size = 5,
-          label = "needed to make",
+          label = paste0("Needed to make 1 a BR for Player 1: ", ceiling(a*s)),
           color = "black",
           hjust = "left"
         ) +
         annotate(
           "point",
-          x = -.4 * m + .4,
-          y = 8,
+          x = -1.18 * m - 1.92,
+          y = 7,
           shape = 22,
-          stroke = 1,
+          stroke = 2,
           size = 5,
-          color = "black",
-          fill = "yellow"
+          color = "red",
+          fill = "blue"
         ) +
         annotate(
           "text",
-          x = -1.2 * m - 2,
+          x = -1.13 * m - 1.82,
           y = 7,
           size = 5,
-          label = paste0("A Best Response for Player 1: ", ceiling(a*s)),
+          label = paste0("Needed to make 0 a BR for Player 1: ", ceiling((1-a)*s)),
           color = "black",
           hjust = "left"
         ) +
@@ -460,16 +451,16 @@ function(input, output, session) {
         ) +
         annotate(
           "text",
-          x = -1.2 * m - 2,
+          x = -.55 * m,
           y = 4,
           size = 5,
           label = "Best Response for Player 1:",
           color = "black",
-          hjust = "left"
+          hjust = "right"
         ) +
         annotate(
           "point",
-          x = -.5 * m + .1,
+          x = -.5 * m,
           y = 4,
           shape = 22,
           stroke = 1,
@@ -478,17 +469,8 @@ function(input, output, session) {
           fill = ifelse(P1count1 >= a*s, "yellow", "blue")
         ) +
         annotate(
-          "text",
-          x = -1.2 * m - 2,
-          y = -3,
-          size = 5,
-          label = "Amount of",
-          color = "black",
-          hjust = "left"
-        ) +
-        annotate(
           "point",
-          x = -.9 * m - 1.1,
+          x = -1.18 * m - 1.92,
           y = -3,
           shape = 22,
           stroke = 2,
@@ -498,29 +480,29 @@ function(input, output, session) {
         ) +
         annotate(
           "text",
-          x = -.85 * m - .9,
+          x = -1.13 * m - 1.82,
           y = -3,
           size = 5,
-          label = "needed to make",
+          label = paste0("Needed to make 1 a BR for Player 2: ", ceiling(b*s)),
           color = "black",
           hjust = "left"
         ) +
         annotate(
           "point",
-          x = -.4 * m + .4,
-          y = -3,
+          x = -1.18 * m - 1.92,
+          y = -4,
           shape = 22,
-          stroke = 1,
+          stroke = 2,
           size = 5,
-          color = "black",
-          fill = "yellow"
+          color = "red",
+          fill = "blue"
         ) +
         annotate(
           "text",
-          x = -1.2 * m - 2,
+          x = -1.13 * m - 1.82,
           y = -4,
           size = 5,
-          label = paste0("A Best Response for Player 2: ", ceiling(a*s)),
+          label = paste0("Needed to make 0 a BR for Player 2: ", ceiling((1-b)*s)),
           color = "black",
           hjust = "left"
         ) +
@@ -539,7 +521,7 @@ function(input, output, session) {
           x = -1.13 * m - 1.82,
           y = -5,
           size = 5,
-          label = paste0("Count: ", P1count1),
+          label = paste0("Count: ", P2count1),
           color = "black",
           hjust = "left"
         ) +
@@ -558,28 +540,28 @@ function(input, output, session) {
           x = -1.13 * m - 1.82,
           y = -6,
           size = 5,
-          label = paste0("Count: ", P1count0),
+          label = paste0("Count: ", P2count0),
           color = "black",
           hjust = "left"
         ) +
         annotate(
           "text",
-          x = -1.2 * m - 2,
+          x = -.55 * m,
           y = -7,
           size = 5,
           label = "Best Response for Player 2:",
           color = "black",
-          hjust = "left"
+          hjust = "right"
         ) +
         annotate(
           "point",
-          x = -.5 * m + .1,
+          x = -.5 * m,
           y = -7,
           shape = 22,
           stroke = 1,
           size = 5,
           color = "black",
-          fill = ifelse(P1count1 >= a*s, "yellow", "blue")
+          fill = ifelse(P2count1 >= b*s, "yellow", "blue")
         )
       animation[[(i+1)]] = anim 
     }

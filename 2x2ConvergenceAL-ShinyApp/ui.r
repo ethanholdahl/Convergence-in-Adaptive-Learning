@@ -26,7 +26,7 @@ navbarPage(
         wellPanel(
           sliderInput(
             "alpha",
-            label = "\\(\\alpha\\): The smallest probability that Player 2 plays action 1 such that playing action 1 is a best response for Player 1",
+            label = "\\(\\alpha\\): The smallest probability that Player B plays action 1 such that playing action 1 is a best response for Player A",
             min = .01,
             max = .99,
             step = .01,
@@ -34,7 +34,7 @@ navbarPage(
           ),
           sliderInput(
             "beta",
-            label = "\\(\\beta\\): The smallest probability that Player 1 plays action 1 such that playing action 1 is a best response for Player 2",
+            label = "\\(\\beta\\): The smallest probability that Player A plays action 1 such that playing action 1 is a best response for Player B",
             min = .01,
             max = .99,
             step = .01,
@@ -66,7 +66,7 @@ navbarPage(
                        "Regenerate"),
           sliderInput(
             "animation",
-            "Animation:",
+            "Possible evolution of play leading to a convention (click play):",
             min = 1,
             max = 30,
             step = 1,

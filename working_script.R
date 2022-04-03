@@ -301,18 +301,18 @@ makeAnimation = function(m, s, a, b, scenario) {
     #filter data by current period, extract number of each action in each player sample.
     hA_evo_tib_i = hA_evo_tib %>%
       filter(period == i)
-    P2counts = hA_evo_tib_i %>%
+    PBcounts = hA_evo_tib_i %>%
       filter(sample == 1)
-    P2count1 = as.numeric(sum(P2counts$record ==1))
-    P2count0 = as.numeric(sum(P2counts$record ==0))
+    PBcount1 = as.numeric(sum(PBcounts$record ==1))
+    PBcount0 = as.numeric(sum(PBcounts$record ==0))
     
     
     hB_evo_tib_i = hB_evo_tib %>%
       filter(period == i)
-    P1counts = hB_evo_tib_i %>%
+    PAcounts = hB_evo_tib_i %>%
       filter(sample == 1)
-    P1count1 = as.numeric(sum(P1counts$record ==1))
-    P1count0 = as.numeric(sum(P1counts$record ==0))
+    PAcount1 = as.numeric(sum(PAcounts$record ==1))
+    PAcount0 = as.numeric(sum(PAcounts$record ==0))
     
     anim = ggplot() +
       geom_point(
@@ -352,7 +352,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         x = -1.2 * m - 2,
         y = 1,
         size = 5,
-        label = "Player 1 Memory (Player 2 History)",
+        label = "Player A Memory (Player B History)",
         color = "black"
       ) +
       annotate(
@@ -360,7 +360,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         x = -1.2 * m - 2,
         y = 0,
         size = 5,
-        label = "Player 2 Memory (Player 1 History)",
+        label = "Player B Memory (Player A History)",
         color = "black"
       ) +
       annotate(
@@ -378,7 +378,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         x = -1.13 * m - 1.82,
         y = 8,
         size = 5,
-        label = paste0("Needed to make 1 a BR for Player 1: ", ceiling(a*s)),
+        label = paste0("Needed to make 1 a BR for Player A: ", ceiling(a*s)),
         color = "black",
         hjust = "left"
       ) +
@@ -397,7 +397,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         x = -1.13 * m - 1.82,
         y = 7,
         size = 5,
-        label = paste0("Needed to make 0 a BR for Player 1: ", ceiling((1-a)*s)),
+        label = paste0("Needed to make 0 a BR for Player A: ", ceiling((1-a)*s)),
         color = "black",
         hjust = "left"
       ) +
@@ -416,7 +416,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         x = -1.13 * m - 1.82,
         y = 6,
         size = 5,
-        label = paste0("Count: ", P1count1),
+        label = paste0("Count: ", PAcount1),
         color = "black",
         hjust = "left"
       ) +
@@ -435,7 +435,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         x = -1.13 * m - 1.82,
         y = 5,
         size = 5,
-        label = paste0("Count: ", P1count0),
+        label = paste0("Count: ", PAcount0),
         color = "black",
         hjust = "left"
       ) +
@@ -444,7 +444,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         x = -.55 * m,
         y = 4,
         size = 5,
-        label = "Best Response for Player 1:",
+        label = "Best Response for Player A:",
         color = "black",
         hjust = "right"
       ) +
@@ -456,7 +456,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         stroke = 1,
         size = 5,
         color = "black",
-        fill = ifelse(P1count1 >= a*s, "yellow", "blue")
+        fill = ifelse(PAcount1 >= a*s, "yellow", "blue")
       ) +
       annotate(
         "point",
@@ -473,7 +473,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         x = -1.13 * m - 1.82,
         y = -3,
         size = 5,
-        label = paste0("Needed to make 1 a BR for Player 2: ", ceiling(b*s)),
+        label = paste0("Needed to make 1 a BR for Player B: ", ceiling(b*s)),
         color = "black",
         hjust = "left"
       ) +
@@ -492,7 +492,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         x = -1.13 * m - 1.82,
         y = -4,
         size = 5,
-        label = paste0("Needed to make 0 a BR for Player 2: ", ceiling((1-b)*s)),
+        label = paste0("Needed to make 0 a BR for Player B: ", ceiling((1-b)*s)),
         color = "black",
         hjust = "left"
       ) +
@@ -511,7 +511,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         x = -1.13 * m - 1.82,
         y = -5,
         size = 5,
-        label = paste0("Count: ", P2count1),
+        label = paste0("Count: ", PBcount1),
         color = "black",
         hjust = "left"
       ) +
@@ -530,7 +530,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         x = -1.13 * m - 1.82,
         y = -6,
         size = 5,
-        label = paste0("Count: ", P2count0),
+        label = paste0("Count: ", PBcount0),
         color = "black",
         hjust = "left"
       ) +
@@ -539,7 +539,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         x = -.55 * m,
         y = -7,
         size = 5,
-        label = "Best Response for Player 2:",
+        label = "Best Response for Player B:",
         color = "black",
         hjust = "right"
       ) +
@@ -551,7 +551,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         stroke = 1,
         size = 5,
         color = "black",
-        fill = ifelse(P2count1 >= b*s, "yellow", "blue")
+        fill = ifelse(PBcount1 >= b*s, "yellow", "blue")
       )
     animation[[(i+1)]] = anim 
   }

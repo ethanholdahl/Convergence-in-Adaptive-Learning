@@ -3,9 +3,6 @@
 
 ## Load and install the packages
 library("tidyverse")
-library("gganimate")
-library("gifski")
-library("png")
 library("shiny")
 theme_set(theme_minimal())
 

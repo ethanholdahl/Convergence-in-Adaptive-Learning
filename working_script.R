@@ -95,8 +95,9 @@ makeAnimation = function(m, s, a, b, scenario) {
     aB = ifelse(sum(sB / s) >= b, 1, 0)
     
     #if aA == aB then the randomized history does not give us the desired scenario.
-    if (aA == aB)
+    if (aA == aB){
       next
+    }
     
     #define rA and rB as the number of records in sample matching aA and aB respectively
     #that need to be removed for the BR to change.
@@ -120,8 +121,9 @@ makeAnimation = function(m, s, a, b, scenario) {
       j = j + 1
     }
     #if j == k then the randomized history gives us the desired scenario. Exit generation
-    if (j == k)
+    if (j == k){
       break
+    }
   }
   
   while (scenario == "Random") {
@@ -168,17 +170,23 @@ makeAnimation = function(m, s, a, b, scenario) {
     k = 0
   }
   
+  
+  
   #record the evolution of memory in data frames.
+  #jk = the period at which the first best response changes
   jk = min(j, k)
   memory_slots = character(m)
   
+  #create memory slot names for tibble
   for (i in 1:(m)) {
     memory_slots[m + 1 - i] = (paste0("m", i))
   }
   
-  hA_evo = data.frame(matrix(nrow = jk + m, ncol = m))
-  hB_evo = data.frame(matrix(nrow = jk + m, ncol = m))
+  #initialize data frame for history
+  hA_evo = data.frame(matrix(nrow = jk + m + 1, ncol = m))
+  hB_evo = data.frame(matrix(nrow = jk + m + 1, ncol = m))
   
+  #assign column names
   colnames(hA_evo) = memory_slots
   colnames(hB_evo) = memory_slots
   
@@ -187,21 +195,25 @@ makeAnimation = function(m, s, a, b, scenario) {
     #If scenario is not "Switch Same" we can ensure a convention is met by sampling
     #the most recent s records jk+m times (jk periods until coordination, m to fill memory).
     
-    i = 0
+    
+    i = -1
     while (i < (jk + m)) {
+      #record starting history as period 0
       i = i + 1
+      hA_evo[(i+1),] = (tail(hA, m))
+      hB_evo[(i+1),] = (tail(hB, m))
       
+      #take new sample of most recent s records
       sA = tail(hB, s)
       sB = tail(hA, s)
       
+      #calculate BR
       aA = ifelse(sum(sA / s) >= a, 1, 0)
       aB = ifelse(sum(sB / s) >= b, 1, 0)
       
+      #insert BR into history
       hA = c(hA, aA)
       hB = c(hB, aB)
-      
-      hA_evo[i,] = (tail(hA, m))
-      hB_evo[i,] = (tail(hB, m))
     }
   } else {
     #Scenario is "Switch Same". Since both best responses change after the same period
@@ -215,9 +227,13 @@ makeAnimation = function(m, s, a, b, scenario) {
     #This works because 2. stops player A from flipping their BR until their whole sample is
     #the same action.
     
-    i = 0
+    i = -1
     while (i < (jk + m)) {
+      #record starting history as period 0
       i = i + 1
+      
+      hA_evo[(i+1),] = (tail(hA, m))
+      hB_evo[(i+1),] = (tail(hB, m))
       
       if (i > (jk - 1) & i < (jk + s + 1)) {
         sA = tail(hB, s + 1)[-(jk + s + 1 - i)]
@@ -231,53 +247,60 @@ makeAnimation = function(m, s, a, b, scenario) {
       
       hA = c(hA, aA)
       hB = c(hB, aB)
-      
-      hA_evo[i,] = (tail(hA, m))
-      hB_evo[i,] = (tail(hB, m))
     }
   }
   
   #Transform evolution of histories to long form data for plotting
   hA_evo_tib = as_tibble(hA_evo)
+  #assign periods based on row position
   hA_evo_tib = hA_evo_tib %>%
-    mutate(period = 1:(jk + m))
+    mutate(period = 0:(jk + m))
+  #transform to long form data
   hA_evo_tib = gather(hA_evo_tib, position, record, all_of(memory_slots))
+  #transform memory slot name to numeric position
   hA_evo_tib$position = as.numeric(sub(
     pattern = "m",
     replacement = "",
     x = hA_evo_tib$position
   ))
+  #assign sample dummy to 1 is in most recent s records in a given period 
   hA_evo_tib = hA_evo_tib %>%
     mutate(sample = ifelse(position <= s, 1, 0))
   hA_evo_tib$sample = factor(hA_evo_tib$sample)
   hA_evo_tib$record = factor(hA_evo_tib$record)
   
   
-  
+  #Transform evolution of histories to long form data for plotting
   hB_evo_tib = as_tibble(hB_evo)
+  #assign periods based on row position
   hB_evo_tib = hB_evo_tib %>%
-    mutate(period = 1:(jk + m))
+    mutate(period = 0:(jk + m))
+  #transform to long form data
   hB_evo_tib = gather(hB_evo_tib, position, record, all_of(memory_slots))
+  #transform memory slot name to numeric position
   hB_evo_tib$position = as.numeric(sub(
     pattern = "m",
     replacement = "",
     x = hB_evo_tib$position
   ))
+  #assign sample dummy to 1 is in most recent s records in a given period 
   hB_evo_tib = hB_evo_tib %>%
     mutate(sample = ifelse(position <= s, 1, 0))
+  
+  
   if (scenario == "Switch Same") {
     #apply special sampling rules as outlined above
     #add position s+1 to sample for periods jk through jk+s
-    hB_evo_tib$sample[((jk + m) * (m - s - 1) + jk):((jk + m) * (m - s - 1) + jk + s)] = 1
-    #remove the record created in period jk-1
-    hB_evo_tib$sample[((jk + m) * (m - s - 1) + jk + s) + (jk + m - 1) * (0:s)] = 0
+    hB_evo_tib$sample[((jk + m + 1) * (m - s - 1) + jk + 1):((jk + m + 1) * (m - s - 1) + jk + s + 1)] = 1
+    #remove the record created in period jk-1 in periods jk through jk+s
+    hB_evo_tib$sample[((jk + m + 1) * (m - s - 1) + jk + s + 1) + (jk + m) * (0:s)] = 0
   }
   hB_evo_tib$sample = factor(hB_evo_tib$sample)
   hB_evo_tib$record = factor(hB_evo_tib$record)
   
   
   animation = list()
-  for(i in 1:(jk + m)) {
+  for(i in 0:(jk + m)) {
     hA_evo_tib_i = hA_evo_tib %>%
       filter(period == i)
     
@@ -334,7 +357,7 @@ makeAnimation = function(m, s, a, b, scenario) {
         color = "black"
       )
     
-   animation[[i]] = anim 
+   animation[[(i+1)]] = anim 
   }
   
   
@@ -383,6 +406,12 @@ makeAnimation = function(m, s, a, b, scenario) {
   #                     renderer = gifski_renderer())
 }
 
-test = makeAnimation(13,11,a,b,"Switch Same")
+test = makeAnimation(5,3,a,b,"Switch Same")
 length(test)
+test[[1]]
 test[[2]]
+test[[3]]
+test[[4]]
+test[[5]]
+test[[6]]
+test[[7]]

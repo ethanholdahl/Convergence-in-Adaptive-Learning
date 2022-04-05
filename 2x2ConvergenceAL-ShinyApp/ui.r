@@ -18,21 +18,21 @@ navbarPage(
     tags$body(
       withMathJax(),
       h2("Convergence to a Convention in Adaptive Play in an Unperturbed 2x2 Coordination Game: A Relaxation of the Bounds of s"),
-      helpText("Young 1993\\(^1\\), established that in 2x2 coordination games a convention can be reached under unperturbed adaptive play dynamics given that the sample size (s) was sufficiently small compared to the memory size (m). 
+      HTML("Young 1993\\(^1\\), established that in 2x2 coordination games a convention can be reached under unperturbed adaptive play dynamics given that the sample size (s) was sufficiently small compared to the memory size (m). 
                The limit of this bound was \\(k \\leq m / (L\\_r+2)\\) where \\(L\\_r\\) is the maximum of the set of lengths of the shortest directed  path in the best reply graph from \\(s\\) to a strict Nash equilibrium. 
                The bounds of this limit was expanded in Young 2020 \\(^2\\) to simply requiring \\(s/m \\leq 1/2\\). In both cases, Young did not claim that the bound on \\(s/m\\) was the best possible.
                Here, I prove that any degree of incompleteness, \\(s<m\\) is a sufficient amount of incompleteness for conventions arise in the unperturbed proccess."),
       br(),
-      helpText("The sampling algorithm that makes the proof work is essentially the following:"),
+      HTML("The sampling algorithm that makes the proof work is essentially the following:"),
       br(),
-      helpText("1. Both players sample the most recent \\(s\\) records available."),
-      helpText("2. If players have different best responses, continue to sample the most recent \\(s\\) records until atleast one player's best response changes."),
-      helpText("3. If at any point both players have the same best response when sampling the most recent \\(s\\) records then if they continue to sample the most recent \\(s\\) records for \\(m\\) periods a convention will be reached and locked into."),         
-      helpText("4. If instead, there is a period where both players best responses flip simultaneously call this period \\(t\\)."),
-      helpText("5. For one player, have them sample the most recent \\(s\\) records from period \\(t+1\\) through period \\(t+m\\)."),
-      helpText("5. For the other player, have them sample the most recent \\(s+1\\) records excluding the record created in period \\(t\\) from period \\(t+1\\) through period \\(t+m\\)."),
+      HTML("1. Both players sample the most recent \\(s\\) records available."),
+      HTML("2. If players have different best responses, continue to sample the most recent \\(s\\) records until atleast one player's best response changes."),
+      HTML("3. If at any point both players have the same best response when sampling the most recent \\(s\\) records then if they continue to sample the most recent \\(s\\) records for \\(m\\) periods a convention will be reached and locked into."),         
+      HTML("4. If instead, there is a period where both players best responses flip simultaneously call this period \\(t\\)."),
+      HTML("5. For one player, have them sample the most recent \\(s\\) records from period \\(t+1\\) through period \\(t+m\\)."),
+      HTML("5. For the other player, have them sample the most recent \\(s+1\\) records excluding the record created in period \\(t\\) from period \\(t+1\\) through period \\(t+m\\)."),
       br(),
-      helpText("The above algorithm works as long as \\(s < m\\). For an interactive and visual representation of the dynamics in action, please input any variables you like and use the application below.
+      HTML("The above algorithm works as long as \\(s < m\\). For an interactive and visual representation of the dynamics in action, please input any variables you like and use the application below.
                The full rigorous proof is available to read or download just below the application."),
       verticalLayout(
         wellPanel(
@@ -97,8 +97,8 @@ navbarPage(
                   src = "Convergence_to_a_Convention_in_a_2x2_Coordination_Game.pdf"),
       ),
       h3("References"),
-      helpText('1. Young, H. Peyton. "The evolution of conventions." Econometrica: Journal of the Econometric Society (1993): 57-84.'),
-      helpText("2. Young, H. Peyton. Individual strategy and social structure. Princeton University Press, 2020.")
+      HTML('1. Young, H. Peyton. "The evolution of conventions." Econometrica: Journal of the Econometric Society (1993): 57-84.'),
+      HTML("2. Young, H. Peyton. Individual strategy and social structure. Princeton University Press, 2020.")
        )
   )
 )

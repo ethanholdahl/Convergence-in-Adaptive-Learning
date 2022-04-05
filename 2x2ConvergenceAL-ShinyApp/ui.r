@@ -33,8 +33,7 @@ navbarPage(
       helpText("5. For the other player, have them sample the most recent \\(s+1\\) records excluding the record created in period \\(t\\) from period \\(t+1\\) through period \\(t+m\\)"),
       br(),
       helpText("The above algorithm works as long as \\(s < m\\). For an interactive and visual representation of the dynamics in action, please input any variables you like and use the application below.
-               The full rigorous proof is available to read below the application, or the PDF of the proof can be downloaded using the link below."),
-      a(href="Convergence_to_a_Convention_in_a_2x2_Coordination_Game.pdf", "Download PDF of Proof", download=NA, target="_blank"),
+               The full rigorous proof is available to read or download just below the application."),
       verticalLayout(
         wellPanel(
           sliderInput(

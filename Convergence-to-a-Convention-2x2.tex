@@ -324,7 +324,7 @@ First, $j<k$.
 \vskip6pt
 
 For period $t+1+j$ both players have a positive probability of sampling the most recent $s$ records: $(x^{t-s+1+j},...,x^{t+j})$. Player B has a best response of action 1 in period $t+1+j$ if:
-$$\sum\limits_{r=t-s+1+j}^{t}\frac{x^r_A}{s}+\sum\limits_{r=t+1}^{t+j} \frac{x^r_A}{s} \geq \beta$$
+$$(12) \sum\limits_{r=t-s+1+j}^{t}\frac{x^r_A}{s}+\sum\limits_{r=t+1}^{t+j} \frac{x^r_A}{s} \geq \beta$$
 Since $j<k$, I have already shown that there is a positive probability that player A has a unique best response of playing action 1 for all periods between $t+1$ and $t+1+j$ inclusive. So, $\sum\limits_{r=t+1}^{t+j} \cfrac{x^r_A}{s}=\cfrac{j}{s}$.
 
 Which means 
@@ -336,7 +336,7 @@ Using (6), we know:
 
 $$\frac{j-1}{s}+\sum\limits_{r=t-s+1+j}^{t+1} \frac{x^r_A}{s} \geq \beta$$
 
-which means that action 1 is a best response for Player B in period $t+1+j$.
+which means that (12) holds and action 1 is a best response for Player B in period $t+1+j$.
 
 \vskip6pt
 
@@ -350,7 +350,7 @@ Second, I consider $k<j$.
 
 For period $t+1+k$ both players have a positive probability of sampling the most recent $s$ records: $(x^{t-s+1+k},...,x^{t+k})$. Player A has a best response of action 0 in period $t+1+k$ if:
 
-$$\sum\limits_{r=t-s+1+k}^{t}\frac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+k} \frac{x^r_B}{s} \leq \alpha$$
+$$(13) \sum\limits_{r=t-s+1+k}^{t}\frac{x^r_B}{s}+\sum\limits_{r=t+1}^{t+k} \frac{x^r_B}{s} \leq \alpha$$
 
 Since $k<j$, I have already shown that player B has a unique best response of playing action 0 for all periods between $t+1$ and $t+1+k$ inclusive. So $\sum\limits_{r=t+1}^{t+k} \cfrac{x^r_B}{s}=0$.
 
@@ -366,7 +366,7 @@ Using (5), we know:
 
 $$\sum\limits_{r=t-s+1+k}^{t+1} \frac{x^r_B}{s} \leq \alpha$$
 
-which means that action 0 is a best response for Player A in period $t+1+k$.
+which means that (13) holds and action 0 is a best response for Player A in period $t+1+k$.
 
 \vskip6pt
 
@@ -392,7 +392,7 @@ So, there exists a positive probability that both players share a best response 
 
 Thus, I have exhausted all three scenarios: $j<k$, $k<j$, and $j=k$ and shown that a convention can be reached with a positive probability in Case 2.
 
-\vskip18pt
+\vskip12pt
 
 Since I have shown that a convention can be reached with positive probability in both Case 1 and Case 2 I have proven that from any initial state when $s<m$ and $\epsilon=0$ a convention can be reached with positive probability and lock in. Since a convention can be reached from any arbitrary state and since conventions are absorbing states we know that as $T \rightarrow \infty$ that $h^T$, the state at time $T$ converges with probability one to a convention in and locks in. $\blacksquare$
 

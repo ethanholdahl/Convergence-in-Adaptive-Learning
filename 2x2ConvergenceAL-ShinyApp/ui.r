@@ -93,10 +93,10 @@ navbarPage(
         # Show a plot of the generated distribution
         plotOutput("gifconverge")
       ),
-      
-      tags$iframe(style = "height:400px; width:100%; scrolling=yes", 
-                  src = "https://shiny.ethanholdahl.com/ConvergenceToConventionAP/ConvergenceConvergence_to_a_Convention_in_a_2x2_Coordination_Game.pdf"),
-      
+      wellPanel(
+      tags$iframe(style = "height:800px; width:100%; scrolling=yes", 
+                  src = "Convergence_to_a_Convention_in_a_2x2_Coordination_Game.pdf"),
+      ),
       h3("References"),
       helpText('1. Young, H. Peyton. "The evolution of conventions." Econometrica: Journal of the Econometric Society (1993): 57-84.'),
       helpText("2. Young, H. Peyton. Individual strategy and social structure. Princeton University Press, 2020.")

@@ -101,7 +101,7 @@ navbarPage(
       ),
       a(href="Convergence_to_a_Convention_in_a_2x2_Coordination_Game.pdf", "Open proof pdf in a new tab", target="_blank", rel="noopener noreferrer"),
       wellPanel(
-      tags$iframe(style = "height:800px; width:100%; scrolling=yes", 
+      tags$iframe(style = "height:600px; width:100%; scrolling=yes", 
                   src = "Convergence_to_a_Convention_in_a_2x2_Coordination_Game.pdf"),
       ),
       h3("References"),

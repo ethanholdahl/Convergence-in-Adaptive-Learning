@@ -12,7 +12,7 @@ fluidPage(
   #theme = shinytheme("sandstone"),
   tags$head(HTML("<title> Convergence to a Convention in Adaptive Play by Ethan Holdahl </title>")),
 navbarPage(
-  title = HTML("Convergence to a Convention in Adaptive Play by <a href='https://ethanholdahl.com'>Ethan Holdahl</a>"),
+  title = HTML('Convergence to a Convention in Adaptive Play by <a href="https://ethanholdahl.com/" style="color: darkgreen; text-decoration: none">Ethan Holdahl</a>'),
   tabPanel(
     "Unperturbed 2x2 Coordination Game",
     tags$body(
@@ -36,7 +36,7 @@ navbarPage(
       br(),
       HTML("5. For one player, have them sample the most recent \\(s\\) records from period \\(t+1\\) through period \\(t+m\\)."),
       br(),
-      HTML("5. For the other player, have them sample the most recent \\(s+1\\) records excluding the record created in period \\(t\\) from period \\(t+1\\) through period \\(t+m\\)."),
+      HTML("6. For the other player, have them sample the most recent \\(s+1\\) records excluding the record created in period \\(t\\) from period \\(t+1\\) through period \\(t+m\\)."),
       br(),
       br(),
       HTML("The above algorithm works as long as \\(s < m\\). For an interactive and visual representation of the dynamics in action, please input any variables you like and use the application below.
@@ -104,6 +104,7 @@ navbarPage(
       tags$iframe(style = "height:700px; width:100%; scrolling=yes", 
                   src = "Convergence_to_a_Convention_in_a_2x2_Coordination_Game.pdf"),
       ),
+      HTML('<a href="https://github.com/ethanholdahl/Convergence-in-Adaptive-Learning"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ethanholdahl&amp;repo=Convergence-in-Adaptive-Learning&amp;title_color=17363b&amp;text_color=833707&amp;bg_color=9aa8ab&amp;border_color=9aa8ab&amp;icon_color=17363b" alt="Readme Card"></a>'),
       h3("References"),
       helpText('1. Young, H. Peyton. "The evolution of conventions." Econometrica: Journal of the Econometric Society (1993): 57-84.'),
       helpText("2. Young, H. Peyton. Individual strategy and social structure. Princeton University Press, 2020.")

@@ -10,15 +10,15 @@ library("shiny")
 # Define UI for the application
 fluidPage(
   #theme = shinytheme("sandstone"),
-  tags$head(HTML("<title> Convergence to a Convention in Adaptive Play by Ethan Holdahl </title>")),
+  tags$head(HTML("<title> Convergence to a Convention in Adaptive Learning by Ethan Holdahl </title>")),
 navbarPage(
-  title = HTML('Convergence to a Convention in Adaptive Play by <a href="https://ethanholdahl.com/" style="color: darkgreen; text-decoration: none">Ethan Holdahl</a>'),
+  title = HTML('Convergence to a Convention in Adaptive Learning by <a href="https://ethanholdahl.com/" style="color: darkgreen; text-decoration: none">Ethan Holdahl</a>'),
   tabPanel(
     "Unperturbed 2x2 Coordination Game",
     tags$body(
       withMathJax(),
-      h2("Convergence to a Convention in Adaptive Play in an Unperturbed 2x2 Coordination Game: A Relaxation of the Bounds of s"),
-      HTML("Young 1993\\(^1\\), established that in 2x2 coordination games a convention can be reached under unperturbed adaptive play dynamics given that the sample size (s) was sufficiently small compared to the memory size (m). 
+      h2("Convergence to a Convention in Adaptive Learning in an Unperturbed 2x2 Coordination Game: A Relaxation of the Bounds of s"),
+      HTML("Young 1993\\(^1\\), established that in 2x2 coordination games a convention can be reached under unperturbed adaptive learning dynamics given that the sample size (s) was sufficiently small compared to the memory size (m). 
                The limit of this bound was \\(s \\leq m / (L\\_r+2)\\) where \\(L\\_r\\) is the maximum of the set of lengths of the shortest directed  path in the best reply graph from any initial vertex to a strict Nash equilibrium. 
                The bounds of this limit was expanded in Young 2020 \\(^2\\) to simply requiring \\(s/m \\leq 1/2\\). In both cases, Young did not claim that the bound on \\(s/m\\) was the best possible."),
       br(),

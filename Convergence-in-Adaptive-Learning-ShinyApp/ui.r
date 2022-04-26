@@ -100,12 +100,12 @@ navbarPage(
         HTML("<a name='historygif'></a>"),
         plotOutput("gifconverge")
       ),
-      a(href="Convergence_to_a_Convention_in_a_2x2_Coordination_Game.pdf", "Open proof pdf in a new tab", target="_blank", rel="noopener noreferrer"),
+      a(href="Convergence_to_a_Convention_in_a_2x2_Coordination_Game.pdf", "Open proof pdf in a new tab", style = "color: darkgreen", target="_blank", rel="noopener noreferrer"),
       wellPanel(
       tags$iframe(style = "height:700px; width:100%; scrolling=yes", 
                   src = "Convergence_to_a_Convention_in_a_2x2_Coordination_Game.pdf"),
       ),
-      HTML('<a href="https://github.com/ethanholdahl/Convergence-in-Adaptive-Learning"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ethanholdahl&amp;repo=Convergence-in-Adaptive-Learning&amp;title_color=17363b&amp;text_color=833707&amp;bg_color=9aa8ab&amp;border_color=9aa8ab&amp;icon_color=17363b" alt="Readme Card"></a>'),
+      HTML('<a href="https://github.com/ethanholdahl/Convergence-in-Adaptive-Learning"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ethanholdahl&amp;repo=Convergence-in-Adaptive-Learning&amp;title_color=004623&amp;text_color=462300&amp;bg_color=FFFFF&amp;border_color=004623&amp;icon_color=330046" alt="Readme Card"></a>'),
       h3("References"),
       helpText('1. Young, H. Peyton. "The evolution of conventions." Econometrica: Journal of the Econometric Society (1993): 57-84.'),
       helpText("2. Young, H. Peyton. Individual strategy and social structure. Princeton University Press, 2020.")

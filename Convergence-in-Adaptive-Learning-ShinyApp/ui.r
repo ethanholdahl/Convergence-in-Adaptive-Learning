@@ -97,6 +97,7 @@ navbarPage(
         
         
         # Show a plot of the generated distribution
+        HTML("<a name='historygif'></a>"),
         plotOutput("gifconverge")
       ),
       a(href="Convergence_to_a_Convention_in_a_2x2_Coordination_Game.pdf", "Open proof pdf in a new tab", target="_blank", rel="noopener noreferrer"),

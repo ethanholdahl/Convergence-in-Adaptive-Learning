@@ -63,7 +63,7 @@
 \newpage
 
 \section{Introduction}
-With over 1000 citations, \cite{young1993evolution} is a seminal paper in the field of evolutionary game theory. In it, Young introduces a model of learning called adaptive play in which players best respond to a sampled history of play. Young proved that if the sampling in the available history by the players is sufficiently incomplete, that play will eventually converge to a convention, a self-enforcing pattern of play where the same Nash equilibrium is played in each period. Through this backward looking best response behavior, Young offers an explanation for how order and norms can spontaneously evolve in populations.
+With over 1000 citations, \cite{young1993evolution} is a seminal paper in the field of evolutionary game theory. In it, Young introduces a model of learning called adaptive play in which players best respond to a sampled history of play. Young proved that play will eventually converge to a convention, a self-enforcing pattern of play where the same Nash equilibrium is played in each period, if the sampling in the available history by the players is sufficiently incomplete. Through this backward looking best response behavior, Young offers an explanation for how order and norms can spontaneously evolve in populations.
 
 In the process of adaptive play, occasionally players make mistakes and play an action that is not a best response. Such instances are called perturbations and allow the perturbed adaptive play process to escape a convention and travel to another one. The resistance of moving from one convention to another is measured by the number of mistakes that are necessary to move the process into the basin of attraction of the latter convention. The conventions that require the most mistakes to move from and/or the fewest to move to are most likely to be played in the long run. Such conventions are said to be stochastically stable. The theory of adaptive play, sometimes called adaptive learning or fictitious play with bounded memory, and its most celebrated result, identifying the 
 stochastically stable patterns of play, have since been applied to a wide variety of games. We restrict the scope of our literature review here to games with finitely many strategies 
@@ -80,21 +80,23 @@ Although acknowledged by Young in his 1998 book, "We do not claim the bound on i
 The literature we review applies adaptive learning to a variety of games with a focus on finding different criteria for stochastic stability. \cite{maruta1997relationship} and \cite{ellison2000basins} independently introduced the idea of global risk dominance,\footnote{The terminology "global risk dominance" was introduced in \cite{maruta1997relationship}.}  which indicates the existence of an action that risk dominates every other strategy in a game, and showed that the stochastic adaptive learning process of \cite{young1993evolution} selects the globally risk dominant strategy if there is one.
 
 \cite{durieu2011adaptive} applied Young's adaptive play model to the concept of $p$-best response sets. 
-The idea of $p$-dominant equilibrium, first introduced by \cite{morris1995p}, was adapted by \cite{tercieux2006p} to create the concept of $p$-best response sets. A $p$-best response set is a set of strategy profiles such that when all players believe all other player(s) will collectively play a strategy profile within the $p$-best response set with at least probability $p$ then the best response(s) of all players are strategies within the $p$-best response set. A $p$-best response set with $p=1$ is therefore equivalent to the concept of a so-called curb set as introduced by \cite{basu1991strategy} and discussed in Chapter 7 of \cite{Young1998}. 
-A $p$-best response set is said to be minimal if it contains no $p$-best response proper subsets.  \cite{durieu2011adaptive} show that in n-person games if $p$ is sufficiently small, then only the strategy profiles contained within the 
-unique minimal $p$-best response set can be stochastically stable given perturbation rates 
-are also sufficiently small. Note that this method does not necessarily make as sharp a prediction as \cite{young1993evolution} since a $p$-best response set may contain multiple conventions.
+The idea of $p$-dominant equilibrium, first introduced by \cite{morris1995p}, was adapted by \cite{tercieux2006p} to create the concept of $p$-best response sets.
+A $p$-best response set is a cartesian product of strategies for each player such that when all players believe all other player(s) will play a strategy contributing to the $p$-best response set with at least probability $p$ then the best response(s) of all players are strategies contributing to the $p$-best response set.
+A $p$-best response set with $p=1$ is therefore equivalent to the concept of a so-called curb set as introduced by \cite{basu1991strategy} and discussed in the context of adaptive play in Chapter 7 of \cite{Young1998}. 
+A $p$-best response set is said to be minimal if it contains no proper subsets which are also $p$-best response sets.  \cite{durieu2011adaptive} show that in n-person games, if $p$ is sufficiently small then there is a unique minimal $p$-best response set and only the strategy profiles contained within the 
+unique minimal $p$-best response set can be stochastically stable given perturbation rates are also sufficiently small.
+Note that this method does not necessarily make as sharp a prediction as \cite{young1993evolution} since a $p$-best response set may contain multiple conventions of which not all are stochastically stable.
 
 Breaking off from the canonical model, adaptive play has also been modified to fit a cognitive hierarchy framework \citep{saez1999clever, matros2003clever, khan2014cognitive}. This branch of theory allows for variability in the degree of sophistication through which players compute their best response, similar to level-k thinking as introduced by \cite{nagel1995unraveling}. In Young's model of adaptive play, agents are backwards looking and best respond to their sample of their opponents' play. \cite{saez1999clever} and \cite{matros2003clever} refer to these players as "not clever" and \cite{khan2014cognitive} refers to them as "level-1" individuals. One step higher on the cognitive scale are the "clever" and "level-2" individuals. These players sample their own history of play, compute their 
 opponents' best responses to that, and then play their own best response to their opponents' predicted play. 
 \cite{saez1999clever} and \cite{matros2003clever} cap the cognitive hierarchy at level-2 whereas \cite{khan2014cognitive} allows higher levels and moreover has even-leveled individuals sample their own history and odd-leveled individuals sample their opponents' history. 
-\cite{saez1999clever} studies bargaining games, \cite{matros2003clever} studies generic two-player games, and \cite{khan2014cognitive} covers both of these. All find that introducing "clever" agents can change which states are stochastically stable. \cite{matros2003clever} and \cite{khan2014cognitive} find that play still converges to a minimal curb set provided that sampling is sufficiently incomplete, $s \leq m/2$.
+\cite{saez1999clever} studies bargaining games, \cite{matros2003clever} studies generic two-player games, and \cite{khan2014cognitive} covers both of these. All three impose $s \leq m/2$\footnote{The authors allow for different roles in the game to have different sample sizes but impose the upper limit of $m/2$ for all samples.} and find that introducing "clever" agents can change which states are stochastically stable. \cite{matros2003clever} and \cite{khan2014cognitive} find that play with "clever" agents still converges to a minimal curb set.
 
 \cite{jensen2005evolution} applies adaptive play to static $2$-player games of incomplete information. They allow for different types of players within the class of players for each role in the game, where  each type of player creates their own history. In each period, only the memories of the types who are selected to play are updated, and those of the other types remain unchanged. Players know the distribution of types in the other classes and sample for each type from the most recent $m$ periods in which that type played, and then weight their sample by the prevalence of each type and subsequently compute their best response. 
 \cite{jensen2005evolution} examines in detail a $2\times 2$ game of chicken with incomplete information and leverages the condition $s<m/4$ (which they obtain by applying Theorem 1 in  \cite{young1993evolution})
-to show that the basic learning process converges to a convention and that convention may be one that "lacks coordination" where not all types for the same player play the same strategy. Depending on the payoffs in the game, this "uncoordinated" convention can be stochastically stable. 
+to show that the basic learning process converges to a convention and that convention may be one which "lacks coordination" where not all types for the same player play the same strategy. Depending on the payoffs in the game, this "uncoordinated" convention can be stochastically stable. 
 
-In our paper we show that \textit{any} degree of incomplete sampling is sufficient for the unperturbed adaptive play process to converge to an equilibrium in $2\times 2$ coordination games from any given history. In addition, we show that in all but some $2 \times 2$ games that incomplete information is unnecessary. We also show that increasing the sample size beyond $s/m \leq 1/2$ may result in increased levels of resistance between conventions, that is to say, increasing the sample size may make conventions more stable. However, even though the resistance between conventions may change, we show that this change does not affect which convention(s) are stochastically stable when sampling is incomplete ($s<m$).
+In our paper we show that \textit{any} degree of incomplete sampling is sufficient for the unperturbed adaptive play process to converge to an equilibrium in $2\times 2$ coordination games from any given history. In addition, we show that incomplete information is unnecessary in all but some $2 \times 2$ games. We also show that increasing the sample size beyond $s/m \leq 1/2$ may result in increased levels of resistance between conventions, that is to say, increasing the sample size may make conventions more stable. However, even though the resistance between conventions may change, we show that this change does not affect which convention(s) are stochastically stable when sampling is incomplete ($s<m$).
 
 \section{Adaptive play in $2\times 2$ coordination games}
 
@@ -119,7 +121,7 @@ Anne: I added a footnote.
 For each role (player position)~$i\in N$ in game~$G$, there is a class of players $C_i$ who can play that role. No player can play in more than one role ($C_1\cap C_2=\emptyset$). 
 In each period $t$, a player is drawn from each class, and the two players that are drawn play the game $G$ -- each player~$i$ chooses an action $s_i(t)\in A_i$ from the actions available to them in their role. 
 The action-tuple $s(t) = (s_1(t), s_2(t))$ is recorded and will be referred to as the play at time $t$. 
-The history of plays up to and including time $t$ is the ordered vector $h(t) = (s(1), s(2), s(3), ..., s(t))$, and the history of the last $m$ plays is the ordered vector $h(t\mid m) = (s(t-m+1), s(t-m+2), ..., s(t))$.
+The history of plays up to and including time $t$ is the ordered vector $h(t) = (s(1), s(2), s(3), ..., s(t))$, and the history of the last $m$ plays, called a state, is the ordered vector $h(t\mid m) = (s(t-m+1), s(t-m+2), ..., s(t))$.
 
 In period $t+1$, the player in role~$i$ draws a sample $R_i^{t+1}$ of size $k$ from the $m$ most recent plays $s_j(t-m+1), s_j(t-m+2), \ldots, s_j(t)$ by the players in role~$j\neq i$. 
 Player~$i$ predicts that the players in role~$j$ play a mixed strategy $p_j(\cdot | R_i^{t+1})$ that is the frequency distribution of the actions in the sample drawn: $p_j(s_j | R_i^{t+1})$ equals the number of times that action $s_j$ occurs in the sample $R_i^{t+1}$ divided by $k$, for each $s_j\in A_j$. 
@@ -136,7 +138,7 @@ The decision making process described above is called unperturbed adaptive play 
 
 
 \begin{definition}
-A {\emph{convention}} is a history $h$ that consists of $m$ repetitions of the same Nash equilibrium $s^*$ of the game~$G$.
+A {\emph{convention}} is a state $h(t\mid m)$ that entirely consists of $m$ repetitions of the same Nash equilibrium $s^*$ of the game~$G$.
 \end{definition}
 
 When a convention is reached in which the Nash equilibrium $s^*$ is played, then the players can only sample the others playing their part of $s^*$ and thus all players have a best response to play their part of~$s^*$. That means that adaptive play predicts that the players can keep playing $s^*$ in all subsequent periods. If the Nash equilibrium $s^*$ is strict, then the best responses are unique and, without perturbations, the players will keep playing $s^*$ indefinitely. 
@@ -395,12 +397,14 @@ $\blacksquare$
 
 \section{Perturbed adaptive play in $2 \times 2$ games}
 
-Now consider the adaptive play process as modeled in Section 2 but where players have a small probability of playing an action that is not their best response. Specifically, in every round players now play a strategy at random with probability $\epsilon$ and with probability $1-\epsilon$ they play a best response to their drawn sample, $R_i^{t}$. As such, if there is an action that is not apart of the set of best responses to the sampled memory, it is played with probability $\epsilon$. We shall refer to such actions as \textit{mistakes}. This process is called perturbed adaptive play. Allowing for a probability of mistakes makes transitions possible between conventions characterized by repeated play of strict Nash equilibria. Continuing with the setup established in section 2 where $(a_1, b_1)$ and $(a_2, b_2)$ are Nash equilibria, denote the convention of $(a_i, b_i)$ as $h_i := h(t'|m)$ for any $t'$ where $s(t'-m+1) = s(t'-m+2) = \dots = s(t') = (a_i, b_i)$. Now consider the transition from one convention to another and let $r_{i,j}^{k,m}$, which is a function of $k$ and $m$, be the least number of mistakes required to make the transition from $h_i$ to $h_j$. The value of $r_{i,j}^{k,m}$ is called the \textit{resistance} from convention $h_i$ to convention $h_j$. \cite{Young1998} shows that when $k \leq m/2$ that the resistance between conventions is independent of $m$. Between $h_2$ and $h_1$ the resistance is calculated as $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)$ and between $h_1$ and $h_2$ the resistance is calculated as 
-$\min(\lceil (1-\alpha) \times k \rceil,\lceil (1-\alpha_2) \times  k \rceil)$. We show that when $k > m/2$ that the resistance may increase and depends on $m$.
+Now consider the adaptive play process as modeled in Section 2 but where players have a small probability of playing an action that is not their best response. Specifically, in every round players now play a strategy at random with probability $\varepsilon$ and with probability $1-\varepsilon$ they play a best response to their drawn sample, $R_i^{t}$. As such, an action that is not in the set of possible best responses to samples drawn from the memory can be played with probability $\varepsilon/2$. We shall refer to such actions as \textit{mistakes}. This process is called perturbed adaptive play. Allowing for mistakes makes transitions possible between conventions even those where strict Nash equilibria are played. Continuing with the setup established in Section 2 where $(a_1, b_1)$ and $(a_2, b_2)$ are Nash equilibria, denote the convention of $(a_i, b_i)$ as $h_i$ as $m$ periods of $(a_i, b_i)$.
+Now consider the transition from $h_i$ to $h_j$. Let the resistance, $r_{i,j}^{k,m}$, be the minimum number of mistakes necessary to make the transition from $h_i$ to $h_j$ in the perturbed adaptive play process.
+\cite{Young1998} shows that when $k \leq m/2$ that the resistance between conventions is independent of $m$. From $h_2$ to $h_1$ the resistance is calculated as $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)$ and from $h_1$ to $h_2$ the resistance is calculated as 
+$\min(\lceil (1-\alpha) \times k \rceil,\lceil (1-\alpha_2) \times  k \rceil)$. We show that the resistance may increase and depends on $m$ when $k > m/2$.
 
 
 \begin{theorem}\label{Theorem_3}
-Let G be a 2$\times$2 coordination game with Nash equilibria $(a_1,b_1)$ and $(a_2,b_2)$. For all $k \leq m$ the resistance between $h_2$ and $h_1$ depends on $m$ and is calculated by $r_{2,1}^{k,m} = \min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)+\max(\lceil~\alpha_1~\times~k~\rceil+\lceil \alpha_2 \times k \rceil-m,0)$. Likewise, the resistance between $h_1$ and $h_2$ is $r^{k,m}_{1,2}=\min(\lceil (1-\alpha) \times k \rceil, \lceil (1-\alpha_2) \times  k \rceil)+\max(\lceil (1-\alpha) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0)$.
+Let G be a 2$\times$2 coordination game with Nash equilibria $(a_1,b_1)$ and $(a_2,b_2)$. For all $k \leq m$ the resistance from $h_2$ to $h_1$ depends on $m$ and is calculated by $r_{2,1}^{k,m} = \min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)+\max(\lceil~\alpha_1~\times~k~\rceil+\lceil \alpha_2 \times k \rceil-m,0)$. Likewise, the resistance from $h_1$ to $h_2$ is $r^{k,m}_{1,2}=\min(\lceil (1-\alpha) \times k \rceil, \lceil (1-\alpha_2) \times  k \rceil)+\max(\lceil (1-\alpha) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0)$.
 \end{theorem}
 
 
@@ -431,6 +435,8 @@ Player 2 & \textcolor{blue}{$b_2$} & \textcolor{blue}{$b_2$} & \textcolor{blue}{
 \hline
 \end{tabular}%
 }
+\small
+The color red denotes actions which must be mistakes. Actions colored blue can be played as a best response.
 \end{table}
 
 
@@ -443,7 +449,7 @@ Note that when $k \leq m/2$, the condition $\lceil \alpha_1 \times k \rceil + \l
 
 
 
-{\bf Case 2.} If $\lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil > m$ then in order for the transition to be made from $h_2$ to $h_1$, perturbations beyond the minimum required to change the best response of one player must be made to achieve the condition that $\lceil \alpha_1 \times k \rceil$ plays of $b_1$ and $\lceil \alpha_2 \times k \rceil$ plays of $a_1$ occur within $m$ periods. In order to achieve this condition, $a_1$ and $b_1$ must be played concurrently for a minimum of $\mu := \lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m$ periods. As such, either $b_1$ must be made as a mistake $\mu$ times before player~2 plays $b_1$ as a best response or $a_1$ must be played as a mistake during the periods where player~2 is playing $b_1$ as a best response. I describe one such path:
+{\bf Case 2.} If $\lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil > m$ then in order for the transition to be made from $h_2$ to $h_1$, perturbations beyond the minimum required to change the best response of one player must be made to achieve the condition that $\lceil \alpha_1 \times k \rceil$ plays of $b_1$ and $\lceil \alpha_2 \times k \rceil$ plays of $a_1$ occur within $m$ periods. In order to achieve this condition, $a_1$ and $b_1$ must be played concurrently for a minimum of $l:= \lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m$ periods. As such, either $b_1$ must be made as a mistake $l$ times before player~2 plays $b_1$ as a best response or $a_1$ must be played as a mistake during the periods where player~2 is playing $b_1$ as a best response. I describe one such path:
 
 Starting in period $t+1$, player~1 can make $\lceil \alpha_1 \times k \rceil$ consecutive mistakes playing $a_1$ in each period. During periods $t+1$ to $t+m-\lceil \alpha_2 \times k \rceil$, player~2 can sample no more than $\lceil \alpha_1 \times k \rceil - 1$ plays of $a_1$ so without making mistakes, they must play $b_2$ as a best response. During periods $t+m+1-\lceil \alpha_2 \times k \rceil$ to $t+\lceil \alpha_1 \times k \rceil$ player~2 can make $\mu$ mistakes playing $b_1$. 
 
@@ -455,7 +461,7 @@ Starting in period $t+1$, player~1 can make $\lceil \alpha_1 \times k \rceil$ co
 \hline
 & \multicolumn{14}{|c|}{Play} \\
 \hline
-Round \# & $t-m+1$ & $\ldots$ & $t$ & $t+1$ & $\ldots$ & $t+m-\lceil\alpha_2\times k\rceil$ & $t+m-\lceil\alpha_2\times k\rceil+1$ & $\ldots$ & $t+\lceil\alpha_1\times k\rceil$ & $t+\lceil\alpha_1\times k\rceil+1$ & $\ldots$ & $t+\lceil\alpha_1\times k\rceil+\lceil\alpha_2\times k\rceil$ & $t+\lceil\alpha_1\times k\rceil+\lceil\alpha_2\times k\rceil+1$ & $\ldots$ \\
+Round \# & $t-m+1$ & $\ldots$ & $t$ & $t+1$ & $\ldots$ & $t+m-\lceil\alpha_2\times k\rceil$ & $t+m+1-\lceil\alpha_2\times k\rceil$ & $\ldots$ & $t+\lceil\alpha_1\times k\rceil$ & $t+\lceil\alpha_1\times k\rceil+1$ & $\ldots$ & $t+\lceil\alpha_1\times k\rceil+\lceil\alpha_2\times k\rceil$ & $t+\lceil\alpha_1\times k\rceil+\lceil\alpha_2\times k\rceil+1$ & $\ldots$ \\
 \hline
 Player 1 & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_2$} & \textcolor{red}{$a_1$} & \textcolor{red}{$a_1$} & \textcolor{red}{$a_1$} & \textcolor{red}{$a_1$} & \textcolor{red}{$a_1$} & \textcolor{red}{$a_1$} & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_1$} & \textcolor{blue}{$a_1$} \\
 \hline
@@ -463,6 +469,8 @@ Player 2 & \textcolor{blue}{$b_2$} & \textcolor{blue}{$b_2$} & \textcolor{blue}{
 \hline
 \end{tabular}%
 }
+\small
+The color red denotes actions which must be mistakes. Actions colored blue can be played as a best response.
 \end{table}
 
 
@@ -474,20 +482,56 @@ As discussed, atleast $\lceil \alpha_1 \times k \rceil$ mistakes are necessary t
 
 So, in this case, the resistance from $h_2$ to $h_1$ is calculated as $r_{2,1}^{k,m} = \min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)+\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m$ which is greater than the resistance in Case~1.
 
-{\bf Conclusion.} Two complimentary cases were considered which resulted in different resistance calculations. The resistance from $h_2$ to $h_1$ can be generalized for any $k \leq m$ as $r^{k,m}_{2,1}=\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)+\max(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0)$. A similar calculation shows that the resistance from $h_1$ to $h_2$ is $r^{k,m}_{1,2}=\min(\lceil (1-\alpha) \times k \rceil,\lceil (1-\alpha_2) \times  k \rceil)+\max(\lceil (1-\alpha) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0)$.
+{\bf Conclusion.} Two complimentary cases were considered which resulted in different resistance calculations. We generalize the resistance from $h_2$ to $h_1$ for all $k \leq m$ as $r^{k,m}_{2,1}=\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)+\max(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0)$. A similar calculation shows that the resistance from $h_1$ to $h_2$ is $r^{k,m}_{1,2}=\min(\lceil (1-\alpha) \times k \rceil,\lceil (1-\alpha_2) \times  k \rceil)+\max(\lceil (1-\alpha) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0)$.
 $\blacksquare$
 
 Note that these resistance calculations are equivalent to those given by \cite{Young1998} when $k \leq m/2$. However, when $k>m/2$ the resistance may change as additional mistakes may be needed in order for the memory to simultaneously hold enough switched actions for both players. Our formulation of resistance is robust to all $k \leq m$. 
 
-*****************************************************************************
 
-Between two conventions, \cite{Young1998} showed that the one with with the lowest pairwise resistance leading to it is the pairwise risk dominant one. \cite{maruta1997relationship} showed that in if a strategy is globally pairwise risk dominant then it is stochastically stable. We just showed that pairwise resistance may change with the size of the memory when $2k > m$.  This result begs the question: does the change in resistance have any effect on pairwise risk dominance and thus, stochastic stability? We prove that for all $m > k$ that the pairwise resistance relationship remains unchanged.
+The perturbed adaptive play process as modeled defines an irreducible Markov process which has an associated unique stationary distribution $\mu^\varepsilon$. A state $h(t\mid m)^*$ is stochastically stable if $\lim \limits_{\varepsilon \rightarrow 0} \mu^\varepsilon\big(h(t\mid m)^*\big) > 0$ \cite{young1993evolution}.
 
-Consider the pairwise resistances between $h_2$ and $h_1$ as discussed above. 
+Between two conventions, \cite{Young1998} showed that a convention is stochastically stable if and only if the resistance in the transition away from it is atleast as large as the resistance in the transition towards it.
+We just showed that pairwise resistance may change with the size of the memory when $2k > m$. This result begs the question: does the change in resistance have any effect on pairwise risk dominance and thus, stochastic stability? We prove that for all $m > k$ that the pairwise resistance relationship remains unchanged.
 
-{\bf Case 1.} Assume that $r^{k,m}_{2,1} \neq r^{k,m}_{1,2}$. Without loss of generality assume $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ for $m \geq 2k$. We will show that when $m < 2k$, the inequality $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ is maintained. $k \leq m/2$, and $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ means that $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) < \min(\lceil (1-\alpha) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$. Without loss of generality assume $\alpha_1 \geq \alpha_2$. So, $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \lceil \alpha_2 \times k \rceil$ and $\min(\lceil (1-\alpha) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil) = \lceil (1-\alpha) \times k \rceil$ which means $\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha) \times k \rceil$. It follows that $\alpha_2< 1- \alpha$ which means $\alpha_1< 1 - \alpha_2$ so $\lceil \alpha_1 \times k \rceil \leq \lceil (1 - \alpha_2) \times k \rceil$. Combining $\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha) \times k \rceil$ and  $\lceil \alpha_1 \times k \rceil \leq \lceil (1 - \alpha_2) \times k \rceil$ we get $\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil$. So $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)+\max(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0) < \min(\lceil (1-\alpha) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)+\max(\lceil (1-\alpha) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0)$ which means $r^{k,m}_{2,1} < r^{k,m}_{1,2}$. So we have shown that pairwise resistance inequalities remain unchanged by $m$. 
+\begin{theorem}\label{Theorem_4}
+Given a fixed $k$, for all $m > k$ that the pairwise resistance relationship between $h_i$ and $h_j$ remains unchanged in $2 \times 2$ games.
+\end{theorem}
 
-{\bf Case 2.} Now assume $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ for $m \geq 2k$. We will show that when $k < m < 2k$, the equality $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ is maintained. $k \leq m/2$, and $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ implies that $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \min(\lceil (1-\alpha) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$. Without loss of generality assume $\alpha_1\geq \alpha_2$. So, $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \lceil \alpha_2 \times k \rceil$ and $\min(\lceil (1-\alpha) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil) = \lceil (1-\alpha) \times k \rceil$ which means $\lceil \alpha_2 \times k \rceil = \lceil (1-\alpha) \times k \rceil$. It is easily verified that $\lceil \alpha_1 \times k \rceil+\lceil (1-\alpha) \times k \rceil \in (k, k+1)$. Which means $\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil \leq k+1$. Since $k+1 \leq m$, it follows that $\max(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0) = 0$. Similar logic can be used to show $\max(\lceil (1-\alpha) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0) = 0$. Those results combined with the assumption $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \min(\lceil (1-\alpha) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$ mean that $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ when $k < m < 2k$. So we have shown that all pairwise resistance relationships remain unchanged for all $m > k$. As result, the stochastically stable state remains unchanged in 2x2 games.
+
+\textbf{Proof of Theorem~\ref{Theorem_4}.}
+
+
+Consider the pairwise resistances between $h_2$ and $h_1$. We will consider both the case where the resistance $r_{1,2}^{k,m} \neq r_{2,1}^{k,m}$ and where $r_{1,2}^{k,m} = r_{2,1}^{k,m}$ when $m \geq 2k$. We show that when the resistance does depend on $m$, when $m<2k$, the same relationship between $r_{1,2}^{k,m}$ and $r_{2,1}^{k,m}$ is maintained.
+
+{\bf Case 1.} Assume that $r^{k,m}_{2,1} \neq r^{k,m}_{1,2}$ when $m \geq 2k$. Without loss of generality assume $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ when $m \geq 2k$. We will show that when $m < 2k$, the inequality $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ is maintained. $m \geq 2k$ and $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ means that $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) < \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$. Without loss of generality assume $\alpha_1 \geq \alpha_2$. So, $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \lceil \alpha_2 \times k \rceil$ and $\min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil) = \lceil (1-\alpha_1) \times k \rceil$ which means $\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha_1) \times k \rceil$. It follows that $\alpha_2< 1- \alpha_1$ so $\alpha_1< 1 - \alpha_2$ which means $\lceil \alpha_1 \times k \rceil \leq \lceil (1 - \alpha_2) \times k \rceil$. Combining $\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha_1) \times k \rceil$ and  $\lceil \alpha_1 \times k \rceil \leq \lceil (1 - \alpha_2) \times k \rceil$ we get $\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil$.
+
+Combining that result with the initial condition, it follows that $r^{k,m}_{2,1} = \min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)+\max(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0) < \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)+\max(\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0) = r^{k,m}_{1,2}$. So we have shown that pairwise resistance inequalities remain unchanged by $m$ in this case.
+
+{\bf Case 2.} Now assume $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ when $m \geq 2k$. We will show that when $k < m < 2k$, the equality $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ is maintained. $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ when $k \leq m/2$ implies that $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$. Without loss of generality assume $\alpha_1\geq \alpha_2$. So, $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \lceil \alpha_2 \times k \rceil$ and $\min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil) = \lceil (1-\alpha_1) \times k \rceil$ which means $\lceil \alpha_2 \times k \rceil = \lceil (1-\alpha_1) \times k \rceil$. It is easily verified that $\lceil \alpha_1 \times k \rceil+\lceil (1-\alpha_1) \times k \rceil \in (k, k+1)$ and so $\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil \leq k+1$. Since $k+1 \leq m$, it follows that $\max(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0) = 0$. Similar logic can be used to show that $\max(\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0) = 0$. Those results combined with the assumption $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$ mean that $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ for all $m > k$ in this case.
+
+{\bf Conclusion.} The two cases are exhaustive. So, we have shown that all pairwise resistance relationships remain unchanged for all $m > k$ given $k$ is fixed.
+$\blacksquare$
+
+The result of Theorem~\ref{Theorem_4} imply that the states which are stochastically stable remain unchanged in 2x2 games as a result of the changed resistance when $k<m<2k$.
+
+\begin{example}\label{Example_Theorem_4} Consider the $2\times 2$ coordination game 
+%\centering
+$$\begin{tabular}{cc|c|c|}
+      & \multicolumn{1}{c}{} & \multicolumn{2}{c}{Player 2}\\
+      & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$b_1$}  & \multicolumn{1}{c}{$b_2$} \\\cline{3-4}
+      \multirow{2}*{Player 1}  & $a_1$ & ${10,11}$ & $0,0$ \\\cline{3-4}
+      & $a_2$ & $0,1$ & ${10,10}$ \\\cline{3-4}
+    \end{tabular}
+$$
+
+Suppose that $k = 10$ and consider the resistances between $h_1$ and $h_2$. Note that in this game $\alpha_1 = 9/20$ and $\alpha_2 = 1/2$. As such, $\lceil \alpha_1 \times k \rceil = \lceil \alpha_2 \times k \rceil = \lceil (1-\alpha_2) \times k \rceil = 5$ and $\lceil (1-\alpha_2) \times k \rceil = 6$. As result, for all $m > k = 10$ the resistances between $h_1$ and $h_2$ are equal, $r_{1,2}^{k,m} = r_{2,1}^{k,m} = 5$ and as such, both $h_1$ and $h_2$ are stochastically stable. Now consider $m = k = 10$. In this case, the resistance from $h_1$ to $h_2$ increases: $r_{1,2}^{k,m} = 6$ while the resistance from $h_2$ to $h_1$ remains unchanged: $r_{2,1}^{k,m} = 5$. As result, only $h_1$ would be stochastically stable.
+\end{example}
+
+Example~\ref{Example_Theorem_4} shows that the value of $m$ can affect which states are stochaistically stable. However, as Case 1 in Theorem~\ref{Theorem_4} shows, this can only occur when the resistances between conventions are equal when $m$ is not a factor in the resistance calculation ($m>2k$). 
+
+\medskip
+\noindent
+
 
 \section{Conclusion}
 

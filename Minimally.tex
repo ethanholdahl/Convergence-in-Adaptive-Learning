@@ -116,12 +116,11 @@ $p_1(a_1) \geq \alpha_1 := \frac{u_2(a_2,b_2)-u_2(a_2,b_1)}{u_2(a_1,b_1)-u_2(a_2
 \subsection{Adaptive play in 2-player games}
  
 We study adaptive play \citep{young1993evolution} with memory $m$ and sample size $1<k\leq m$ of the game~$G$, as explained below.\footnote{Throughout, we use $k$ for the sample size because we already use $s$ for strategies.} 
-Anne: I added a footnote.
 
 For each role (player position)~$i\in N$ in game~$G$, there is a class of players $C_i$ who can play that role. No player can play in more than one role ($C_1\cap C_2=\emptyset$). 
 In each period $t$, a player is drawn from each class, and the two players that are drawn play the game $G$ -- each player~$i$ chooses an action $s_i(t)\in A_i$ from the actions available to them in their role. 
 The action-tuple $s(t) = (s_1(t), s_2(t))$ is recorded and will be referred to as the play at time $t$. 
-The history of plays up to and including time $t$ is the ordered vector $h(t) = (s(1), s(2), s(3), ..., s(t))$, and the history of the last $m$ plays, called a state, is the ordered vector $h(t\mid m) = (s(t-m+1), s(t-m+2), ..., s(t))$.
+The history of plays up to and including time $t$ is the ordered vector $h(t) = (s(1), s(2), s(3), ..., s(t))$, and the history of the last $m$ plays, called a state, is the ordered vector $h(t|m) = (s(t-m+1), s(t-m+2), ..., s(t))$.
 
 In period $t+1$, the player in role~$i$ draws a sample $R_i^{t+1}$ of size $k$ from the $m$ most recent plays $s_j(t-m+1), s_j(t-m+2), \ldots, s_j(t)$ by the players in role~$j\neq i$. 
 Player~$i$ predicts that the players in role~$j$ play a mixed strategy $p_j(\cdot | R_i^{t+1})$ that is the frequency distribution of the actions in the sample drawn: $p_j(s_j | R_i^{t+1})$ equals the number of times that action $s_j$ occurs in the sample $R_i^{t+1}$ divided by $k$, for each $s_j\in A_j$. 
@@ -138,7 +137,7 @@ The decision making process described above is called unperturbed adaptive play 
 
 
 \begin{definition}
-A {\emph{convention}} is a state $h(t\mid m)$ that entirely consists of $m$ repetitions of the same Nash equilibrium $s^*$ of the game~$G$.
+A {\emph{convention}} is a state $h(t|m)$ that entirely consists of $m$ repetitions of the same Nash equilibrium $s^*$ of the game~$G$.
 \end{definition}
 
 When a convention is reached in which the Nash equilibrium $s^*$ is played, then the players can only sample the others playing their part of $s^*$ and thus all players have a best response to play their part of~$s^*$. That means that adaptive play predicts that the players can keep playing $s^*$ in all subsequent periods. If the Nash equilibrium $s^*$ is strict, then the best responses are unique and, without perturbations, the players will keep playing $s^*$ indefinitely. 
@@ -348,22 +347,19 @@ in which at least one of the two Nash equilibria is strict (i.e., either $u_1(a_
 %
 and such that $\alpha_1\neq 1-\alpha_2$.\footnote{Thus, the smallest probability for player~1 to play $a_1$ such that action $b_1$ is a best response by player~$2$ is not equal to the smallest probability for player~2 to play $b_2$ such that action $a_2$ is a best response by player~$1$.} 
 %
-Let the sample size $k$ be such that $\lceil\alpha_1\times k\rceil \neq \lceil (1-\alpha_2)\times k\rceil$.\footnote{Note that if the game $G$ is such that $\alpha_1$ and $1-\alpha_2$ are close, then this will require a large sample size.}
+Let the sample size $k$ be such that $\lceil\alpha_1\times k\rceil \neq \lceil (1-\alpha_2)\times k\rceil$ or $\lceil\alpha_2\times k\rceil \neq \lceil (1-\alpha_1)\times k\rceil$.\footnote{Note that if the game $G$ is such that $\alpha_1$ and $1-\alpha_2$ are close, then this will require a large sample size.}\textsuperscript{,}\footnote{$\lceil\alpha_1\times k\rceil \neq \lceil (1-\alpha_2)\times k\rceil$ does not necessarily imply $\lceil\alpha_2\times k\rceil \neq \lceil (1-\alpha_1)\times k\rceil$. An example of this can be found in Example~\ref{Example_Theorem_4b}.}
 From any initial state, unperturbed adaptive play with memory size $m$ and sample size $k \leq m$ converges with probability one to a convention corresponding to a strict Nash equilibrium and locks in.
 \end{theorem}
 
-
 \textbf{Proof of Theorem~\ref{Theorem_2}.}
-If $k<m$, then Theorem~\ref{Theorem_1} applies. So, suppose that $k=m$, i.e, information is complete in the sense that players see \emph{all} of the past $m$ records.  
+If $k<m$, then Theorem~\ref{Theorem_1} applies. So, suppose that $k=m$, i.e, information is complete in the sense that players see \emph{all} of the past $m$ records.
 
 Consider an adaptive play process with $k=m$. If in some period $t>m$ the players coordinate, i.e., $s(t)=(a_1,b_1)$ or $s(t)=(a_2,b_2)$, then we can apply cases 1 or 2 in the proof of Theorem~\ref{Theorem_1} to establish that there is a positive probability that the players play a strict Nash equilibrium (note that these cases do not depend on $k < m$). 
 Lemma~\ref{Lemma_1} then establishes that the convention of playing that strict Nash equilibrium can be reached with positive probability, and then the process is locked in.
 
-Thus, it remains to consider the possibility that the players mis-coordinate in all periods, i.e., $s(t)\in \{(a_1,b_2),(a_2,b_1)\}$ for all $t$. We will demonstrate that this cannot happen because $\lceil \alpha_1\times m\rceil \neq\lceil (1-\alpha_2)\times m\rceil$ implies that an adaptive play process with $k=m$ cannot result in string of mis-coordinated plays $s(1),s(2), \ldots $ with $s(t)\in \{(a_1,b_2),(a_2,b_1)\}$ for all $t$. 
+Thus, it remains to consider the possibility that the players mis-coordinate in all periods, i.e., $s(t)\in \{(a_1,b_2),(a_2,b_1)\}$ for all $t$. We will demonstrate that this cannot happen because one of $\lceil\alpha_1\times k\rceil \neq \lceil (1-\alpha_2)\times k\rceil$ or $\lceil\alpha_2\times k\rceil \neq \lceil (1-\alpha_1)\times k\rceil$ implies that an adaptive play process with $k=m$ cannot result in string of mis-coordinated plays $s(1),s(2), \ldots $ with $s(t)\in \{(a_1,b_2),(a_2,b_1)\}$ for all $t$. 
 %
-
-If, in some period $t>m$,\footnote{We consider only periods $t>m$ to ensure that the players have $m$ periods' plays available in memory.} 
- the players observe a history of play that consists of a string of $m$ instances of $(a_1,b_2)$ having been played in the previous $m$ periods, player~2's unique best response is to play~$b_1$ in the next period or player~1's unique best response is to play~$a_2$ in the next period.\footnote{This uses $\lceil \alpha_1\times m\rceil \neq\lceil (1-\alpha_2)\times m\rceil$, which implies that it cannot be the case that player 1 can best respond by playing~$a_1$ \emph{and} player 2 can best respond by playing~$b_2$ after both observe $m$ instances of $(a_1,b_2)$ having been played.} 
+Without loss of generality assume $\lceil \alpha_1\times m\rceil \neq\lceil (1-\alpha_2)\times m\rceil$. If, in some period $t>m$,\footnote{We consider only periods $t>m$ to ensure that the players have $m$ periods' plays available in memory.} the players observe a history of play that consists of a string of $m$ instances of $(a_1,b_2)$ having been played in the previous $m$ periods, player~2's unique best response is to play~$b_1$ in the next period or player~1's unique best response is to play~$a_2$ in the next period.\footnote{This uses $\lceil \alpha_1\times m\rceil \neq\lceil (1-\alpha_2)\times m\rceil$, which implies that it cannot be the case that player 1 can best respond by playing~$a_1$ \emph{and} player 2 can best respond by playing~$b_2$ after both observe $m$ instances of $(a_1,b_2)$ having been played.} 
 %
 Thus, any string of mis-coordinated plays that contains a string of more than $m$ subsequent plays of $(a_1,b_2)$ cannot be the result of an adaptive play process. 
 %
@@ -397,27 +393,48 @@ $\blacksquare$
 
 \section{Perturbed adaptive play in $2 \times 2$ games}
 
-Now consider the adaptive play process as modeled in Section 2 but where players have a small probability of playing an action that is not their best response. Specifically, in every round players now play a strategy at random with probability $\varepsilon$ and with probability $1-\varepsilon$ they play a best response to their drawn sample, $R_i^{t}$. As such, an action that is not in the set of possible best responses to samples drawn from the memory can be played with probability $\varepsilon/2$. We shall refer to such actions as \textit{mistakes}. This process is called perturbed adaptive play. Allowing for mistakes makes transitions possible between conventions even those where strict Nash equilibria are played. Continuing with the setup established in Section 2 where $(a_1, b_1)$ and $(a_2, b_2)$ are Nash equilibria, denote the convention of $(a_i, b_i)$ as $h_i$ as $m$ periods of $(a_i, b_i)$.
-Now consider the transition from $h_i$ to $h_j$. Let the resistance, $r_{i,j}^{k,m}$, be the minimum number of mistakes necessary to make the transition from $h_i$ to $h_j$ in the perturbed adaptive play process.
-\cite{Young1998} shows that when $k \leq m/2$ that the resistance between conventions is independent of $m$. From $h_2$ to $h_1$ the resistance is calculated as $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)$ and from $h_1$ to $h_2$ the resistance is calculated as 
-$\min(\lceil (1-\alpha) \times k \rceil,\lceil (1-\alpha_2) \times  k \rceil)$. We show that the resistance may increase and depends on $m$ when $k > m/2$.
+Now consider the adaptive play process as modeled in Section 2 but where players have a small probability of playing an action that is not their best response. Specifically, in every round players now play a strategy at random with probability $\varepsilon$ and with probability $1-\varepsilon$ they play a best response to their drawn sample, $R_i^{t}$. As such, an action that is not in the set of possible best responses to samples drawn from the memory can be played with probability $\varepsilon/2$.\footnote{The $1/2$ comes from the fact that each player has two actions, each of which they choose with equal probability when they
+play an action at random.} We shall refer to such actions as \textit{mistakes}. This process is called perturbed adaptive play. Allowing for mistakes makes transitions possible between conventions, even those in which a strict Nash equilibrium is played. Continuing with the setup established in Section 2 where $(a_1, b_1)$ and $(a_2, b_2)$ are Nash equilibria, denote by $h_i$ the convention corresponding to $(a_i, b_i)$, i.e., the state that consists of $m$
+repetitions of $(a_i, b_i)$.
+Now consider the transition from $h_i$ to $h_j$. Let the resistance, denoted $r_{i,j}^{k,m}$, be the minimum number of mistakes necessary to make the transition from $h_i$ to $h_j$ in the perturbed adaptive play process.
+\cite{Young1998} shows that the resistance between conventions is independent of $m$ when $k \leq m/2$. Specifically, the resistance of moving from $h_2$ to $h_1$ equals $\min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big)$ and the resistance of moving from $h_1$ to $h_2$ equals $\min\big(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times  k \rceil\big)$. However, we demonstrate below that when information is less incomplete ($k > m/2$), the resistances may be larger and depend on $m$.
 
 
 \begin{theorem}\label{Theorem_3}
-Let G be a 2$\times$2 coordination game with Nash equilibria $(a_1,b_1)$ and $(a_2,b_2)$. For all $k \leq m$ the resistance from $h_2$ to $h_1$ depends on $m$ and is calculated by $r_{2,1}^{k,m} = \min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)+\max(\lceil~\alpha_1~\times~k~\rceil+\lceil \alpha_2 \times k \rceil-m,0)$. Likewise, the resistance from $h_1$ to $h_2$ is $r^{k,m}_{1,2}=\min(\lceil (1-\alpha) \times k \rceil, \lceil (1-\alpha_2) \times  k \rceil)+\max(\lceil (1-\alpha) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0)$.
+Let G be a 2$\times$2 coordination game with Nash equilibria $(a_1,b_1)$ and $(a_2,b_2)$. 
+Consider unperturbed adaptive play with memory size $m$ and sample size $k\leq m$. 
+The resistance of moving from $h_2$ to $h_1$ equals $r_{2,1}^{k,m} = \min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big)+\max\big(\lceil\alpha_1\times k\rceil+\lceil \alpha_2 \times k \rceil-m,0\big)$ and the resistance of moving from $h_1$ to $h_2$ equals $r^{k,m}_{1,2}=\min\big(\lceil (1-\alpha_1) \times k \rceil, \lceil (1-\alpha_2) \times  k \rceil\big)+\max\big(\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0\big)$. 
 \end{theorem}
 
 
-\textbf{Proof of Theorem~\ref{Theorem_3}.}
+\textbf{Proof of Theorem~\ref{Theorem_3}.} 
+We compute the resistance $r_{2,1}^{k,m}$. Similarly to Case 2 of the proof of Theorem~\ref{Theorem_1}, we derive that no mistakes are necessary to move from $h_2$ to $h_1$ if equilibrium $(a_2,b_2)$ is not strict. In that case, either $\alpha_1=0$ or $\alpha_2=0$ or both hold and the expression for $r_{2,1}^{k,m}$ in the statement of the theorem indeed produces a resistance equal to 0.  
 
-
-Consider the transition from $h_2$ to $h_1$. To transition to $h_1$, Lemma~\ref{Lemma_1} implies that it is sufficient to reach a period where $a_1$ and $b_1$ are simultaneously best responses to sampled play. For such conditions to be met in some period $T$, player~1 must have played $a_1$ at least $\lceil \alpha_1 \times k \rceil$ times and player~2 must have played $b_1$ at least $\lceil \alpha_2 \times k \rceil$ times between period $T-m$ and period $T-1$. Since initially the state is $h_2$, $a_1$ or $b_1$ can only be played by mistake until enough $b_1$ or $a_1$ has been played to make $a_1$ or $b_1$ a best response. Without loss of generality assume $\alpha_1 \leq \alpha_2$. It follows that it will take no more plays of $a_1$ to make $b_1$ a best response for player~2 than it will take plays of $b_1$ to make $a_1$ a best response for player~1. As such, a path of the least necessary mistakes from $h_2$ to $h_1$ involves player~1 making mistakes playing $a_1$ until player~2 can play $b_1$ as a best response. Furthermore, since memory is limited, the necessary mistakes made by player~1 should be consecutive to prevent the mistakes from falling out of memory before player~1 can replace those mistakes with best responses of $a_1$. Now let $h(t|m) = h_2$ and consider the following two cases:
+So assume that equilibrium $(a_2,b_2)$ is strict and let $t$ be a period such that $h(t|m) = h_2$, i.e., the system is in convention $h_2$. 
+Because $(a_2,b_2)$ is strict, $(a_2,b_2)$ will continue to be played if the players do not make any mistakes. To reach convention $h_1$, it is necessary to reach a period in which both $a_1$ and $b_1$ can be played as best responses to samples drawn by the players.\footnote{Note that this is a property that is satisfied by convention $h_1$.} 
+Reaching a period in which both $a_1$ and $b_1$ can be played as best responses to samples drawn by the players is also a sufficient condition for the process to reach convention $h_1$ without further mistakes (see Lemma~\ref{Lemma_1}). 
 %
-%The following argument is similar to that made in \cite{Young1998}. If $(a_2, b_2)$ is a strict Nash equilibria then mistakes must be made in order to change one of the players best responses. Player~1's best response will change if they sample at least $\lceil \alpha_2 \times k \rceil$ periods in which player~2 played $b_1$. Likewise, Player~2's best response will change if they sample at least $\lceil \alpha_1 \times k \rceil$ periods in which player~1 played $a_1$. Without loss of generality assume that $\alpha_1 \leq \alpha_2$. If $k \leq m/2$, then $\lceil \alpha_1 \times k \rceil$ consecutive mistakes can be made by player~1 playing $a_1$ each round. At this point, player~2 can for $k$ rounds sample the $\lceil \alpha_1 \times k \rceil$ records of player~1 playing $a_1$ and play $b_1$ as a best response. Player~1 can then for $k$ rounds sample the $k \geq \lceil \alpha_2 \times k \rceil$ records of player~2 playing $b_1$. Since $k \leq m/2$ then there exists $k$ records of both $a_1$ and $b_1$ in the most recent $m$ history of play which means both plays can draw a sample such that $a_1$ and $b_1$ are best responses for player~1 and player~2 respectively. At which point, Lemma \ref{Lemma_1} can be applied and there is a positive probability that a convention of playing $(a_1, b_1)$ can be reached. As such, the least number of mistakes that need be made to transition from $h_2$ to $h_1$ is $\min(\lceil \alpha_1 k \rceil, \lceil \alpha_2 k \rceil)$.
+Thus, starting from convention $h_2$, we need to determine the minimum number of mistakes (which will be positive) necessary to build a length-$m$ history of play from which both players can draw samples of size $k$ such that $a_1$ and $b_1$ are best responses. 
+For this condition to be met in some period $T$, player~1 must have played $a_1$ at least $\lceil \alpha_1 \times k \rceil$ times and player~2 must have played $b_1$ at least $\lceil \alpha_2 \times k \rceil$ times in periods $T-m$ through $T-1$. 
+%
+Clearly, this can be accomplished by having player~1 make a mistake and play~$a_1$ a total of $\lceil \alpha_1 \times k \rceil$ times \emph{and} having player~2 make a mistake and play~$b_1$ a total of $\lceil \alpha_2 \times k \rceil$ times in $\max\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big)$ consecutive periods. 
+This gives an upper bound of $\lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil$ for $r_{2,1}^{k,m}$.
+%
 
-{\bf Case 1.} If $\lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil \leq m$ then our proof is similar to that shown in \cite{Young1998}. Starting in period $t+1$, player~1 can make $\lceil \alpha_1 \times k \rceil$ consecutive mistakes playing $a_1$ in each period. During each of these periods, player~2 can sample no more than $\lceil \alpha_1 \times k \rceil - 1$ plays of $a_1$ so without making mistakes, they must play $b_2$ as a best response.
+The number of mistakes can be lowered by decreasing the number of periods in which both players make a mistake, so that players can sample each other's mistakes and potentially play $a_1$ and/or $b_1$ as best responses. 
+%Without loss of generality, assume $\alpha_1 \leq \alpha_2$. Then it will take no more instances of player~1 playing $a_1$ to allow player~2 to draw a sample to which $b_1$ is a best response than it will take instances of player~2 playing $b_1$ to allow player~1 to draw a sample to which $a_1$ is a best response.  
+%%
+%Thus, the path of least resistance to build a length-$m$ history of play from which both players can draw samples of size $k$ such that $a_1$ and $b_1$ are best responses, 
+%involves player~1 making mistakes playing $a_1$ until player~2 can play $b_1$ as a best response. This is because once player~2 can play $b_1$ as a best response they can continue to do so at least until the initial mistakes of $a_1$ fall out of memory. If $m$ is large enough such that, before the initial mistakes of $a_1$ fall out of memory, player~2 can play $b_1$ as a best response enough times to allow player~1 to draw a sample to which $a_1$ is a best response, then no more mistakes are necessary to reach convention $h_1$. 
+At the extreme, when sample sizes are sufficiently incomplete so that players can keep sampling mistakes long enough, it suffices for one player to make enough mistakes to make their action in $(a_1,b_1)$ a best response by the other player, and we obtain the lower bound $\min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big)$ for $r_{2,1}^{k,m}$. 
+We consider this case first. 
 
-In periods $t+\lceil \alpha_1 \times k \rceil + 1$ to $t + \lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil$, player~2 can now sample every $a_1$ player~1 played in periods $t+1$ to $t+\lceil \alpha_1 \times k \rceil$. By doing so, player~2 can play $b_1$ as a best response in every period. Meanwhile, player~1 can sample no more than $\lceil \alpha_2 \times k \rceil - 1$ plays of $b_1$ in these periods. So without making mistakes, they must play $a_2$ as a best response.
+{\bf Case 1.} $\lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil \leq m$.\footnote{In this case, derivations are similar to those in \cite{Young1998}.} 
+%
+
+Starting in period $t+1$, suppose player~1 makes $\lceil \alpha_1 \times k \rceil$ consecutive mistakes and plays $a_1$ in periods $t+1, \dots, t+ \lceil \alpha_1 \times k \rceil$. During each of these periods, player~2 can sample no more than $\lceil \alpha_1 \times k \rceil - 1$ instances of player~1 playing $a_1$ and can only play $b_2$ as a best response.
+
+Because $\lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil \leq m$, in each of the periods $t+\lceil \alpha_1 \times k \rceil + 1$ through $t + \lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil$, player~2 can sample all $ \lceil \alpha_1 \times k \rceil $ instances of $a_1$ that player~1 played in periods $t+1$ to $t+\lceil \alpha_1 \times k \rceil$ and play $b_1$ as a best response. In these periods, player~1 can sample no more than $\lceil \alpha_2 \times k \rceil - 1$ plays of $b_1$ and can only play $a_2$ as a best response.
 
 
 \begin{table}[htbp]
@@ -427,7 +444,7 @@ In periods $t+\lceil \alpha_1 \times k \rceil + 1$ to $t + \lceil \alpha_1 \time
 \hline
 & \multicolumn{11}{|c|}{Play} \\
 \hline
-Round \# & $t-m+1$ & $\ldots$ & $t$ & $t+1$ & $\ldots$ & $t+\lceil\alpha_1\times k\rceil$ & $t+\lceil\alpha_1\times k\rceil+1$ & $\ldots$ & $t+\lceil\alpha_1\times k\rceil+\lceil\alpha_2\times k\rceil$ & $t+\lceil\alpha_1\times k\rceil+\lceil\alpha_2\times k\rceil+1$ & $\ldots$ \\
+Period & $t-m+1$ & $\ldots$ & $t$ & $t+1$ & $\ldots$ & $t+\lceil\alpha_1\times k\rceil$ & $t+\lceil\alpha_1\times k\rceil+1$ & $\ldots$ & $t+\lceil\alpha_1\times k\rceil+\lceil\alpha_2\times k\rceil$ & $t+\lceil\alpha_1\times k\rceil+\lceil\alpha_2\times k\rceil+1$ & $\ldots$ \\
 \hline
 Player 1 & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_2$} & \textcolor{red}{$a_1$} & \textcolor{red}{$a_1$} & \textcolor{red}{$a_1$} & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_1$} & \textcolor{blue}{$a_1$} \\
 \hline
@@ -436,22 +453,40 @@ Player 2 & \textcolor{blue}{$b_2$} & \textcolor{blue}{$b_2$} & \textcolor{blue}{
 \end{tabular}%
 }
 \small
-The color red denotes actions which must be mistakes. Actions colored blue can be played as a best response.
+The color red denotes actions which necessarily are mistakes. Actions colored blue can be played as a best response.
 \end{table}
 
 
-In period $t + \lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil + 1$ since $\lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil \leq m$ it is possible for player~2 to sample the sequential periods from $t + 1$ to $t + \lceil \alpha_1 \times k \rceil$ in which player~1 played $a_1$ each time while player~1 samples all periods from $t+\lceil \alpha_2 \times k \rceil + 1$ to $t + \lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil$. So $b_1$ gets sampled at least $\lceil \alpha_2 \times k \rceil$ times and $a_1$ gets sampled at least $\lceil \alpha_1 \times k \rceil$ times making $a_1$ and $b_1$ simultaneously best responses for player 1 and player 2 respectively. Thus, Lemma \ref{Lemma_1} applies and $h_1$ can be reached with no further mistakes. 
+Because $\lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil \leq m$, in period $t + \lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil + 1$ it is possible for player~2 to sample all $\lceil \alpha_1 \times k \rceil$ player~1's plays of $a_1$ in periods $t + 1$ through $t + \lceil \alpha_1 \times k \rceil$, while player~1 samples all $\lceil \alpha_2 \times k \rceil $ player~2's plays of $b_1$ in periods $t+\lceil \alpha_1 \times k \rceil + 1$ through $t + \lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil$. Thus, both $a_1$ and $b_1$ can be played as best responses by the players in period $t + \lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil + 1$ and the process can reach convention $h_1$ without further mistakes (see Lemma~\ref{Lemma_1}). 
 
-Clearly no transition from $h_2$ to $h_1$ can be accomplished with fewer mistakes than those in the process described since without $\lceil \alpha_1 \times k \rceil$ mistakes there will not be enough $b_1$ or $a_1$ in the memory to make $a_1$ or $b_1$ a best response. 
+The  process we just described reaches convention $h_1$ from convention $h_2$ with exactly $\lceil \alpha_1 \times k \rceil$ mistakes by starting in period $t+1$ with player~1 making $\lceil \alpha_1 \times k \rceil$ consecutive mistakes and playing $a_1$ in periods $t+1, \dots, t+ \lceil \alpha_1 \times k \rceil$. If instead we start in period $t+1$ with player~2 making $\lceil \alpha_2 \times k \rceil$ consecutive mistakes and playing $b_1$ in periods $t+1, \dots, t+ \lceil \alpha_2 \times k \rceil$, we obtain a process that reaches convention $h_1$ from convention $h_2$ with exactly $\lceil \alpha_2 \times k \rceil$ mistakes. 
 
-Note that when $k \leq m/2$, the condition $\lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil \leq m$ is always true which is why the resistance from $h_2$ to $h_1$ would be calculated as $r_{2,1}^{k} = \min(\lceil \alpha_1 \times k \rceil, \lceil \alpha_2 \times k \rceil)$ as in \cite{Young1998}. However, if $k > m/2$, this calculation does not always hold. 
+Because either player~1 must have played $a_1$ at least $\lceil \alpha_1 \times k \rceil$ times to allow player~2 to play $b_1$ as a best response, or player~2 must have played $b_1$ at least $\lceil \alpha_2 \times k \rceil$ times to allow player~1 to play $a_1$ as a best response, the minimum number of mistakes necessary to reach convention $h_1$ from convention $h_2$ equals $\min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big)$. Since (at least) one of the two processes we described reaches convention $h_1$ from convention $h_2$ with exactly $\min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big)$ mistakes, we have demonstrated that 
+$r_{2,1}^{k,m} =  \min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big) = \min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big)+\max\big(\lceil\alpha_1\times k\rceil+\lceil \alpha_2 \times k \rceil-m,0\big)$.%
+\footnote{Note that when $k \leq m/2$, the condition $\lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil \leq m$ is satisfied regardless of the values of $\alpha_1$ and $\alpha_2$. This  is why in \cite{Young1998} the resistance $r_{2,1}^{k,m}$ is given as $r_{2,1}^{k} = \min\big(\lceil \alpha_1 \times k \rceil, \lceil \alpha_2 \times k \rceil\big)$.% However, if $k > m/2$, this calculation does not always hold.
+} 
 
 
+{\bf Case 2.} $\lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil > m$. 
 
+In order to make the transition from $h_2$ to $h_1$, at least $\lceil \alpha_1 \times k \rceil$ plays of $b_1$ \emph{and} $\lceil \alpha_2 \times k \rceil$ plays of $a_1$ must occur within $m$ periods.
+However, $\lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil > m$ implies that in order to achieve this condition, $a_1$ and $b_1$ must be played in the same period a minimum of $\ell:= \lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m$ times.\footnote{Note that $\ell= \lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m\leq m$.}
+%
+Because player~1 cannot play $a_1$ as a best response until player~2 has played $b_1$ at least $\lceil \alpha_2 \times k \rceil$ times, and player~2 cannot play $b_1$ as a best response until player~1 has played $a_1$ at least $\lceil \alpha_1 \times k \rceil$ times, the $\ell$ concurrent plays of $a_1$ and $b_1$ require $2\times \ell$ mistakes. Thus, in this case, we need at least an additional $\ell$ mistakes compared to Case 1. We demonstrate that we do not need more than an additional $\ell$ mistakes by describing a transition from $h_2$ to $h_1$ with exactly $\min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big) + \max\big(\lceil\alpha_1\times k\rceil+\lceil \alpha_2 \times k \rceil-m,0\big)$ mistakes. 
 
-{\bf Case 2.} If $\lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil > m$ then in order for the transition to be made from $h_2$ to $h_1$, perturbations beyond the minimum required to change the best response of one player must be made to achieve the condition that $\lceil \alpha_1 \times k \rceil$ plays of $b_1$ and $\lceil \alpha_2 \times k \rceil$ plays of $a_1$ occur within $m$ periods. In order to achieve this condition, $a_1$ and $b_1$ must be played concurrently for a minimum of $l:= \lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m$ periods. As such, either $b_1$ must be made as a mistake $l$ times before player~2 plays $b_1$ as a best response or $a_1$ must be played as a mistake during the periods where player~2 is playing $b_1$ as a best response. I describe one such path:
+%Without loss of generality, assume $\alpha_1 \leq \alpha_2$. Then it will take no more instances of player~1 playing $a_1$ to allow player~2 to draw a sample to which $b_1$ is a best response than it will take instances of player~2 playing $b_1$ to allow player~1 to draw a sample to which $a_1$ is a best response.  
+%%
+%Thus, the path of least resistance to build a length-$m$ history of play from which both players can draw samples of size $k$ such that $a_1$ and $b_1$ are best responses, 
+%involves player~1 making mistakes playing $a_1$ until player~2 can play $b_1$ as a best response. This is because once player~2 can play $b_1$ as a best response they can continue to do so at least until the initial mistakes of $a_1$ fall out of memory. 
+%%If $m$ is large enough such that, before the initial mistakes of $a_1$ fall out of memory, player~2 can play $b_1$ as a best response enough times to allow player~1 to draw a sample to which $a_1$ is a best response, then no more mistakes are necessary to reach convention $h_1$. 
+%If $m < \lceil \alpha_1 \times k \rceil + \lceil \alpha_2 \times k \rceil$, then an additional $\ell$ mistakes are necessary because the necessary $\lceil \alpha_1 \times k \rceil$ mistakes by player~1 cannot be kept in memory (and thus cannot be sampled) by player~2 for the required $\lceil \alpha_2 \times k \rceil$ periods. 
+%%With this dynamic considered, if the mistakes by a player are not made consecutively, then the earlier ones will fall out of memory too soon and need to be replaced, so that more mistakes than absolutely necessary are required. Thus, the minimum number of mistakes, i.e., the resistance, required to build a length-$m$ history of play from which both players can draw samples of size $k$ such that $a_1$ and $b_1$ are best responses, is accomplished when each player makes mistakes in consecutive periods. 
+%%
 
-Starting in period $t+1$, player~1 can make $\lceil \alpha_1 \times k \rceil$ consecutive mistakes playing $a_1$ in each period. During periods $t+1$ to $t+m-\lceil \alpha_2 \times k \rceil$, player~2 can sample no more than $\lceil \alpha_1 \times k \rceil - 1$ plays of $a_1$ so without making mistakes, they must play $b_2$ as a best response. During periods $t+m+1-\lceil \alpha_2 \times k \rceil$ to $t+\lceil \alpha_1 \times k \rceil$ player~2 can make $\mu$ mistakes playing $b_1$. 
+Starting in period $t+1$, suppose player~1 makes $\lceil \alpha_1 \times k \rceil$ consecutive mistakes and plays $a_1$ in periods $t+1, \dots, t+\lceil \alpha_1 \times k \rceil$. During each of these periods,  player~2 can sample no more than $\lceil \alpha_1 \times k \rceil - 1$ instances of player~1 playing $a_1$ and can only play $b_2$ as a best response. 
+%
+Suppose that in the last $\ell$ of these periods, $t+m-\lceil \alpha_2 \times k \rceil +1$ through $t+\lceil \alpha_1 \times k \rceil$,  player~2 makes $\ell$ consecutive mistakes and plays $b_1$. 
+
 
 
 \begin{table}[htbp]
@@ -461,7 +496,9 @@ Starting in period $t+1$, player~1 can make $\lceil \alpha_1 \times k \rceil$ co
 \hline
 & \multicolumn{14}{|c|}{Play} \\
 \hline
-Round \# & $t-m+1$ & $\ldots$ & $t$ & $t+1$ & $\ldots$ & $t+m-\lceil\alpha_2\times k\rceil$ & $t+m+1-\lceil\alpha_2\times k\rceil$ & $\ldots$ & $t+\lceil\alpha_1\times k\rceil$ & $t+\lceil\alpha_1\times k\rceil+1$ & $\ldots$ & $t+\lceil\alpha_1\times k\rceil+\lceil\alpha_2\times k\rceil$ & $t+\lceil\alpha_1\times k\rceil+\lceil\alpha_2\times k\rceil+1$ & $\ldots$ \\
+Period & $t-m+1$ & $\ldots$ & $t$ & $t+1$ & $\ldots$ & $t+m-\lceil\alpha_2\times k\rceil$ & $t+m-\lceil\alpha_2\times k\rceil+1$ & $\ldots$ & $t+\lceil\alpha_1\times k\rceil$ & $t+\lceil\alpha_1\times k\rceil+1$ & $\ldots$ & $t+%\lceil\alpha_1\times k\rceil+\lceil\alpha_2\times k\rceil
+m$ & $t+%\lceil\alpha_1\times k\rceil+\lceil\alpha_2\times k\rceil
+m+1$ & $\ldots$ \\
 \hline
 Player 1 & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_2$} & \textcolor{red}{$a_1$} & \textcolor{red}{$a_1$} & \textcolor{red}{$a_1$} & \textcolor{red}{$a_1$} & \textcolor{red}{$a_1$} & \textcolor{red}{$a_1$} & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_2$} & \textcolor{blue}{$a_1$} & \textcolor{blue}{$a_1$} \\
 \hline
@@ -470,51 +507,102 @@ Player 2 & \textcolor{blue}{$b_2$} & \textcolor{blue}{$b_2$} & \textcolor{blue}{
 \end{tabular}%
 }
 \small
-The color red denotes actions which must be mistakes. Actions colored blue can be played as a best response.
+The color red denotes actions which necessarily are mistakes. Actions colored blue can be played as a best response.
 \end{table}
 
 
-In periods $t+\lceil \alpha_1 \times k \rceil + 1$ to $t + m$, player~2 can now sample every $a_1$ player~1 played in periods $t+1$ to $t+\lceil \alpha_1 \times k \rceil$. By doing so, player~2 can play $b_1$ as a best response in every period. Meanwhile, player~1 can sample no more than $\lceil \alpha_2 \times k \rceil - 1$ plays of $b_1$ in these periods. So without making mistakes, they must play $a_2$ as a best response.
+%Note that $\ell= \lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m\leq m$. 
+If $\lceil \alpha_1 \times k \rceil = \lceil \alpha_2 \times k \rceil = m$, then $\ell=m$ and the process described so far has reached convention $h_1$ with $2\times m$ mistakes and this convention cannot be reached from $h_2$ with fewer mistakes. Thus, $r_{2,1}^{k,m} = 2\times m = \min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big) + \max\big(\lceil\alpha_1\times k\rceil+\lceil \alpha_2 \times k \rceil-m,0\big)$. 
 
-In period $t + m + 1$ it is possible for player~2 to sample the sequential periods from $t + 1$ to $t + \lceil \alpha_1 \times k \rceil$ in which player~1 played $a_1$ each time while player~1 samples all periods from $t+m+1-\lceil \alpha_2 \times k \rceil$ to $t + m$. So $b_1$ gets sampled at least $\lceil \alpha_2 \times k \rceil$ times and $a_1$ gets sampled at least $\lceil \alpha_1 \times k \rceil$ times making $a_1$ and $b_1$ simultaneously best responses for player 1 and player 2 respectively. Thus, Lemma \ref{Lemma_1} applies and $h_1$ can be reached with no further mistakes. 
+It remains to consider the case when $\lceil \alpha_1 \times k \rceil <m$.
+%
+In that case, in periods $t+\lceil \alpha_1 \times k \rceil + 1$ through $t + m$, player~2 can sample all $\lceil \alpha_1 \times k \rceil$ of player~1's plays of $a_1$ in periods $t+1$ through $t+\lceil \alpha_1 \times k \rceil$, and play $b_1$ as a best response.
+%
+Because, by definition of~$\ell$, $m = \big(\lceil \alpha_1 \times k \rceil -\ell \big) + \ell + \big(\lceil \alpha_2 \times k \rceil -\ell\big)$, in these periods, player~1 can sample no more than $\lceil \alpha_2 \times k \rceil - 1$ plays of $b_1$ and can only play $a_2$ as a best response. 
+%$\ell:= \lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m$
 
-As discussed, atleast $\lceil \alpha_1 \times k \rceil$ mistakes are necessary to make one player play $a_1$ or $b_1$ as a best response. In addition, in this case due to the constrained memory size, additional mistakes are needed to make $a_1$ and $b_1$ simultaneous best responses before the initial mistakes start to fade from the memory. Specifically, a minimum of $\mu$ mistakes are required. So, the processess described which contained $\lceil \alpha_1 \times k \rceil + \mu$ mistakes is the minimal necessary to transition from $h_2$ to $h_1$.
+%Because $m = \big(\lceil \alpha_1 \times k \rceil -\ell \big) + \ell + \big(\lceil \alpha_2 \times k \rceil -\ell\big)$
+%
+In period $t + m + 1% = t + \big(\lceil \alpha_1 \times k \rceil -\ell \big) + \ell + \big(\lceil \alpha_2 \times k \rceil -\ell\big) +1
+$, it is possible for player~1 to sample all $\lceil \alpha_2 \times k \rceil$ player~2's plays of $b_1$ in periods $t+m-\lceil \alpha_2 \times k \rceil +1$ through $t + m$, 
+while player~2 samples all $\lceil \alpha_1 \times k \rceil$ player~1's plays of $a_1$ in periods $t+1$ through $t+\lceil \alpha_1 \times k \rceil$.
+% 
+Thus, both $a_1$ and $b_1$ can be played as best responses by the players in period $t + m+1$ and the process can reach convention $h_1$ without further mistakes (see Lemma~\ref{Lemma_1}). 
 
-So, in this case, the resistance from $h_2$ to $h_1$ is calculated as $r_{2,1}^{k,m} = \min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)+\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m$ which is greater than the resistance in Case~1.
 
-{\bf Conclusion.} Two complimentary cases were considered which resulted in different resistance calculations. We generalize the resistance from $h_2$ to $h_1$ for all $k \leq m$ as $r^{k,m}_{2,1}=\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)+\max(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0)$. A similar calculation shows that the resistance from $h_1$ to $h_2$ is $r^{k,m}_{1,2}=\min(\lceil (1-\alpha) \times k \rceil,\lceil (1-\alpha_2) \times  k \rceil)+\max(\lceil (1-\alpha) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0)$.
+
+The  process we just described reaches convention $h_1$ from convention $h_2$ with exactly $\lceil \alpha_1 \times k \rceil +\ell$ mistakes if $\alpha_1\leq \alpha_2$. Analogously, we can describe a process that reaches convention $h_1$ from convention $h_2$ with exactly $\lceil \alpha_2 \times k \rceil +\ell$ mistakes if $\alpha_2\leq \alpha_1$. 
+%
+Thus, we have identified a process that reaches convention $h_1$ from convention $h_2$ with exactly the minimum number of mistakes $\min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big) + \ell$ that we identified as necessary, and we have demonstrated that $r_{2,1}^{k,m} = 
+%\min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big) + \lceil\alpha_1\times k\rceil+\lceil \alpha_2 \times k \rceil-m = 
+\min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big) + \max\big(\lceil\alpha_1\times k\rceil+\lceil \alpha_2 \times k \rceil-m,0\big)$.
+%Note that this resistance is larger than the resistance in Case~1.
+
+{\bf Conclusion.} We demonstrated that $r^{k,m}_{2,1}=\min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big)+\max\big(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0\big)$. 
+The resistance $r^{k,m}_{1,2}$ is now easily obtained by using $1-\alpha_1$ and $1-\alpha_2$ instead of $\alpha_1$ and $\alpha_2$, resulting in $r^{k,m}_{1,2}=\min\big(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times  k \rceil\big)+\max\big(\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0\big)$.
 $\blacksquare$
 
-Note that these resistance calculations are equivalent to those given by \cite{Young1998} when $k \leq m/2$. However, when $k>m/2$ the resistance may change as additional mistakes may be needed in order for the memory to simultaneously hold enough switched actions for both players. Our formulation of resistance is robust to all $k \leq m$. 
+\bigskip
+The interest in resistances of moving between conventions stems from the fact that, when the probability of making mistakes (i.e., the degree of perturbation in the process) becomes vanishingly small, the perturbed adaptive play process converges on the conventions that are hardest to leave and easiest to reach. 
+%
+
+%
+In a game with exactly two Nash equilibria, and thus two conventions, a convention is stochastically stable if and only if the resistance in the transition away from it is at least as large as the resistance in the transition towards it (see \cite{Young1993}). 
+%
+In the model studied in \cite{Young1993}, information is sufficiently incomplete ($k \leq m/2$) for the resistances between conventions to be independent of $m$., so that stochastic stability of conventions is also independent of $m$. 
+%
+In contrast, as we demonstrated in Theorem~\ref{Theorem_3}, the resistances may be larger and depend on $m$ when information is less incomplete ($k > m/2$). 
+This opens up the possibility that the degree of incomplete information influences which conventions are stochastically stable. We turn to this next. 
 
 
-The perturbed adaptive play process as modeled defines an irreducible Markov process which has an associated unique stationary distribution $\mu^\varepsilon$. A state $h(t\mid m)^*$ is stochastically stable if $\lim \limits_{\varepsilon \rightarrow 0} \mu^\varepsilon\big(h(t\mid m)^*\big) > 0$ \cite{young1993evolution}.
 
-Between two conventions, \cite{Young1998} showed that a convention is stochastically stable if and only if the resistance in the transition away from it is atleast as large as the resistance in the transition towards it.
-We just showed that pairwise resistance may change with the size of the memory when $2k > m$. This result begs the question: does the change in resistance have any effect on pairwise risk dominance and thus, stochastic stability? We prove that for all $m > k$ that the pairwise resistance relationship remains unchanged.
+The following example shows that changing $k$ when $m$ is fixed may change which states are stochastically stable.
+
+\begin{example}\label{Example_Theorem_4a}
+Consider the $2\times 2$ coordination game 
+%\centering
+$$\begin{tabular}{cc|c|c|}
+      & \multicolumn{1}{c}{} & \multicolumn{2}{c}{Player 2}\\
+      & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$b_1$}  & \multicolumn{1}{c}{$b_2$} \\\cline{3-4}
+      \multirow{2}*{Player 1}  & $a_1$ & ${10,13}$ & $0,0$ \\\cline{3-4}
+      & $a_2$ & $2,3$ & ${12,10}$ \\\cline{3-4}
+    \end{tabular}
+$$
+
+In this game $\alpha_1 = 7/20$ and $\alpha_2 = 3/5$. Suppose $m = 10$ and $k$ increases from 5 to 10. When $k = 5$, $\lceil \alpha_1 \times k \rceil = \lceil (1-\alpha_2) \times k \rceil = 2$, $\lceil (1-\alpha_1) \times k \rceil = 4$ and $\lceil \alpha_2 \times k \rceil = 3$. So $r_{2,1}^{5,10} = 2$ and $r_{1,2}^{5,10} = 2$, which means both conventions $h_1$ and $h_2$ are stochastically stable. However, when $k = 10$, $\lceil \alpha_1 \times k \rceil = \lceil (1-\alpha_2) \times k \rceil = 4$, $\lceil (1-\alpha_1) \times k \rceil = 7$ and $\lceil \alpha_2 \times k \rceil = 6$. So $r_{2,1}^{10,10} = 4$ and $r_{1,2}^{10,10} = 5$ which means in this case only $h_1$ is stochastically stable.
+\end{example}
+
+Example~\ref{Example_Theorem_4a} shows that changing the degree of incomplete information, $k/m$, by varying $k$ and keeping $m$ fixed can change which states are stochastically stable through the added $max(\cdot)$ component of the resistance calculation.\footnote{Note that it is already known that stochastic stability may change with $k$ due to the ceiling functions even when $k \leq m/2$.} However, stochastic stability does not change when the degree of incomplete information, $k/m$, changes by varying $m$ while keeping $k$ fixed. Next, we prove that when information is incomplete, changing $m$ alone does not change which conventions are stochastically stable.
 
 \begin{theorem}\label{Theorem_4}
-Given a fixed $k$, for all $m > k$ that the pairwise resistance relationship between $h_i$ and $h_j$ remains unchanged in $2 \times 2$ games.
+Let G be a 2$\times$2 coordination game with Nash equilibria $(a_1,b_1)$ and $(a_2,b_2)$. 
+Consider unperturbed adaptive play with sample size $k$ and memory size $m > k$. 
+Stochastic stability of conventions does not depend on memory size $m$.
 \end{theorem}
 
+\textbf{Proof of Theorem~\ref{Theorem_4}.} 
+Consider the pairwise resistances between $h_2$ and $h_1$. We will consider both the case where the resistance $r_{1,2}^{k,m} \neq r_{2,1}^{k,m}$ and where $r_{1,2}^{k,m} = r_{2,1}^{k,m}$ when $m \geq 2k$. We show that when $k$ is held fixed, decreasing $m$ to some $m>k$ does not affect the comparison between $r_{1,2}^{k,m}$ and $r_{2,1}^{k,m}$.
 
-\textbf{Proof of Theorem~\ref{Theorem_4}.}
+{\bf Case 1.} $r^{k,m}_{2,1} \neq r^{k,m}_{1,2}$.\footnote{Note that the restriction $m>k$ is not leveraged in this case.}  \\
+Without loss of generality assume $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ when $m \geq 2k$. We will show that when $m < 2k$, the inequality $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ is maintained. $m \geq 2k$ and $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ means that $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) < \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$. Without loss of generality assume $\alpha_1 \geq \alpha_2$. So, $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \lceil \alpha_2 \times k \rceil$ and $\min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil) = \lceil (1-\alpha_1) \times k \rceil$ which means $\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha_1) \times k \rceil$. It follows that $\alpha_2< 1- \alpha_1$ so $\alpha_1< 1 - \alpha_2$ which means $\lceil \alpha_1 \times k \rceil \leq \lceil (1 - \alpha_2) \times k \rceil$. Combining $\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha_1) \times k \rceil$ and  $\lceil \alpha_1 \times k \rceil \leq \lceil (1 - \alpha_2) \times k \rceil$ we get $\max\big(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0\big) \leq \max\big(\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0\big)$. 
+So decreasing $m$ while holding $k$ fixed such that the $\max(\cdot)$ component of resistance may be greater than 0 can not increase $r^{k,m}_{2,1}$ more than $r^{k,m}_{1,2}$. 
 
+As result, we have shown that the pairwise resistance inequality between $r^{k,m}_{2,1}$ and $r^{k,m}_{1,2}$ must remain unchanged by $m$ in this case.
 
-Consider the pairwise resistances between $h_2$ and $h_1$. We will consider both the case where the resistance $r_{1,2}^{k,m} \neq r_{2,1}^{k,m}$ and where $r_{1,2}^{k,m} = r_{2,1}^{k,m}$ when $m \geq 2k$. We show that when the resistance does depend on $m$, when $m<2k$, the same relationship between $r_{1,2}^{k,m}$ and $r_{2,1}^{k,m}$ is maintained.
+{\bf Case 2.} $r^{k,m}_{1,2} = r^{k,m}_{2,1}$.\\
+We will show that when $k < m < 2k$, the relationship $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ is maintained. $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ when $k \leq m/2$ implies that $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$. Without loss of generality assume $\alpha_1\geq \alpha_2$. So, $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \lceil \alpha_2 \times k \rceil$ and $\min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil) = \lceil (1-\alpha_1) \times k \rceil$ which means $\lceil \alpha_2 \times k \rceil = \lceil (1-\alpha_1) \times k \rceil$. It is easily verified that $\lceil \alpha_1 \times k \rceil+\lceil (1-\alpha_1) \times k \rceil \in (k, k+1)$ and so $\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil \leq k+1$. Since both $m$ and $k$ are natural numbers and $k<m$ it follows that $k+1 \leq m$. Thus, $\max(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0) = 0$.
 
-{\bf Case 1.} Assume that $r^{k,m}_{2,1} \neq r^{k,m}_{1,2}$ when $m \geq 2k$. Without loss of generality assume $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ when $m \geq 2k$. We will show that when $m < 2k$, the inequality $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ is maintained. $m \geq 2k$ and $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ means that $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) < \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$. Without loss of generality assume $\alpha_1 \geq \alpha_2$. So, $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \lceil \alpha_2 \times k \rceil$ and $\min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil) = \lceil (1-\alpha_1) \times k \rceil$ which means $\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha_1) \times k \rceil$. It follows that $\alpha_2< 1- \alpha_1$ so $\alpha_1< 1 - \alpha_2$ which means $\lceil \alpha_1 \times k \rceil \leq \lceil (1 - \alpha_2) \times k \rceil$. Combining $\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha_1) \times k \rceil$ and  $\lceil \alpha_1 \times k \rceil \leq \lceil (1 - \alpha_2) \times k \rceil$ we get $\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil$.
+Likewise, $\lceil \alpha_2 \times k \rceil+\lceil (1-\alpha_2) \times k \rceil \in (k, k+1)$. Because $\lceil \alpha_2 \times k \rceil = \lceil (1-\alpha_1) \times k \rceil$, it follows that $\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil \leq k+1$. Since $k+1 \leq m$, it follows that $\max(\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0)~=~0$.
+Those results combined with the assumption $\min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big) = \min\big(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil\big)$ mean that $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ for all $m > k$ in this case.
 
-Combining that result with the initial condition, it follows that $r^{k,m}_{2,1} = \min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil)+\max(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0) < \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)+\max(\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0) = r^{k,m}_{1,2}$. So we have shown that pairwise resistance inequalities remain unchanged by $m$ in this case.
-
-{\bf Case 2.} Now assume $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ when $m \geq 2k$. We will show that when $k < m < 2k$, the equality $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ is maintained. $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ when $k \leq m/2$ implies that $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$. Without loss of generality assume $\alpha_1\geq \alpha_2$. So, $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \lceil \alpha_2 \times k \rceil$ and $\min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil) = \lceil (1-\alpha_1) \times k \rceil$ which means $\lceil \alpha_2 \times k \rceil = \lceil (1-\alpha_1) \times k \rceil$. It is easily verified that $\lceil \alpha_1 \times k \rceil+\lceil (1-\alpha_1) \times k \rceil \in (k, k+1)$ and so $\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil \leq k+1$. Since $k+1 \leq m$, it follows that $\max(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0) = 0$. Similar logic can be used to show that $\max(\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0) = 0$. Those results combined with the assumption $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$ mean that $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ for all $m > k$ in this case.
-
-{\bf Conclusion.} The two cases are exhaustive. So, we have shown that all pairwise resistance relationships remain unchanged for all $m > k$ given $k$ is fixed.
+{\bf Conclusion.} The two cases are exhaustive. We have shown that all pairwise resistance comparisons remain unchanged for all $m > k$ given $k$ is fixed. So, it follows that which states are stochastically stable also remains unchanged.
 $\blacksquare$
 
-The result of Theorem~\ref{Theorem_4} imply that the states which are stochastically stable remain unchanged in 2x2 games as a result of the changed resistance when $k<m<2k$.
+Note that we use that information is incomplete ($m>k$) only in Case 3 in the proof of Theorem~\ref{Theorem_4}. This case covers instances where both conventions $h_1$ and $h_2$ are stochastically stable when $m$ is large ($m\geq 2k$). If only one of the conventions is stochastically stable for large $m$, then we do not need any incomplete information to obtain the result that stochastic stability of conventions does not depend on memory size $m$. However, the following example shows that when both conventions are stochastically stable for large $m$, decreasing memory size to $m=k$ may render one of the conventions no longer stochastically stable.
 
-\begin{example}\label{Example_Theorem_4} Consider the $2\times 2$ coordination game 
+
+\begin{example}\label{Example_Theorem_4b} 
+Consider the $2\times 2$ coordination game 
 %\centering
 $$\begin{tabular}{cc|c|c|}
       & \multicolumn{1}{c}{} & \multicolumn{2}{c}{Player 2}\\
@@ -524,18 +612,22 @@ $$\begin{tabular}{cc|c|c|}
     \end{tabular}
 $$
 
-Suppose that $k = 10$ and consider the resistances between $h_1$ and $h_2$. Note that in this game $\alpha_1 = 9/20$ and $\alpha_2 = 1/2$. As such, $\lceil \alpha_1 \times k \rceil = \lceil \alpha_2 \times k \rceil = \lceil (1-\alpha_2) \times k \rceil = 5$ and $\lceil (1-\alpha_2) \times k \rceil = 6$. As result, for all $m > k = 10$ the resistances between $h_1$ and $h_2$ are equal, $r_{1,2}^{k,m} = r_{2,1}^{k,m} = 5$ and as such, both $h_1$ and $h_2$ are stochastically stable. Now consider $m = k = 10$. In this case, the resistance from $h_1$ to $h_2$ increases: $r_{1,2}^{k,m} = 6$ while the resistance from $h_2$ to $h_1$ remains unchanged: $r_{2,1}^{k,m} = 5$. As result, only $h_1$ would be stochastically stable.
+Suppose that $k = 10$ and consider the resistances between $h_1$ and $h_2$. Note that in this game $\alpha_1 = 9/20$ and $\alpha_2 = 1/2$. We compute $\lceil \alpha_1 \times k \rceil = \lceil \alpha_2 \times k \rceil = \lceil (1-\alpha_2) \times k \rceil = 5$ and $\lceil (1-\alpha_1) \times k \rceil = 6$. 
+
+
+When $m > k = 10$, the resistances between $h_1$ and $h_2$ are $r_{1,2}^{k,m} = r_{2,1}^{k,m} = 5$, and 
+%$r^{k,m}_{1,2} = \min\big(\lceil (1-\alpha_1) \times k \rceil, \lceil (1-\alpha_2) \times  k \rceil\big)+\max\big(\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0\big) = 
+%\min(5,6)+\max(5+6-m,0) = 5$ 
+both conventions $h_1$ and $h_2$ are stochastically stable. 
+
+However, when $m = k = 10$, the resistance of moving from $h_1$ to $h_2$ increases to $r_{1,2}^{k,m} = 6$ while the resistance of moving from $h_2$ to $h_1$ remains unchanged  at $r_{2,1}^{k,m} = 5$. Thus, only convention $h_1$ is stochastically stable.
 \end{example}
 
-Example~\ref{Example_Theorem_4} shows that the value of $m$ can affect which states are stochaistically stable. However, as Case 1 in Theorem~\ref{Theorem_4} shows, this can only occur when the resistances between conventions are equal when $m$ is not a factor in the resistance calculation ($m>2k$). 
-
-\medskip
-\noindent
 
 
 \section{Conclusion}
 
-Young's model of adaptive play has been studied and applied to a wide variety of games. However, the boundary of precisely how incomplete sampling needs to be in order for foundational results like convergence to a convention remain unaddressed. We examined the most foundational game, the $2\times 2$ coordination game, and proved that in this case, \textit{any} degree of incomplete sampling is sufficient for the unperturbed adaptive play process to converge to an equilibrium. In addition, we show that in all but some $2 \times 2$ games that the criterion of incomplete information is unnecessary. We also examine how allowing for larger (than $s<m/s$) games affect the perturbed adaptive process. We identified the function for resistance that is robust to all sample sizes $s \leq m$ and found that increasing the sample size beyond $s/m \leq 1/2$ may result in increased resistance between conventions. However, we also showed that even if the resistance does change due to the relative size of the sample to the memory, that the stochastically stable states remain unchanged if sampling is incomplete $(s<m)$.
+Young's model of adaptive play has been studied and applied to a wide variety of games. However, the boundary of precisely how incomplete sampling needs to be in order for foundational results like convergence to a convention remain unaddressed. We examined the most foundational game, the $2\times 2$ coordination game, and proved that in this case, \textit{any} degree of incomplete sampling is sufficient for the unperturbed adaptive play process to converge to an equilibrium. In addition, we show that in all but some $2 \times 2$ games that the criterion of incomplete information is unnecessary. We also examine how allowing for larger (than $k<m/k$) games affect the perturbed adaptive process. We identified the function for resistance that is robust to all sample sizes $k \leq m$ and found that increasing the sample size beyond $k/m \leq 1/2$ may result in increased resistance between conventions. However, we also showed that even if the resistance does change due to the relative size of a fixed sample to a changing memory, that the stochastically stable states remain unchanged if sampling is incomplete $(k<m)$.
 
 \newpage
 

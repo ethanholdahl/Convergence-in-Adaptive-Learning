@@ -38,7 +38,7 @@
 \newtheorem{remark}{Remark}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Minimally Incomplete Information and Convergence of Adaptive Play in $2\times 2$ Games}
+\title{Minimally Incomplete Sampling and Convergence of Adaptive Play in $2\times 2$ Games}
 
 
 \author{Ethan Holdahl\thanks{University of Oregon} \and Anne van den Nouweland\thanks{Department of Economics, University of Oregon, Eugene, OR 97403-1285. Email: annev@uoregon.edu.}}
@@ -96,7 +96,7 @@ opponents' best responses to that, and then play their own best response to thei
 \cite{jensen2005evolution} examines in detail a $2\times 2$ game of chicken with incomplete information and leverages the condition $s<m/4$ (which they obtain by applying Theorem 1 in  \cite{young1993evolution})
 to show that the basic learning process converges to a convention and that convention may be one which "lacks coordination" where not all types for the same player play the same strategy. Depending on the payoffs in the game, this "uncoordinated" convention can be stochastically stable. 
 
-In our paper we show that \textit{any} degree of incomplete sampling is sufficient for the unperturbed adaptive play process to converge to an equilibrium in $2\times 2$ coordination games from any given history. In addition, we show that incomplete information is unnecessary in all but some $2 \times 2$ games. We also show that increasing the sample size beyond $s/m \leq 1/2$ may result in increased levels of resistance between conventions, that is to say, increasing the sample size may make conventions more stable. However, even though the resistance between conventions may change, we show that this change does not affect which convention(s) are stochastically stable when sampling is incomplete ($s<m$).
+In our paper we show that \textit{any} degree of incomplete sampling is sufficient for the unperturbed adaptive play process to converge to an equilibrium in $2\times 2$ coordination games from any given history. In addition, we show that incomplete sampling is unnecessary in all but some $2 \times 2$ games. We also show that increasing the sample size beyond $s/m \leq 1/2$ may result in increased levels of resistance between conventions, that is to say, increasing the sample size may make conventions more stable. However, even though the resistance between conventions may change, we show that this change does not affect which convention(s) are stochastically stable when sampling is incomplete ($s<m$).
 
 \section{Adaptive play in $2\times 2$ coordination games}
 
@@ -171,12 +171,12 @@ When a convention is reached in which the Nash equilibrium $s^*$ is played, then
 
 
 
-\section{Minimally incomplete information} 
+\section{Minimally incomplete sampling} 
 
 
 
-In \cite{Young1998}, Young proved that in $2\times 2$ coordination games, unperturbed adaptive play will reach a convention as long as information is sufficiently incomplete. Incomplete information means that the players sample only a faction of the information in memory and in \cite{Young1998} the specific limit for information to be "sufficiently" incomplete is $k \leq \frac{m}{2}$, meaning that players sample at most half of all the information available in memory. 
-We relax this bound substantially and show that in $2\times 2$ coordination games, {\emph {any} }degree of incomplete information is sufficient for a convention to eventually be reached.
+In \cite{Young1998}, Young proved that in $2\times 2$ coordination games, unperturbed adaptive play will reach a convention as long as sampling is sufficiently incomplete. Incomplete sampling means that the players sample only a faction of the records in memory and in \cite{Young1998} the specific limit for sampling to be "sufficiently" incomplete is $k \leq \frac{m}{2}$, meaning that players sample at most half of all the records available in memory. 
+We relax this bound substantially and show that in $2\times 2$ coordination games, {\emph {any} }degree of incomplete sampling is sufficient for a convention to eventually be reached.
 
 
 
@@ -258,11 +258,11 @@ It is thus possible that adaptive play leads players away from the strict Nash e
 
 
 
-While Example~\ref{Example_lemma_1} demonstrates that the proof that we provided of Lemma~\ref{Lemma_1} is not valid for coordination games in which players have more than 2 actions, the following example demonstrates that when information is complete ($k=m$), the statement of the lemma is not necessarily true for such games.  
+While Example~\ref{Example_lemma_1} demonstrates that the proof that we provided of Lemma~\ref{Lemma_1} is not valid for coordination games in which players have more than 2 actions, the following example demonstrates that when sampling is complete ($k=m$), the statement of the lemma is not necessarily true for such games.  
 
 \begin{example}\label{Example2_lemma_1} 
 Consider the game in Example~\ref{Example_lemma_1} and let $k = m = 2$. Consider a period 
-$t > 2$ such that  $h(t\mid m) = \big((a_2, b_3), (a_3, b_2)\big)$. Because information is complete, $R_1^{t+1} = \{b_2, b_3\}$ and $R_2^{t+1} = \{a_2, a_3\}$. 
+$t > 2$ such that  $h(t\mid m) = \big((a_2, b_3), (a_3, b_2)\big)$. Because sampling is complete, $R_1^{t+1} = \{b_2, b_3\}$ and $R_2^{t+1} = \{a_2, a_3\}$. 
 Because $BR_1(\{b_2, b_3\})=\{a_1\}$ and $BR_2(\{a_2, a_3\})=\{b_1\}$, necessarily $s(t+1) = (a_1, b_1)$. 
 %
 Thus, $h(t+1\mid m) = \big((a_3, b_2), (a_1, b_1)\big)$, $R_1^{t+2} = \{b_1, b_2\}$, and $R_2^{t+2} = \{a_1, a_3\}$. 
@@ -273,7 +273,7 @@ so that $R_1^{t+3} = \{b_1, b_3\}$ and $R_2^{t+3} = \{a_1, a_2\}$, and the playe
 %
 After playing $s(t+3) = (a_3, b_2)$, the history of the last $m$ plays is $h(t+3\mid m) = \big((a_2, b_3), (a_3, b_2)\big)$ and the adaptive play process has thus returned to the same state it was in during period $t$. 
 
-We have demonstrated that adaptive play with memory size $2$ and complete information (sample size 2) will keep cycling from $(a_2, b_3)$ to $(a_3, b_2)$ to $(a_1, b_1)$, to $(a_2, b_3)$, to  $(a_3, b_2)$, and so on.  
+We have demonstrated that adaptive play with memory size $2$ and complete sampling (sample size 2) will keep cycling from $(a_2, b_3)$ to $(a_3, b_2)$ to $(a_1, b_1)$, to $(a_2, b_3)$, to  $(a_3, b_2)$, and so on.  
 %
 Thus, although the strict Nash equilibrium: $(a_1, b_1)$ is played every third period as part of this sequence, the process never reaches the convention of playing $(a_1, b_1)$. 
 \end{example}
@@ -332,9 +332,9 @@ Thus, there is a positive probability that $s(\hat{t}+1)=(a_1,b_1)$.
 $\blacksquare$
 
 \medskip
-Note that in the proof of Theorem~\ref{Theorem_1}, there is only one instance in which we use that information is incomplete ($k<m$), and that is in Case 3, where we need it to guarantee that it cannot be the case that the adaptive play process can get "stuck" in a situation where both players mis-coordinate in every period, oscillating between $(a_1,b_2)$ and $(a_2,b_1)$ and necessarily switching actions in exactly the same periods. 
+Note that in the proof of Theorem~\ref{Theorem_1}, there is only one instance in which we use that sampling is incomplete ($k<m$), and that is in Case 3, where we need it to guarantee that it cannot be the case that the adaptive play process can get "stuck" in a situation where both players mis-coordinate in every period, oscillating between $(a_1,b_2)$ and $(a_2,b_1)$ and necessarily switching actions in exactly the same periods. 
 %
-If the game and sample sizes are such that this cannot happen anyway, then we do not need information to be incomplete at all, and we can have $k=m$. 
+If the game and sample sizes are such that this cannot happen anyway, then we do not need sampling to be incomplete at all, and we can have $k=m$. 
 We use the notation $\lceil\cdot\rceil$ to denote the rounding up of any real number to the smallest natural number that is at least as large.\footnote{So, if $n$ is a natural number itself, then $\lceil n\rceil=n$. Also, we include $0$ in the set of natural numbers.}
 
 
@@ -352,7 +352,7 @@ From any initial state, unperturbed adaptive play with memory size $m$ and sampl
 \end{theorem}
 
 \textbf{Proof of Theorem~\ref{Theorem_2}.}
-If $k<m$, then Theorem~\ref{Theorem_1} applies. So, suppose that $k=m$, i.e, information is complete in the sense that players see \emph{all} of the past $m$ records.
+If $k<m$, then Theorem~\ref{Theorem_1} applies. So, suppose that $k=m$, i.e, sampling is complete in the sense that players see \emph{all} of the past $m$ records.
 
 Consider an adaptive play process with $k=m$. If in some period $t>m$ the players coordinate, i.e., $s(t)=(a_1,b_1)$ or $s(t)=(a_2,b_2)$, then we can apply cases 1 or 2 in the proof of Theorem~\ref{Theorem_1} to establish that there is a positive probability that the players play a strict Nash equilibrium (note that these cases do not depend on $k < m$). 
 Lemma~\ref{Lemma_1} then establishes that the convention of playing that strict Nash equilibrium can be reached with positive probability, and then the process is locked in.
@@ -397,7 +397,7 @@ Now consider the adaptive play process as modeled in Section 2 but where players
 play an action at random.} We shall refer to such actions as \textit{mistakes}. This process is called perturbed adaptive play. Allowing for mistakes makes transitions possible between conventions, even those in which a strict Nash equilibrium is played. Continuing with the setup established in Section 2 where $(a_1, b_1)$ and $(a_2, b_2)$ are Nash equilibria, denote by $h_i$ the convention corresponding to $(a_i, b_i)$, i.e., the state that consists of $m$
 repetitions of $(a_i, b_i)$.
 Now consider the transition from $h_i$ to $h_j$. Let the resistance, denoted $r_{i,j}^{k,m}$, be the minimum number of mistakes necessary to make the transition from $h_i$ to $h_j$ in the perturbed adaptive play process.
-\cite{Young1998} shows that the resistance between conventions is independent of $m$ when $k \leq m/2$. Specifically, the resistance of moving from $h_2$ to $h_1$ equals $\min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big)$ and the resistance of moving from $h_1$ to $h_2$ equals $\min\big(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times  k \rceil\big)$. However, we demonstrate below that when information is less incomplete ($k > m/2$), the resistances may be larger and depend on $m$.
+\cite{Young1998} shows that the resistance between conventions is independent of $m$ when $k \leq m/2$. Specifically, the resistance of moving from $h_2$ to $h_1$ equals $\min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big)$ and the resistance of moving from $h_1$ to $h_2$ equals $\min\big(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times  k \rceil\big)$. However, we demonstrate below that when sampling is less incomplete ($k > m/2$), the resistances may be larger and depend on $m$.
 
 
 \begin{theorem}\label{Theorem_3}
@@ -547,12 +547,12 @@ The interest in resistances of moving between conventions stems from the fact th
 %
 
 %
-In a game with exactly two Nash equilibria, and thus two conventions, a convention is stochastically stable if and only if the resistance in the transition away from it is at least as large as the resistance in the transition towards it (see \cite{Young1993}). 
+In a game with exactly two Nash equilibria, and thus two conventions, a convention is stochastically stable if and only if the resistance in the transition away from it is at least as large as the resistance in the transition towards it (see \cite{young1993evolution}).
 %
-In the model studied in \cite{Young1993}, information is sufficiently incomplete ($k \leq m/2$) for the resistances between conventions to be independent of $m$., so that stochastic stability of conventions is also independent of $m$. 
+In the model studied in \cite{young1993evolution}, sampling is sufficiently incomplete ($k \leq m/2$) for the resistances between conventions to be independent of $m$., so that stochastic stability of conventions is also independent of $m$. 
 %
-In contrast, as we demonstrated in Theorem~\ref{Theorem_3}, the resistances may be larger and depend on $m$ when information is less incomplete ($k > m/2$). 
-This opens up the possibility that the degree of incomplete information influences which conventions are stochastically stable. We turn to this next. 
+In contrast, as we demonstrated in Theorem~\ref{Theorem_3}, the resistances may be larger and depend on $m$ when sampling is less incomplete ($k > m/2$). 
+This opens up the possibility that the degree of incomplete sampling influences which conventions are stochastically stable. We turn to this next. 
 
 
 
@@ -572,33 +572,36 @@ $$
 In this game $\alpha_1 = 7/20$ and $\alpha_2 = 3/5$. Suppose $m = 10$ and $k$ increases from 5 to 10. When $k = 5$, $\lceil \alpha_1 \times k \rceil = \lceil (1-\alpha_2) \times k \rceil = 2$, $\lceil (1-\alpha_1) \times k \rceil = 4$ and $\lceil \alpha_2 \times k \rceil = 3$. So $r_{2,1}^{5,10} = 2$ and $r_{1,2}^{5,10} = 2$, which means both conventions $h_1$ and $h_2$ are stochastically stable. However, when $k = 10$, $\lceil \alpha_1 \times k \rceil = \lceil (1-\alpha_2) \times k \rceil = 4$, $\lceil (1-\alpha_1) \times k \rceil = 7$ and $\lceil \alpha_2 \times k \rceil = 6$. So $r_{2,1}^{10,10} = 4$ and $r_{1,2}^{10,10} = 5$ which means in this case only $h_1$ is stochastically stable.
 \end{example}
 
-Example~\ref{Example_Theorem_4a} shows that changing the degree of incomplete information, $k/m$, by varying $k$ and keeping $m$ fixed can change which states are stochastically stable through the added $max(\cdot)$ component of the resistance calculation.\footnote{Note that it is already known that stochastic stability may change with $k$ due to the ceiling functions even when $k \leq m/2$.} However, stochastic stability does not change when the degree of incomplete information, $k/m$, changes by varying $m$ while keeping $k$ fixed. Next, we prove that when information is incomplete, changing $m$ alone does not change which conventions are stochastically stable.
+Example~\ref{Example_Theorem_4a} shows that changing the degree of incomplete sampling, $k/m$, by varying $k$ and keeping $m$ fixed can change which states are stochastically stable through the added $\max(\cdot)$ component of the resistance calculation.\footnote{Note that it is already known that stochastic stability may change with $k$ due to the ceiling functions even when $k \leq m/2$.} However, stochastic stability does not change when the degree of incomplete sampling, $k/m$, changes by varying $m$ while keeping $k$ fixed. Next, we prove that when sampling is incomplete, changing $m$ alone does not change which conventions are stochastically stable.
 
 \begin{theorem}\label{Theorem_4}
 Let G be a 2$\times$2 coordination game with Nash equilibria $(a_1,b_1)$ and $(a_2,b_2)$. 
-Consider unperturbed adaptive play with fixed sample size $k$ and memory size $m > k$. 
+Consider unperturbed adaptive play with fixed sample size $k$ and memory size $m$ such that sampling is incomplete: $m > k$. 
 Stochastic stability of conventions does not depend on memory size $m$.
 \end{theorem}
 
 \textbf{Proof of Theorem~\ref{Theorem_4}.} 
-Consider the pairwise resistances between $h_2$ and $h_1$. We will consider both the case where the resistance $r_{1,2}^{k,m} \neq r_{2,1}^{k,m}$ and where $r_{1,2}^{k,m} = r_{2,1}^{k,m}$ when $m \geq 2k$. We show that when $k$ is held fixed, decreasing $m$ to some $m>k$ does not affect the comparison between $r_{1,2}^{k,m}$ and $r_{2,1}^{k,m}$.
+Consider the pairwise resistances between $h_2$ and $h_1$. We will consider both the case where $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) \neq \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$ and where $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$. We show that when $k$ is held fixed, changing $m$ to some $m>k$ does not affect the comparison between $r_{1,2}^{k,m}$ and $r_{2,1}^{k,m}$.
 
-{\bf Case 1.} $r^{k,m}_{2,1} \neq r^{k,m}_{1,2}$.\footnote{Note that the restriction $m>k$ is not leveraged in this case.}  \\
-Without loss of generality assume $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ when $m \geq 2k$. We will show that when $m < 2k$, the inequality $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ is maintained. $m \geq 2k$ and $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ means that $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) < \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$. Without loss of generality assume $\alpha_1 \geq \alpha_2$. So, $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \lceil \alpha_2 \times k \rceil$ and $\min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil) = \lceil (1-\alpha_1) \times k \rceil$ which means $\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha_1) \times k \rceil$. It follows that $\alpha_2< 1- \alpha_1$ so $\alpha_1< 1 - \alpha_2$ which means $\lceil \alpha_1 \times k \rceil \leq \lceil (1 - \alpha_2) \times k \rceil$. Combining $\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha_1) \times k \rceil$ and  $\lceil \alpha_1 \times k \rceil \leq \lceil (1 - \alpha_2) \times k \rceil$ we get $\max\big(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0\big) \leq \max\big(\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0\big)$. 
-So decreasing $m$ while holding $k$ fixed such that the $\max(\cdot)$ component of resistance may be greater than 0 can not increase $r^{k,m}_{2,1}$ more than $r^{k,m}_{1,2}$. 
+{\bf Case 1.} $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) \neq \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$.\footnote{Note that the restriction $m>k$ is not leveraged in this case.}  \\ 
+Without loss of generality assume $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) < \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$. This means that for all $m \geq 2k$, $r^{k,m}_{2,1} < r^{k,m}_{1,2}$. We will show that when $m < 2k$, the inequality $r^{k,m}_{2,1} < r^{k,m}_{1,2}$ is maintained.
 
-As result, we have shown that the pairwise resistance inequality between $r^{k,m}_{2,1}$ and $r^{k,m}_{1,2}$ must remain unchanged by $m$ in this case.
+Without loss of generality assume $\alpha_1 \geq \alpha_2$. So, $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \lceil \alpha_2 \times k \rceil$ and $\min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil) = \lceil (1-\alpha_1) \times k \rceil$ which means $\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha_1) \times k \rceil$. It follows that $\alpha_2< 1- \alpha_1$ so $\alpha_1< 1 - \alpha_2$ which means $\lceil \alpha_1 \times k \rceil \leq \lceil (1 - \alpha_2) \times k \rceil$. Combining $\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha_1) \times k \rceil$ and  $\lceil \alpha_1 \times k \rceil \leq \lceil (1 - \alpha_2) \times k \rceil$ we get $\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil < \lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil$. This inequality combined with the fact, due to the fact that $\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil + \lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil \in \{2k, 2k+1, 2k+2\}$ means that $\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil \leq k < \lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil$ as consequence of the fact that the ceiling function can only yield integers. This means that $\max\big(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0\big) = 0 \leq \max\big(\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0\big)$. This result shows that the $\max(\cdot)$ component of resistance in one direction can only be positive if the $\min(\cdot)$ component is strictly larger than the $\min(\cdot)$ component in the opposite direction.
+Therefore, if $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) < \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$ then $r_{1,2} < r_{2,1}$ for all $m \geq k$.
 
-{\bf Case 2.} $r^{k,m}_{1,2} = r^{k,m}_{2,1}$.\\
-We will show that when $k < m < 2k$, the relationship $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ is maintained. $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ when $k \leq m/2$ implies that $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$. Without loss of generality assume $\alpha_1\geq \alpha_2$. So, $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \lceil \alpha_2 \times k \rceil$ and $\min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil) = \lceil (1-\alpha_1) \times k \rceil$ which means $\lceil \alpha_2 \times k \rceil = \lceil (1-\alpha_1) \times k \rceil$. It is easily verified that $\lceil \alpha_1 \times k \rceil+\lceil (1-\alpha_1) \times k \rceil \in (k, k+1)$ and so $\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil \leq k+1$. Since both $m$ and $k$ are natural numbers and $k<m$ it follows that $k+1 \leq m$. Thus, $\max(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0) = 0$.
+So we have shown that the comparison between resistances is unchanged by the size of $m$ in this case. 
 
-Likewise, $\lceil \alpha_2 \times k \rceil+\lceil (1-\alpha_2) \times k \rceil \in (k, k+1)$. Because $\lceil \alpha_2 \times k \rceil = \lceil (1-\alpha_1) \times k \rceil$, it follows that $\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil \leq k+1$. Since $k+1 \leq m$, it follows that $\max(\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0)~=~0$.
+{\bf Case 2.} $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil)$.\\
+This means that when $m \geq 2k$, the resistance is equal in both directions: $r^{k,m}_{1,2} = r^{k,m}_{2,1}$.
+We will show that when $k < m < 2k$, the relationship $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ is maintained. Without loss of generality assume $\alpha_1\geq \alpha_2$. So, $\min(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil) = \lceil \alpha_2 \times k \rceil$ and $\min(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil) = \lceil (1-\alpha_1) \times k \rceil$ which means $\lceil \alpha_2 \times k \rceil = \lceil (1-\alpha_1) \times k \rceil$. It is easily verified that $\lceil \alpha_1 \times k \rceil+\lceil (1-\alpha_1) \times k \rceil \in \{k, k+1\}$ and so $\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil \leq k+1$. Since both $m$ and $k$ are natural numbers and $k<m$ it follows that $k+1 \leq m$. Thus, $\max(\lceil \alpha_1 \times k \rceil+\lceil \alpha_2 \times k \rceil-m,0) = 0$.
+
+Likewise, $\lceil \alpha_2 \times k \rceil+\lceil (1-\alpha_2) \times k \rceil \in \{k, k+1\}$. Because $\lceil \alpha_2 \times k \rceil = \lceil (1-\alpha_1) \times k \rceil$, it follows that $\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil \leq k+1$. Since $k+1 \leq m$, it follows that $\max(\lceil (1-\alpha_1) \times k \rceil+\lceil (1-\alpha_2) \times k \rceil-m,0)~=~0$.
 Those results combined with the assumption $\min\big(\lceil \alpha_1 \times k \rceil,\lceil \alpha_2 \times k \rceil\big) = \min\big(\lceil (1-\alpha_1) \times k \rceil,\lceil (1-\alpha_2) \times k \rceil\big)$ mean that $r^{k,m}_{1,2} = r^{k,m}_{2,1}$ for all $m > k$ in this case.
 
 {\bf Conclusion.} The two cases are exhaustive. We have shown that all pairwise resistance comparisons remain unchanged for all $m > k$ given $k$ is fixed. So, it follows that which states are stochastically stable also remains unchanged.
 $\blacksquare$
 
-Note that we use that information is incomplete ($m>k$) only in Case 3 in the proof of Theorem~\ref{Theorem_4}. This case covers instances where both conventions $h_1$ and $h_2$ are stochastically stable when $m$ is large ($m\geq 2k$). If only one of the conventions is stochastically stable for large $m$, then we do not need any incomplete information to obtain the result that stochastic stability of conventions does not depend on memory size $m$. However, the following example shows that when both conventions are stochastically stable for large $m$, decreasing memory size to $m=k$ may render one of the conventions no longer stochastically stable.
+Note that we use that sampling is incomplete ($m>k$) only in Case 2 in the proof of Theorem~\ref{Theorem_4}. This case covers instances where both conventions $h_1$ and $h_2$ are stochastically stable when $m$ is large ($m\geq 2k$). If only one of the conventions is stochastically stable for large $m$ as in Case 1, then we do not need any incomplete sampling to obtain the result that stochastic stability of conventions does not depend on memory size $m$. However, the following example shows that when both conventions are stochastically stable for large $m$, decreasing memory size to $m=k$ may render one of the conventions no longer stochastically stable.
 
 
 \begin{example}\label{Example_Theorem_4b} 
@@ -627,7 +630,7 @@ However, when $m = k = 10$, the resistance of moving from $h_1$ to $h_2$ increas
 
 \section{Conclusion}
 
-Young's model of adaptive play has been studied and applied to a wide variety of games. However, the boundary of precisely how incomplete sampling needs to be in order for foundational results like convergence to a convention remain unaddressed. We examined the most foundational game, the $2\times 2$ coordination game, and proved that in this case, \textit{any} degree of incomplete sampling is sufficient for the unperturbed adaptive play process to converge to an equilibrium. In addition, we show that in all but some $2 \times 2$ games that the criterion of incomplete information is unnecessary. We also examine how allowing for larger (than $k<m/k$) games affect the perturbed adaptive process. We identified the function for resistance that is robust to all sample sizes $k \leq m$ and found that increasing the sample size beyond $k/m \leq 1/2$ may result in increased resistance between conventions. However, we also showed that even if the resistance does change due to the relative size of a fixed sample to a changing memory, that the stochastically stable states remain unchanged if sampling is incomplete $(k<m)$.
+Young's model of adaptive play has been studied and applied to a wide variety of games. However, the boundary of precisely how incomplete sampling needs to be in order for foundational results like convergence to a convention remain unaddressed. We examined the most foundational game, the $2\times 2$ coordination game, and proved that in this case, \textit{any} degree of incomplete sampling is sufficient for the unperturbed adaptive play process to converge to a convention. In addition, we show that in all but some $2 \times 2$ games that the criterion of incomplete sampling is unnecessary. We also examine how allowing for minimally incomplete sampling affects the perturbed adaptive process. We identified the function for resistance that is robust to all degrees of sampling, $k \leq m$, and found that increasing the sample size beyond $k/m \leq 1/2$ may result in increased resistance between conventions. However, we also showed that even if the resistance does increase due to the relative size of a fixed sample to a changing memory that the stochastically stable states remain unchanged if sampling is incomplete $(k<m)$.
 
 \newpage
 
